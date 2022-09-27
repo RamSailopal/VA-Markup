@@ -18,7 +18,7 @@ A complete site crawling example is not shown here, just a proof of concept (PoC
     
     cd VA-Markup
 
-    docker run -it -v $PWD:/home/tmp --entrypoint /home/tmp/entrypoint.sh -it ubuntu /bin/bash
+    docker run -v $PWD:/home/tmp --entrypoint /home/tmp/entrypoint.sh -it ubuntu /bin/bash
 
 # References
 
