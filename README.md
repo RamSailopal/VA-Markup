@@ -18,7 +18,19 @@ A complete site crawling example is not shown here, just a proof of concept (PoC
     
     cd VA-Markup
 
-    docker run --name markup -v $PWD:/home/tmp --entrypoint /home/tmp/entrypoint.sh -it ubuntu /bin/bash
+    docker run --name markup -v $PWD:/home/tmp --entrypoint /home/tmp/entrypoint.sh -d ubuntu
+    
+Then to run scrape.py:
+
+    docker exec -it markup /bin/bash
+    
+    cd /home/tmp
+    
+    python3 scrape.py
+    
+To run scrape1.py:
+
+    python3 scrape1.py
 
 # References
 
