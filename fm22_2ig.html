@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>fm22_2ig</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"><p>VA FileMan 22.2</p>
+<p>Installation, Back-Out, and Rollback Guide</p></h1>
+</header>
+<p><img src="./media/image1.jpg" alt="Department of Veterans Affairs official seal" style="width:2.375in;height:2.375in" /></p>
+<p>August 2016</p>
+<p>Department of Veterans Affairs (VA)</p>
+<p>Office of Information and Technology (OI&amp;T)</p>
+<p>Enterprise Program Management Office (EPMO)</p>
+<p>Revision History</p>
+<p><img src="./media/image2.png" title="Note" alt="Note" style="width:0.33333in;height:0.33333in" /> <strong>NOTE</strong>: The revision history cycle begins once changes or enhancements are requested after the Installation, Back-Out, and Rollback Guide has been baselined.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Date</td>
+<td>Version</td>
+<td>Description</td>
+<td>Author</td>
+</tr>
+<tr class="even">
+<td>08/03/2016</td>
+<td>1.0</td>
+<td><p>Initial release of VA FileMan 22.2 Installation, Back-Out, and Rollback Guide.</p>
+<p>Based on the ProPath Installation, Back-Out, and Rollback Guide template; released February 2016; Version 2.1.</p></td>
+<td>VA FileMan 22.2 Development Team</td>
+</tr>
+</tbody>
+</table>
+
+<p>Table of Contents</p>
+<p><a href="#introduction">1 Introduction 1</a></p>
+<p><a href="#mumps-operating-system-file-considerations">1.1 MUMPS OPERATING SYSTEM File Considerations 1</a></p>
+<p><a href="#pre-installation-and-system-requirements">2 Pre-installation and System Requirements 3</a></p>
+<p><a href="#back-up-system">2.1 Back Up System 3</a></p>
+<p><a href="#platform-installation-and-preparation">2.2 Platform Installation and Preparation 3</a></p>
+<p><a href="#download-and-extract-files">2.3 Download and Extract Files 3</a></p>
+<p><a href="#software">2.3.1 Software 3</a></p>
+<p><a href="#documentation">2.3.2 Documentation 3</a></p>
+<p><a href="#installation-scripts">2.4 Installation Scripts 4</a></p>
+<p><a href="#cron-scripts">2.5 Cron Scripts 4</a></p>
+<p><a href="#access-requirements-and-skills-needed-for-the-installation">2.6 Access Requirements and Skills Needed for the Installation 4</a></p>
+<p><a href="#_Toc458001716">3 Installation Procedure 5</a></p>
+<p><a href="#log-onto-the-system">3.1 Log onto the System 5</a></p>
+<p><a href="#check-the-current-va-fileman-version">3.2 Check the Current VA FileMan Version 5</a></p>
+<p><a href="#production-environment-shut-down-system">3.3 Production Environment: Shut Down System 5</a></p>
+<p><a href="#production-environment-restart-system">3.4 Production Environment: Restart System 5</a></p>
+<p><a href="#production-environment-inhibit-logons-for-each-volume-set">3.5 Production Environment: Inhibit Logons for Each Volume Set 5</a></p>
+<p><a href="#environment-check">3.6 Environment Check 6</a></p>
+<p><a href="#production-environment-load-the-va-fileman-22.2-distribution">3.7 Production Environment: Load the VA FileMan 22.2 Distribution 6</a></p>
+<p><a href="#install-the-va-fileman-22.2-package">3.8 Install the VA FileMan 22.2 Package 8</a></p>
+<p><a href="#post-install-taskman-procedures">3.9 Post-Install TaskMan Procedures 11</a></p>
+<p><a href="#production-environment-enable-logons">3.10 Production Environment: Enable Logons 11</a></p>
+<p><a href="#_Toc458001727">4 Implementation Procedure 12</a></p>
+<p><a href="#database-tuning">4.1 Database Tuning 12</a></p>
+<p><a href="#verify-installation">4.2 Verify Installation 12</a></p>
+<p><a href="#back-out-plan">5 Back-Out Plan 12</a></p>
+<p><a href="#back-out-strategy">5.1 Back-Out Strategy 12</a></p>
+<p><a href="#back-out-considerations">5.2 Back-Out Considerations 12</a></p>
+<p><a href="#load-testing">5.2.1 Load Testing 12</a></p>
+<p><a href="#user-acceptance-testing">5.2.2 User Acceptance Testing 12</a></p>
+<p><a href="#back-out-criteria">5.3 Back-Out Criteria 12</a></p>
+<p><a href="#back-out-risks">5.4 Back-Out Risks 12</a></p>
+<p><a href="#authority-for-back-out">5.5 Authority for Back-Out 13</a></p>
+<p><a href="#back-out-procedure">5.6 Back-Out Procedure 13</a></p>
+<p><a href="#rollback-plan">6 Rollback Plan 13</a></p>
+<p><a href="#rollback-considerations">6.1 Rollback Considerations 13</a></p>
+<p><a href="#rollback-criteria">6.2 Rollback Criteria 13</a></p>
+<p><a href="#rollback-risks">6.3 Rollback Risks 13</a></p>
+<p><a href="#authority-for-rollback">6.4 Authority for Rollback 13</a></p>
+<p><a href="#rollback-procedure">6.5 Rollback Procedure 13</a></p>
+<p>List of Figures</p>
+<p><a href="#_Toc458001745">Figure 1: Check the Current VA FileMan Version 5</a></p>
+<p><a href="#_Toc458001746">Figure 2: Inhibit Logons for Each Volume Set 6</a></p>
+<p><a href="#_Toc458001747">Figure 3: load the VA FileMan 22.2 distribution file 7</a></p>
+<p><a href="#_Toc458001748">Figure 4: Sample installation dialogue 8</a></p>
+<p><a href="#_Toc458001749">Figure 5: Enable Logons 11</a></p>
+<p>List of Tables</p>
+<p><a href="#_Toc457395538">Table 1: VA FileMan 22.2 Documentation 3</a></p>
+<h1 id="introduction">Introduction</h1>
+<p>This guide provides instructions for installing Department of Veterans Affairs (VA) FileMan 22.2. VA FileMan is designed to be used either with the Kernel or as a standalone application; however, these installation instructions are provided only for sites running Kernel 8.0. Since Kernel is dependent on VA FileMan 22.0, that version of VA FileMan is already installed on your system.</p>
+<p>This guide is written specifically for the Caché Operating System (OS). It does not contain OS-specific instructions for other OSs, such as routing mapping and manually moving %routines into the Manager account.</p>
+<p><img src="./media/image2.png" title="Note" alt="Note" style="width:0.33333in;height:0.33333in" /> <strong>REF:</strong> For identifying other OSs to VA FileMan and Kernel, see Section <span class="underline">1.1</span>.</p>
+<p>This installation is significantly different from previous versions. You no longer must manually move the new VA FileMan routines into the account. The routines are present in the Kernel Installation &amp; Distribution System (KIDS) build and are loaded as part of the install. DINIT is run <em>non</em>-interactively during the KIDS pre-install to update the VA FileMan files.</p>
+<p>After this installation, the current version of the VA FileMan files will be installed and updated with data as appropriate.</p>
+<p><img src="./media/image3.png" title="Caution" alt="Caution" style="width:0.44792in;height:0.44792in" /> CAUTION: Do <em>not</em> run DINIT to update the VA FileMan files after the install is complete. Running DINIT from the Command line at any time will cause data corruption.</p>
+<h2 id="mumps-operating-system-file-considerations">MUMPS OPERATING SYSTEM File Considerations</h2>
+<p>This Install, Back-Out, and Rollback Guide assumes an install on Caché. You are not asked to identify your OS during the install.</p>
+<p>VA FileMan 22.2 populates the MUMPS OPERATING SYSTEM file (#.7) with values for the following operating systems:</p>
+<ul>
+<li><p>CACHE/OpenM</p></li>
+<li><p>DSM for OpenVMS</p></li>
+<li><p>DTM-PC</p></li>
+<li><p>GT.M(UNIX)</p></li>
+<li><p>GT.M(VAX)</p></li>
+<li><p>MSM</p></li>
+<li><p>OTHER—This placeholder is for a user defined OS</p></li>
+</ul>
+<p>In order to notify VA FileMan that you are using an OS other than Cache after the install completes enter the following command to identify your OS:</p>
+<p>&gt;<strong>D OS^DINIT</strong></p>
+<p>In order to complete the identification to Kernel that you are running an OS other than Cache, run the appropriate routine from the following list:</p>
+<p>ZOSFGTM            GTM on VMS</p>
+<p>ZOSFGUX            GTM on Unix</p>
+<p>ZOSFONT            Cache</p>
+<p>ZOSFVXD            DSM on VMS</p>
+<h1 id="pre-installation-and-system-requirements">Pre-installation and System Requirements</h1>
+<h2 id="back-up-system">Back Up System</h2>
+<p>Back up your system as a safeguard <em>before</em> the installation. In order to back out the VA FileMan 22.2 installation, restore your back up (see the “<span class="underline">Back-Out Plan</span>” section).</p>
+<h2 id="platform-installation-and-preparation">Platform Installation and Preparation</h2>
+<p>VA FileMan 22.2 requires pre-existing Kernel 8.0 software.</p>
+<p>Patches DI*22.2*1 <em>and</em> HL7*1.6*167 resolve a known VA FileMan (FM) 22.2 issue, SDM I9259370. User cannot select HL7 messages directly from the list in the HL View Transmission Log option. For ease of installation, sites may delay installing FM 22.2 until release of patches DI*22.2*1 and HL7*1.6*167; both patches will be released shortly. Although the two patches can be installed while users are on the system, installing both patches right after installing FM 22.2, before allowing users back on the system, is more efficient and will eliminate any possible errors.</p>
+<h2 id="download-and-extract-files">Download and Extract Files</h2>
+<p>Software being released as a Kernel Installation and Distribution System (KIDS) file and documentation describing the new functionality introduced by this patch is available.</p>
+<h3 id="software">Software</h3>
+<p>Software can be downloaded from the <strong>Product</strong> Support (PS) Anonymous Directories via Secure File Transfer Protocol (SFTP).</p>
+<p>Download the VA_FILEMAN_22_2.KID file from the appropriate server to a directory on your system.</p>
+<h3 id="documentation">Documentation</h3>
+<p>Documentation can be downloaded from the <strong>Product</strong> Support (PS) Anonymous Directories via Secure File Transfer Protocol (SFTP).</p>
+<p>Documentation can also be found on the VA Software Document Library (VDL) at: <a href="http://www.va.gov/vdl/application.asp?appid=5">http://www.va.gov/vdl/application.asp?appid=5</a></p>
+<p><span id="_Toc457395538" class="anchor"></span>Table 1: VA FileMan 22.2 Documentation</p>
+<table>
+<caption>VSM Documentation</caption>
+<thead>
+<tr class="header">
+<th>File Name</th>
+<th>FTP Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fm22_2um1.pdf</td>
+<td>Binary</td>
+<td>VA FileMan 22.2 User Manual</td>
+</tr>
+<tr class="even">
+<td>fm22_2um2.pdf</td>
+<td>Binary</td>
+<td>VA FileMan 22.2 Advanced User Manual</td>
+</tr>
+<tr class="odd">
+<td>fm22_2dg.pdf</td>
+<td>Binary</td>
+<td>VA FileMan 22.2 Developer’s Guide</td>
+</tr>
+<tr class="even">
+<td>fm22_2ig.pdf</td>
+<td>Binary</td>
+<td>VA FileMan 22.2 Installation, Back-Out, and Rollback Guide</td>
+</tr>
+<tr class="odd">
+<td>fm22_2tm.pdf</td>
+<td>Binary</td>
+<td>VA FileMan 22.2 Technical Manual</td>
+</tr>
+<tr class="even">
+<td>fm22_2rn.pdf</td>
+<td>Binary</td>
+<td>VA FileMan 22.2 Release Notes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="installation-scripts">Installation Scripts</h2>
+<p>There are no installation scripts for VA FileMan 22.2.</p>
+<h2 id="cron-scripts">Cron Scripts</h2>
+<p>There are no cron scripts for the VA FileMan 22.2.</p>
+<h2 id="access-requirements-and-skills-needed-for-the-installation">Access Requirements and Skills Needed for the Installation</h2>
+<p>Only those with system management knowledge and access should install VA FileMan 22.2.</p>
+<p><img src="./media/image2.png" title="Note" alt="Note" style="width:0.33333in;height:0.33333in" /> <strong>REF:</strong> For instructions on performing OS-level tasks, see your OS system management documentation.</p>
+<p>The installer needs to know how to do the following:</p>
+<ul>
+<li><p>Obtain Veterans Health Information Systems and Technology Architecture (VistA) software from FORUM and Secure File Transfer Protocol (SFTP) download sites (i.e., Product Support Anonymous Directories).</p></li>
+<li><p>Run a Kernel Installation and Distribution System (KIDS) installation.</p></li>
+<li><p>Logging onto the system and getting to the M prompt (Programmer Mode).</p></li>
+<li><p>Execute commands in Programmer mode when given VistA Programmer Access.</p></li>
+<li><p>Running system status reports.</p></li>
+<li><p>Terminating processes.</p></li>
+<li><p>Accessing host files (i.e., KIDS build file).</p></li>
+<li><p>Inhibiting Logons.</p></li>
+<li><p>Stopping TaskMan.</p></li>
+</ul>
+
+<h1 id="installation-procedure">Installation Procedure</h1>
+<h2 id="log-onto-the-system">Log onto the System</h2>
+<p>Log onto the Production account.</p>
+<h2 id="check-the-current-va-fileman-version">Check the Current VA FileMan Version</h2>
+<p>Check that current version in the PACKAGE FILE (#9.4) is set to <strong>22.0</strong>.</p>
+<p><span id="_Toc458001745" class="anchor"></span>Figure 1: Check the Current VA FileMan Version</p>
+<p>&gt;<strong>D P^DI</strong></p>
+<p>VA FileMan 22.2</p>
+<p>Select OPTION: <strong>1 &lt;Enter&gt;</strong> ENTER OR EDIT FILE ENTRIES</p>
+<p>Input to what File: DEVICE// <strong>PACKAGE</strong></p>
+<p>1 PACKAGE (294 entries)</p>
+<p>2 PACKAGE INTERFACE (128 entries)</p>
+<p>3 PACKAGE SIZE (5182 entries)</p>
+<p>4 PACKAGE TYPE (529 entries)</p>
+<p>CHOOSE 1-4: <strong>1 &lt;Enter&gt;</strong> PACKAGE (294 entries)</p>
+<p>EDIT WHICH FIELD: ALL// <strong>CURRENT VERSION</strong></p>
+<p>THEN EDIT FIELD: <strong>&lt;Enter&gt;</strong></p>
+<p>Select PACKAGE NAME: <strong>VA FILEMAN &lt;Enter&gt;</strong> DI</p>
+<p>CURRENT VERSION: 22.2// <strong>22.0</strong></p>
+<p>Select PACKAGE NAME:</p>
+<h2 id="production-environment-shut-down-system">Production Environment: Shut Down System</h2>
+<p>In Production, shut down Caché/system using your regular shutdown procedures.</p>
+<h2 id="production-environment-restart-system">Production Environment: Restart System</h2>
+<p>In Production, restart Caché/system using your regular startup procedures.</p>
+<ul>
+<li><p>Do not restart TaskMan or any background filers.</p></li>
+<li><p>Do not allow any users back on the system.</p></li>
+</ul>
+<h2 id="production-environment-inhibit-logons-for-each-volume-set">Production Environment: Inhibit Logons for Each Volume Set</h2>
+<p>You can use the operating system (OS) command to prevent logons. Using the OS command does not cause a problem and allows you to work within the menu system as needed during the installation. Caché/OpenM sites can stop the LAT and TELNET services.</p>
+<p>Use VA FileMan to edit the VOLUME SET file (#14.5).</p>
+<p><span id="_Toc458001746" class="anchor"></span>Figure 2: Inhibit Logons for Each Volume Set</p>
+<p>&gt;<strong>D Q^DI</strong></p>
+<p>VA FileMan 22.0</p>
+<p>Select OPTION: <strong>ENTER OR EDIT FILE ENTRIES</strong></p>
+<p>INPUT TO WHAT FILE: VOLUME SET// <strong>14.5</strong></p>
+<p>EDIT WHICH FIELD: ALL// <strong>INHIBIT LOGONS ?</strong></p>
+<p>THEN EDIT FIELD: <strong>&lt;Enter&gt;</strong></p>
+<p>Select VOLUME SET: <em><strong>&lt;Production Account&gt;</strong></em></p>
+<p>INHIBIT LOGONS?: NO// <strong>YES</strong></p>
+<h2 id="environment-check">Environment Check</h2>
+<p>The VA FileMan 22.2 distribution includes an Environment Check routine (DI222ENV). It is run automatically during the Install. Also, you are asked if you want to run it during the Load of the distribution. Answer “<strong>YES.</strong>”</p>
+<p>The Environment Check examines the status of your system to verify that TaskMan is stopped and that Logons are inhibited (see steps above). If the install is stopped because your system is not in the proper state, stop TaskMan and inhibit Logons. Then proceed with the install.</p>
+<p>The Environment Check also validates the integrity of File #1 (the File of Files) on your system. If a zero node for an entry in File #1 is missing, you are notified of the offending entry and the install is stopped. The problem <em>must</em> be resolved before proceeding with the install.</p>
+<h2 id="production-environment-load-the-va-fileman-22.2-distribution">Production Environment: Load the VA FileMan 22.2 Distribution</h2>
+<p>You are now ready to Load the Kernel Installation and Distribution System (KIDS) build and Install VA FileMan 22.2.</p>
+<ol type="1">
+<li><p>Use the ^XUP and Q^DI entry points to set your DUZ and set DUZ(0) to "<strong>@</strong>".</p></li>
+</ol>
+<ol type="a">
+<li><p>To set DUZ when responding to the Access code prompt. Press <strong>Enter</strong> at the OPTION prompt.</p></li>
+</ol>
+<p>&gt;<strong>D ^XUP</strong></p>
+<ol start="2" type="a">
+<li><p>To set DUZ(0)="<strong>@</strong>"</p></li>
+</ol>
+<p>&gt;<strong>D Q^DI</strong></p>
+<ol type="1">
+<li><p><strong><span class="underline">IMPORTANT:</span></strong> Invoke the <strong>^XPDKRN</strong> menu and select the LOAD A DISTRIBUTION option. Enter the appropriate Host file name to load the VA FileMan 22.2 distribution file (FM22_0.KID).</p></li>
+</ol>
+<p><span id="_Toc458001747" class="anchor"></span>Figure 3: load the VA FileMan 22.2 distribution file</p>
+<p>&gt;<strong>D ^XPDKRN</strong></p>
+<p>KIDS 8.0</p>
+<p>Select KIDS OPTION: <strong>1 &lt;Enter&gt;</strong> LOAD A DISTRIBUTION</p>
+<p>Enter a Host File: <strong>/nfsftp/FLM22/sqakids/VA_FILEMAN_22_2.KID</strong></p>
+<p>KIDS Distribution saved on Mar 18, 2016@16:57:48</p>
+<p>Comment: VA FileMan 22.2 KIDS Build</p>
+<p>This Distribution contains Transport Globals for the following Package(s):</p>
+<p>   VA FILEMAN 22.2</p>
+<p>Distribution OK!</p>
+<p>Want to Continue with Load? YES// <strong>&lt;Enter&gt;</strong></p>
+<p>Loading Distribution...</p>
+<p>Build VA FILEMAN 22.2 has an Environmental Check Routine</p>
+<p>Want to RUN the Environment Check Routine? YES// <strong>&lt;Enter&gt;</strong></p>
+<p>VA FILEMAN 22.2</p>
+<p>Will first run the Environment Check Routine, DI222ENV</p>
+<p>Use INSTALL NAME: VA FILEMAN 22.2 to install this Distribution.</p>
+<h2 id="install-the-va-fileman-22.2-package">Install the VA FileMan 22.2 Package</h2>
+<p>Invoke the ^XPDKRN menu again and select the INSTALL PACKAGE(S) option. Select VA FILEMAN 22.2 as the package you want to install.</p>
+<p>The VA FileMan 22.2 installation takes approximately 10 minutes.</p>
+<p><span id="_Toc458001748" class="anchor"></span>Figure 4: Sample installation dialogue</p>
+<p>&gt;<strong>D ^XPDKRN</strong></p>
+<p>KIDS 8.0</p>
+<p>Select KIDS OPTION: <strong>6 &lt;Enter&gt;</strong> INSTALL PACKAGE(S)</p>
+<p>Select INSTALL NAME: <strong>VA FILEMAN 22.2 &lt;Enter&gt;</strong> 2/18/16@11:51:17</p>
+<p>=&gt; VA FileMan 22.2 KIDS build ;Created on Feb 18, 2016@11:34</p>
+<p>This Distribution was loaded on Feb 18, 2016@11:51:17 with header of</p>
+<p>VA FileMan 22.2 KIDS build ;Created on Feb 18, 2016@11:34</p>
+<p>It consisted of the following Install(s):</p>
+<p>VA FILEMAN 22.2</p>
+<p>Checking Install for Package VA FILEMAN 22.2</p>
+<p>Will first run the Environment Check Routine, DI222ENV</p>
+<p>Install Questions for VA FILEMAN 22.2</p>
+<p>Incoming Files:</p>
+<p>.85 LANGUAGE (including data)</p>
+<p>Note: You already have the 'LANGUAGE' File.</p>
+<p>I will OVERWRITE your data with mine.</p>
+<p>.9 META DATA DICTIONARY</p>
+<p>Note: You already have the 'META DATA DICTIONARY' File.</p>
+<p>Want KIDS to Rebuild Menu Trees Upon Completion of Install? YES// <strong>&lt;Enter&gt;</strong></p>
+<p>Want KIDS to INHIBIT LOGONs during the install? NO<strong>// &lt;Enter&gt;</strong></p>
+<p>Want to DISABLE Scheduled Options, Menu Options, and Protocols? NO// <strong>&lt;Enter&gt;</strong></p>
+<p>Enter the Device you want to print the Install messages.</p>
+<p>Enter a '^' to abort the install.</p>
+<p>DEVICE: HOME// <strong>&lt;Enter&gt;</strong> TELNET</p>
+<p>Install Started for VA FILEMAN 22.2 :</p>
+<p>Feb 18, 2016@11:51:32</p>
+<p>Build Distribution Date: Feb 18, 2016</p>
+<p>Installing Routines:</p>
+<p>Feb 18, 2016@11:51:33</p>
+<p>Running Pre-Install Routine: EN^DI222PRE</p>
+<p>Initializing FileMan version 22.2...</p>
+<p>......................................</p>
+<p>Now loading DIALOG and LANGUAGE Files...........................................</p>
+<p>................................................................................</p>
+<p>................................................................................</p>
+<p>................................................................................</p>
+<p>.........................................</p>
+<p>..........</p>
+<p>The following files have been installed:</p>
+<p>.11 INDEX</p>
+<p>.2 DESTINATION</p>
+<p>.31 KEY</p>
+<p>.4 PRINT TEMPLATE</p>
+<p>.401 SORT TEMPLATE</p>
+<p>.402 INPUT TEMPLATE</p>
+<p>.403 FORM</p>
+<p>.404 BLOCK</p>
+<p>.44 FOREIGN FORMAT</p>
+<p>.46 IMPORT TEMPLATE</p>
+<p>.5 FUNCTION</p>
+<p>.6 DD AUDIT</p>
+<p>.7 MUMPS OPERATING SYSTEM</p>
+<p>.81 DATA TYPE</p>
+<p>.83 COMPILED ROUTINE</p>
+<p>.84 DIALOG</p>
+<p>.85 LANGUAGE</p>
+<p>.9 META DATA DICTIONARY</p>
+<p>1 FILE</p>
+<p>1.1 AUDIT</p>
+<p>1.11 ARCHIVAL ACTIVITY</p>
+<p>1.12 FILEGRAM HISTORY</p>
+<p>1.13 FILEGRAM ERROR LOG</p>
+<p>1.2 ALTERNATE EDITOR</p>
+<p>1.521 SQLI_SCHEMA</p>
+<p>1.52101 SQLI_KEY_WORD</p>
+<p>1.5211 SQLI_DATA_TYPE</p>
+<p>1.5212 SQLI_DOMAIN</p>
+<p>1.5213 SQLI_KEY_FORMAT</p>
+<p>1.5214 SQLI_OUTPUT_FORMAT</p>
+<p>1.5215 SQLI_TABLE</p>
+<p>1.5216 SQLI_TABLE_ELEMENT</p>
+<p>1.5217 SQLI_COLUMN</p>
+<p>1.5218 SQLI_PRIMARY_KEY</p>
+<p>1.5219 SQLI_FOREIGN_KEY</p>
+<p>1.52191 SQLI_ERROR_TEXT</p>
+<p>1.52192 SQLI_ERROR_LOG</p>
+<p>Re-indexing entries in the DIALOG file..........................</p>
+<p>Compiling all forms ...</p>
+<p>DICATT (#.001)</p>
+<p>DIPTED (#.1001)</p>
+<p>DIKC EDIT (#.1101)</p>
+<p>DIKC EDIT UI (#.1102)</p>
+<p>DIKK EDIT (#.3101)</p>
+<p>DIBTED (#.40001)</p>
+<p>DIETED (#.40101)</p>
+<p>DIEDIT (#.40201)</p>
+<p>DDGF BLOCK EDIT (#.40301)</p>
+<p>DDGF PAGE ADD (#.40302)</p>
+<p>DDGF PAGE EDIT (#.40303)</p>
+<p>DDGF PAGE SELECT (#.40304)</p>
+<p>DDGF FORM EDIT (#.40305)</p>
+<p>DDGF HEADER BLOCK EDIT (#.40306)</p>
+<p>DDGF FIELD ADD (#.40401)</p>
+<p>DDGF FIELD CAPTION ONLY (#.40402)</p>
+<p>DDGF FIELD DD (#.40403)</p>
+<p>DDGF FIELD FORM ONLY (#.40404)</p>
+<p>DDGF FIELD COMPUTED (#.40405)</p>
+<p>DDGF BLOCK ADD (#.40406)</p>
+<p>DDGF BLOCK DELETE (#.40407)</p>
+<p>DDGF HEADER BLOCK SELECT (#.40408)</p>
+<p>DDXP FF FORM1 (#.441)</p>
+<p>DDMP SPECIFY IMPORT (#.461)</p>
+<p>XUEDIT CHARACTERISTICS (#1)</p>
+<p>XUEXISTING USER (#2)</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>INITIALIZATION COMPLETED IN 3 SECONDS.</p>
+<p>Initialization of FileMan version 22.2 has been completed.</p>
+<p>Installing Data Dictionaries:</p>
+<p>Feb 18, 2016@11:51:36</p>
+<p>Installing Data:</p>
+<p>Feb 18, 2016@11:51:36</p>
+<p>Installing PACKAGE COMPONENTS:</p>
+<p>Installing SECURITY KEY ....</p>
+<p>Installing REMOTE PROCEDURE .............</p>
+<p>Installing OPTION ................................</p>
+<p>Feb 18, 2016@11:51:37</p>
+<p>Running Post-Install Routine: POST^DI222POS</p>
+<p>Saving Routine: DIDT, As: %DT</p>
+<p>Saving Routine: DIDTC, As: %DTC</p>
+<p>Saving Routine: DIRCR, As: %RCR</p>
+<p>Routine: DIDT Loaded, Saved as %DT</p>
+<p>Routine: DIDTC Loaded, Saved as %DTC</p>
+<p>Routine: DIRCR Loaded, Saved as %RCR</p>
+<p>DIDT ;SFISC/GFT-DATE/TIME UTILITY ;2014-12-26 12:32 PM</p>
+<p>;;22.2;VA FileMan;;Jan 05, 2016;Build 32</p>
+<p>DIDTC ;SFISC/XAK-DATE/TIME OPERATIONS ;3JAN2011</p>
+<p>;;22.2;VA FileMan;;Jan 05, 2016;Build 32</p>
+<p>DIRCR ;SFISC/GFT-DELETE THIS LINE AND SAVE AS '%RCR'*** ;13DEC2012</p>
+<p>;;22.2;VA FileMan;;Jan 05, 2016;Build 32</p>
+<p>Updating Routine file...</p>
+<p>Updating KIDS files...</p>
+<p>VA FILEMAN 22.2 Installed.</p>
+<p>Feb 18, 2016@11:51:38</p>
+<p>Not a production UCI</p>
+<p>NO Install Message sent</p>
+<p>Call MENU rebuild</p>
+<p>Starting Menu Rebuild: Feb 18, 2016@11:51:40</p>
+<p>Collecting primary menus in the New Person file...</p>
+<p>Primary menus found in the New Person file</p>
+<p>------------------------------------------</p>
+<p>OPTION NAME MENU TEXT # OF LAST LAST</p>
+<p>USERS USED BUILT</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>Building secondary menu trees....</p>
+<p>Merging.... done.</p>
+<p>Install Completed</p>
+<h2 id="post-install-taskman-procedures">Post-Install TaskMan Procedures</h2>
+<p>TaskMan should have started when you rebooted or restarted the system. If TaskMan is not running, start TaskMan.</p>
+<p>&gt;<strong>D ^ZTMB</strong></p>
+<h2 id="production-environment-enable-logons">Production Environment: Enable Logons</h2>
+<p>Use VA FileMan to edit the Inhibit Logon field in the VOLUME SET file (#14.5) for each volume set. This allows TaskMan to start tasks.</p>
+<p><span id="_Toc458001749" class="anchor"></span>Figure 5: Enable Logons</p>
+<p>&gt;<strong>D Q^DI</strong></p>
+<p>VA FileMan 22.2</p>
+<p>Select OPTION: <strong>ENTER OR EDIT FILE ENTRIES</strong></p>
+<p>INPUT TO WHAT FILE: <strong>VOLUME SET</strong></p>
+<p>EDIT WHICH FIELD: ALL// <strong>INHIBIT LOGONS ?</strong></p>
+<p>THEN EDIT FIELD: <strong>&lt;Enter&gt;</strong></p>
+<p>Select VOLUME SET: <em><strong>&lt;Production Account&gt;</strong></em></p>
+<p>INHIBIT LOGONS?: YES// <strong>NO</strong></p>
+<p><strong>**** You have now completed the installation of VA FileMan. ****</strong></p>
+<ol start="2" type="1">
+<li><h1 id="implementation-procedure">Implementation Procedure</h1>
+<ol type="1">
+<li><h2 id="database-tuning">Database Tuning</h2></li>
+</ol></li>
+</ol>
+<p>There are no special database tuning requirements for VA FileMan 22.2.</p>
+<h2 id="verify-installation">Verify Installation</h2>
+<p>Verify the installation. Use KIDS option Install File Print, under the Utilities menu, and enter VA FILEMAN 22.2.  Confirm that the STATUS field is “Install Complete”.</p>
+<h1 id="back-out-plan">Back-Out Plan</h1>
+<p>Back-out pertains to a return to the last known good operational state of the software and appropriate platform settings.</p>
+<p>The method of backing out the VA FileMan (FM) 22.2 patch is to restore from the backup that was taken in the “<span class="underline">Back Up System</span>” section. Due to the fact that FM 22.2 is a change to the system infrastructure, this is the only way to put the system back to the pre FM 22.2 state.</p>
+<h2 id="back-out-strategy">Back-Out Strategy</h2>
+<p>The need for a back-out would be determined by all affected organizations. This would primarily include representatives from Veterans Health Administration (VHA) and Enterprise Program Management (EPMO). In the case of the initial release a back-out would include removal of data, files and routines. In the case of future patches and releases the back-out strategy would be dependent on the contents of the released functionality and could include restoration of file definitions, routines or data.</p>
+<h2 id="back-out-considerations">Back-Out Considerations</h2>
+<p>Back-out considerations would include impact on production VistA end-users and impact on Wide Area Network.</p>
+<h3 id="load-testing">Load Testing</h3>
+<p>Not applicable for FM 22.2.</p>
+<h3 id="user-acceptance-testing">User Acceptance Testing</h3>
+<p>FM 22.2 User Acceptance Testing (UAT) is performed during VistA patch testing at test sites.</p>
+<h2 id="back-out-criteria">Back-Out Criteria</h2>
+<p>The FM 22.2 back-out criteria follow existing VistA back-out procedures.</p>
+<h2 id="back-out-risks">Back-Out Risks</h2>
+<p>The FM 22.2 back-out risks are the same risks established with existing VistA back-out procedures.</p>
+<h2 id="authority-for-back-out">Authority for Back-Out</h2>
+<p>The authority for the need of back-out would reside with VHA and EPMO representatives.</p>
+<h2 id="back-out-procedure">Back-Out Procedure</h2>
+<p>To back out FM 22.2, do the following:</p>
+<ul>
+<li><p>Restore backup to reset the system to the pre FM 22.2 state.</p></li>
+<li><p>You will lose everything that has happened since the install.</p></li>
+</ul>
+<p><img src="./media/image3.png" title="Caution" alt="Caution" style="width:0.44792in;height:0.44792in" /> CAUTION: Once the system has been restarted, the backout procedure is no longer possible.</p>
+<h1 id="rollback-plan">Rollback Plan</h1>
+<p>Rollback pertains to data.</p>
+<p>VA FileMan (FM) 22.2 does <em>not</em> export any data.</p>
+<h2 id="rollback-considerations">Rollback Considerations</h2>
+<p>N/A. FM 22.2 does not export any data.</p>
+<h2 id="rollback-criteria">Rollback Criteria</h2>
+<p>N/A. FM 22.2 does not export any data.</p>
+<h2 id="rollback-risks">Rollback Risks</h2>
+<p>N/A. FM 22.2 does not export any data.</p>
+<h2 id="authority-for-rollback">Authority for Rollback</h2>
+<p>Rollback <em>can</em> be authorized by system administrators once a problem has been identified. Enterprise Program Management Office (EPMO) should be informed immediately <em>via a MailMan message sent to:</em></p>
+<p>REDACTED</p>
+<h2 id="rollback-procedure">Rollback Procedure</h2>
+<p>N/A. FM 22.2 does not export any data.</p>
+</body>
+</html>

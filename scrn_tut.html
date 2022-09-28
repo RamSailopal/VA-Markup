@@ -1,0 +1,3247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>scrn_tut</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p>VA FileMan</p>
+<p><img src="./media/image1.png" alt="VA Seal" style="width:2.70139in;height:2.5in" /></p>
+<p>ScreenMan Tutorial for Developers</p>
+<p>Version 22.0</p>
+<p>June 1996</p>
+<p>Revised August 2014</p>
+<p>Department of Veterans Affairs (VA)</p>
+<p>Office of Information and Technology (OI&amp;T)</p>
+<p>Product Development (PD)</p>
+<p><span id="_Toc41989686" class="anchor"></span>Revision History</p>
+<p><span id="_Toc389742484" class="anchor"></span>Table . Documentation revision history</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Date</td>
+<td>Revision</td>
+<td>Description</td>
+<td>Author</td>
+</tr>
+<tr class="even">
+<td>08/13/2014</td>
+<td>3.0</td>
+<td><p>Tech Edit:</p>
+<ul>
+<li><p>Reformatted document to conform to current heading and style format document.</p></li>
+<li><p>Updated all sections and procedural steps. This includes rerunning all steps to make sure procedural steps are complete and create new screen captures.</p></li>
+<li><p>Updated all organizational references, URLs, references, etc. throughout.</p></li>
+<li><p>Made document Section 508 conformant. Replaced most graphic representations of VistA screens with text screen captures throughout.</p></li>
+<li><p>Redacted names, URLs, and other data if deemed sensitive and subject to redaction.</p></li>
+<li><p>Made sure the Word version is in sync with the corresponding HTML version of this document.</p></li>
+</ul></td>
+<td><ul>
+<li><p>REDACTED</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>12/28/2004</td>
+<td>2.0</td>
+<td>Updated documentation in compliance with new conventions for displaying TEST data. See <a href="#data_conventions">Orientation</a> section for details.</td>
+<td>REDACTED</td>
+</tr>
+<tr class="even">
+<td>06/--/1996</td>
+<td>1.0</td>
+<td>Initial document.</td>
+<td>REDACTED</td>
+</tr>
+</tbody>
+</table>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> For the current patch history related to this software, see the Patch Module (i.e., Patch User Menu [A1AE USER]) on FORUM.</p>
+<p>Contents</p>
+<p><a href="#_Toc41989686">Revision History iv</a></p>
+<p><a href="#_Toc331400980">Figures and Tables xii</a></p>
+<p><a href="#_Toc395709451">Orientation xvi</a></p>
+<p><a href="#_Toc395709452">1 Introduction 1</a></p>
+<p><a href="#objectives">1.1 Objectives 1</a></p>
+<p><a href="#files-used">1.2 Files Used 2</a></p>
+<p><a href="#advance-preparation">1.3 Advance Preparation 2</a></p>
+<p><a href="#starting-out-with-forms">2 Starting Out with Forms 3</a></p>
+<p><a href="#create-a-form">2.1 Create a Form 4</a></p>
+<p><a href="#overview">2.1.1 Overview 4</a></p>
+<p><a href="#screenman-forms">2.1.1.1 ScreenMan Forms 4</a></p>
+<p><a href="#form-editor">2.1.1.2 Form Editor 5</a></p>
+<p><a href="#procedure">2.1.2 Procedure 7</a></p>
+<p><a href="#summary">2.1.3 Summary 9</a></p>
+<p><a href="#add-a-display-block-to-the-form">2.2 Add a DISPLAY Block to the Form 9</a></p>
+<p><a href="#overview-1">2.2.1 Overview 9</a></p>
+<p><a href="#procedure-1">2.2.2 Procedure 10</a></p>
+<p><a href="#summary-1">2.2.3 Summary 12</a></p>
+<p><a href="#add-a-title-caption-only-field">2.3 Add a Title (Caption-Only Field) 13</a></p>
+<p><a href="#overview-2">2.3.1 Overview 13</a></p>
+<p><a href="#procedure-2">2.3.2 Procedure 13</a></p>
+<p><a href="#summary-2">2.3.3 Summary 15</a></p>
+<p><a href="#reposition-fields-on-a-block">2.4 Reposition Fields on a Block 15</a></p>
+<p><a href="#overview-3">2.4.1 Overview 15</a></p>
+<p><a href="#procedure-3">2.4.2 Procedure 16</a></p>
+<p><a href="#summary-3">2.4.3 Summary 16</a></p>
+<p><a href="#add-data-dictionary-fields">2.5 Add Data Dictionary Fields 17</a></p>
+<p><a href="#overview-4">2.5.1 Overview 17</a></p>
+<p><a href="#procedure-4">2.5.2 Procedure 17</a></p>
+<p><a href="#adding-name-field">2.5.2.1 Adding Name Field 17</a></p>
+<p><a href="#adding-ssn-field">2.5.2.2 Adding SSN Field 19</a></p>
+<p><a href="#reposition-fields">2.5.2.3 Reposition Fields 20</a></p>
+<p><a href="#deleting-fields">2.5.2.4 Deleting Fields 20</a></p>
+<p><a href="#summary-4">2.5.3 Summary 20</a></p>
+<p><a href="#run-the-form">2.6 Run the Form 21</a></p>
+<p><a href="#overview-5">2.6.1 Overview 21</a></p>
+<p><a href="#procedure-5">2.6.2 Procedure 21</a></p>
+<p><a href="#summary-5">2.6.3 Summary 22</a></p>
+<p><a href="#add-an-edit-block-to-the-form">2.7 Add an Edit Block to the Form 22</a></p>
+<p><a href="#overview-6">2.7.1 Overview 22</a></p>
+<p><a href="#procedure-6">2.7.2 Procedure 22</a></p>
+<p><a href="#summary-6">2.7.3 Summary 24</a></p>
+<p><a href="#add-data-dictionary-fields-to-the-edit-block">2.8 Add Data Dictionary Fields to the EDIT Block 25</a></p>
+<p><a href="#overview-7">2.8.1 Overview 25</a></p>
+<p><a href="#procedure-7">2.8.2 Procedure 26</a></p>
+<p><a href="#add-fields">2.8.2.1 Add Fields 26</a></p>
+<p><a href="#change-field-order">2.8.2.2 Change Field Order 28</a></p>
+<p><a href="#reset-field-order">2.8.2.3 Reset Field Order 28</a></p>
+<p><a href="#summary-7">2.8.3 Summary 29</a></p>
+<p><a href="#use-printdds-to-list-form-characteristics">2.9 Use PRINT^DDS to List Form Characteristics 29</a></p>
+<p><a href="#overview-8">2.9.1 Overview 29</a></p>
+<p><a href="#procedure-8">2.9.2 Procedure 29</a></p>
+<p><a href="#summary-8">2.9.3 Summary 32</a></p>
+<p><a href="#pages-multiples-and-computed-fields">3 Pages, Multiples, and Computed Fields 33</a></p>
+<p><a href="#add-a-page-to-a-form">3.1 Add a Page to a Form 33</a></p>
+<p><a href="#overview-9">3.1.1 Overview 33</a></p>
+<p><a href="#procedures">3.1.2 Procedures 33</a></p>
+<p><a href="#add-a-page-to-a-form-1">3.1.2.1 Add a Page to a Form 33</a></p>
+<p><a href="#add-a-second-page-to-a-form">3.1.2.2 Add a Second Page to a Form 34</a></p>
+<p><a href="#add-an-edit-block">3.1.2.3 Add an Edit Block 35</a></p>
+<p><a href="#link-pages">3.1.2.4 Link Pages 37</a></p>
+<p><a href="#summary-9">3.2 Summary 38</a></p>
+<p><a href="#add-a-multiple-field-in-a-repeating-block">3.3 Add a Multiple Field (in a Repeating Block) 39</a></p>
+<p><a href="#overview-10">3.3.1 Overview 39</a></p>
+<p><a href="#procedures-1">3.3.2 Procedures 40</a></p>
+<p><a href="#add-repeating-block">3.3.2.1 Add Repeating Block 40</a></p>
+<p><a href="#add-the-secondary-menu-options-.01-field">3.3.2.2 Add the SECONDARY MENU OPTIONS .01 Field 42</a></p>
+<p><a href="#add-the-secondary-menu-options-synonym-field">3.3.2.3 Add the SECONDARY MENU OPTIONS (SYNONYM) Field 43</a></p>
+<p><a href="#add-caption-only-field-columnar-headings-to-the-repeating-block">3.3.2.4 Add Caption-only Field Columnar Headings to the Repeating Block 44</a></p>
+<p><a href="#summary-10">3.3.3 Summary 46</a></p>
+<p><a href="#add-a-multiple-field-in-a-popup-page">3.4 Add a Multiple Field (in a Popup Page) 47</a></p>
+<p><a href="#overview-11">3.4.1.1 Overview 47</a></p>
+<p><a href="#procedures-2">3.4.2 Procedures 47</a></p>
+<p><a href="#add-the-division-multiple-field">3.4.2.1 Add the DIVISION Multiple Field 47</a></p>
+<p><a href="#add-a-popup-page-for-the-division-multiple">3.4.2.2 Add a Popup Page for the DIVISION Multiple 48</a></p>
+<p><a href="#add-a-block-to-the-popup-page">3.4.2.3 Add a Block to the Popup Page 50</a></p>
+<p><a href="#add-the-fields-for-the-division-multiple">3.4.2.4 Add the Fields for the DIVISION Multiple 51</a></p>
+<p><a href="#summary-11">3.4.3 Summary 52</a></p>
+<p><a href="#reposition-and-resize-the-popup-page">3.5 Reposition and Resize the Popup Page 52</a></p>
+<p><a href="#overview-12">3.5.1 Overview 52</a></p>
+<p><a href="#procedures-3">3.5.2 Procedures 52</a></p>
+<p><a href="#reposition-popup-page">3.5.2.1 Reposition Popup Page 52</a></p>
+<p><a href="#resize-the-popup-page">3.5.2.2 Resize the Popup Page 53</a></p>
+<p><a href="#summary-12">3.5.3 Summary 54</a></p>
+<p><a href="#add-a-screenman-computed-field">3.6 Add a ScreenMan Computed Field 55</a></p>
+<p><a href="#overview-13">3.6.1 Overview 55</a></p>
+<p><a href="#procedure-9">3.6.2 Procedure 55</a></p>
+<p><a href="#summary-13">3.6.3 Summary 58</a></p>
+<p><a href="#advanced-features-for-forms">4 Advanced Features for Forms 59</a></p>
+<p><a href="#edit-fields-in-other-files">4.1 Edit Fields in Other Files 59</a></p>
+<p><a href="#overview-14">4.1.1 Overview 59</a></p>
+<p><a href="#procedures-4">4.1.2 Procedures 60</a></p>
+<p><a href="#add-the-servicesection-field">4.1.2.1 Add the SERVICE/SECTION Field 60</a></p>
+<p><a href="#add-a-block-to-edit-fields">4.1.2.2 Add a Block to Edit Fields 61</a></p>
+<p><a href="#add-data-dictionary-fields-1">4.1.2.3 Add Data Dictionary Fields 62</a></p>
+<p><a href="#summary-14">4.1.3 Summary 63</a></p>
+<p><a href="#add-branching-logic-for-fields">4.2 Add Branching Logic for Fields 63</a></p>
+<p><a href="#overview-15">4.2.1 Overview 63</a></p>
+<p><a href="#procedure-10">4.2.2 Procedure 64</a></p>
+<p><a href="#add-branching-logic">4.2.2.1 Add Branching Logic 64</a></p>
+<p><a href="#summary-15">4.2.3 Summary 65</a></p>
+<p><a href="#use-form-only-fields-for-user-input">4.3 Use Form-Only Fields for User Input 66</a></p>
+<p><a href="#overview-16">4.3.1 Overview 66</a></p>
+<p><a href="#procedure-11">4.3.2 Procedure 66</a></p>
+<p><a href="#summary-16">4.3.3 Summary 68</a></p>
+<p><a href="#turn-your-screenman-form-into-an-option">4.4 Turn Your ScreenMan Form into an Option 68</a></p>
+<p><a href="#overview-17">4.4.1 Overview 68</a></p>
+<p><a href="#procedures-5">4.4.2 Procedures 68</a></p>
+<p><a href="#create-a-run-routine-type-option">4.4.2.1 Create a Run-Routine-Type Option 68</a></p>
+<p><a href="#create-a-screenman-type-option">4.4.2.2 Create a ScreenMan-Type Option 70</a></p>
+<p><a href="#summary-17">4.4.3 Summary 71</a></p>
+<p><a href="#where-to-go-from-here">4.5 Where to Go From Here 71</a></p>
+<p><a href="#delete-a-form">4.6 Delete a Form 73</a></p>
+<p><a href="#appendix-am-code-and-variables-in-screenman-forms">5 Appendix A—M Code and Variables in ScreenMan Forms 74</a></p>
+<p><a href="#m-code-in-field-properties">5.1 M code in Field Properties 74</a></p>
+<p><a href="#variables">5.2 Variables 75</a></p>
+<p><a href="#ddsbr-variable">5.2.1 DDSBR Variable 75</a></p>
+<p><a href="#ddsstack-variable">5.2.2 DDSSTACK Variable 75</a></p>
+<p><a href="#other-places-for-m-code-in-forms">5.3 Other Places for M Code in Forms 76</a></p>
+<p><a href="#validating-data">5.4 Validating Data 76</a></p>
+<p><a href="#appendix-btutorial-keystroke-summary">6 Appendix B—Tutorial Keystroke Summary 77</a></p>
+<p><a href="#form-editorinvoking">6.1 Form Editor—Invoking 77</a></p>
+<p><a href="#page-navigation">6.2 Page Navigation 77</a></p>
+<p><a href="#screen-element-navigation">6.3 Screen Element Navigation 77</a></p>
+<p><a href="#creating-new-elements">6.4 Creating New Elements 78</a></p>
+<p><a href="#selecting-a-screen-element">6.5 Selecting a Screen Element 78</a></p>
+<p><a href="#switching-to-block-viewer-screen">6.6 Switching to Block Viewer Screen 78</a></p>
+<p><a href="#editing-screen-element-properties">6.7 Editing Screen Element Properties 79</a></p>
+<p><a href="#deleting-a-page-block-or-field">6.8 Deleting a Page, Block, or Field 79</a></p>
+<p><a href="#_Toc339773635">Index 81</a></p>
+<p><strong><br />
+</strong></p>
+<p><span id="_Toc331400980" class="anchor"></span></p>
+<p>Figures and Tables</p>
+<p>Figures</p>
+<p><a href="#_Ref390176444">Figure 1. Relationships with blocks, pages, and forms 5</a></p>
+<p><a href="#_Ref391365483">Figure 2. Accessing ScreenMan options 6</a></p>
+<p><a href="#_Toc395709581">Figure 3. Creating a form—Sample user dialogue 7</a></p>
+<p><a href="#_Toc395709582">Figure 4. Sample blank form 8</a></p>
+<p><a href="#_Toc395709583">Figure 5. Adding a DISPLAY block—Sample user dialogue 10</a></p>
+<p><a href="#_Ref390177169">Figure 6. Sample DISPLAY Block properties 11</a></p>
+<p><a href="#_Ref390177138">Figure 7. Adding a caption-only field—Sample user dialogue (1 of 3) 13</a></p>
+<p><a href="#_Toc395709586">Figure 8. Adding a caption-only field—Sample user dialogue (2 of 3) 14</a></p>
+<p><a href="#_Ref390246801">Figure 9. Adding a Caption-Only field—Sample user dialogue (3 of 3) 14</a></p>
+<p><a href="#_Toc395709588">Figure 10. Adding a Caption-Only field—Sample form 14</a></p>
+<p><a href="#_Ref390246542">Figure 11. Sample repositioning fields on a block 16</a></p>
+<p><a href="#_Ref390246059">Figure 12. Adding a Name field—Sample user dialogue 17</a></p>
+<p><a href="#_Ref391368153">Figure 13. Adding a Name field—Confirming correct field 18</a></p>
+<p><a href="#_Ref390177084">Figure 14. Adding a Name field—Sample form 18</a></p>
+<p><a href="#_Ref390246145">Figure 15. Adding a SSN field—Sample user dialogue 19</a></p>
+<p><a href="#_Toc395709594">Figure 16. Adding a SSN field—Sample form 19</a></p>
+<p><a href="#_Toc395709595">Figure 17. Selecting a form—Sample user dialogue 21</a></p>
+<p><a href="#_Ref390245828">Figure 18. Sample completed form with added fields 22</a></p>
+<p><a href="#_Ref391369712">Figure 19. Sample EDIT Block properties 23</a></p>
+<p><a href="#_Ref390245001">Figure 20. Adding fields—Sample user dialogue 26</a></p>
+<p><a href="#_Ref390245203">Figure 21. Sample form with added fields 27</a></p>
+<p><a href="#_Ref390243698">Figure 22. Using PRINT^DDS direct-mode utility—Sample user dialogue 29</a></p>
+<p><a href="#_Toc395709601">Figure 23. Using PRINT^DDS direct-mode utility—Sample form report generated 30</a></p>
+<p><a href="#_Ref390243512">Figure 24. Sample “Page Properties” dialogue 35</a></p>
+<p><a href="#_Ref390243361">Figure 25. Sample form with added EDIT block 36</a></p>
+<p><a href="#_Ref391375884">Figure 26. Sample “Page Properties” dialogue—Link pages 38</a></p>
+<p><a href="#_Toc395709605">Figure 27. Adding a Repeating Block—Sample user dialogue 40</a></p>
+<p><a href="#_Toc395709606">Figure 28. Sample Repeating Block properties 41</a></p>
+<p><a href="#_Toc395709607">Figure 29. Adding secondary menu options—Sample user dialogue 42</a></p>
+<p><a href="#_Toc395709608">Figure 30. Adding secondary menu options—Sample form 43</a></p>
+<p><a href="#_Toc395709609">Figure 31. Adding a DATA DICTIONARY field—Sample user dialogue 43</a></p>
+<p><a href="#_Toc395709610">Figure 32. Adding a DATA DICTIONARY field—Sample form 44</a></p>
+<p><a href="#_Toc395709611">Figure 33. Adding a CAPTION ONLY field—Sample user dialogue 44</a></p>
+<p><a href="#_Toc395709612">Figure 34. Adding a field and displaying Multiple field values—Sample form 46</a></p>
+<p><a href="#_Toc395709613">Figure 35. Adding a popup page for the DIVISION Multiple—Sample “Page Properties” dialogue 48</a></p>
+<p><a href="#_Toc395709614">Figure 36. Adding a popup page for the DIVISION Multiple—Sample form 49</a></p>
+<p><a href="#_Toc395709615">Figure 37. Adding a Block to the popup page—Sample Block properties 50</a></p>
+<p><a href="#_Ref390250285">Figure 38. Adding the fields for the DIVISION Multiple—Sample form (1 of 2) 51</a></p>
+<p><a href="#_Toc395709617">Figure 39. Adding the fields for the DIVISION Multiple—Sample form (2 of 2) 51</a></p>
+<p><a href="#_Toc395709618">Figure 40. Repositioning the popup page—Selecting the popup window 53</a></p>
+<p><a href="#_Toc395709619">Figure 41. Sample resize of the popup page 54</a></p>
+<p><a href="#_Toc395709620">Figure 42. Adding a ScreenMan Computed field—Sample “Computed Field Properties” dialogue 56</a></p>
+<p><a href="#_Toc395709621">Figure 43. Adding a ScreenMan Computed field—Sample form 57</a></p>
+<p><a href="#_Toc395709622">Figure 44. Adding a ScreenMan Computed field—Sample form 58</a></p>
+<p><a href="#_Ref390251073">Figure 45. Adding a Block to Edit Fields—Sample Block properties 61</a></p>
+<p><a href="#_Toc395709624">Figure 46. Adding Data Dictionary fields—Sample form 62</a></p>
+<p><a href="#_Toc395709625">Figure 47. Adding branching logic—Sample user dialogue 64</a></p>
+<p><a href="#_Toc395709626">Figure 48. Adding form only parameters READ TYPE—Sample user dialogue 67</a></p>
+<p><a href="#_Toc395709627">Figure 49. Adding caption and branching logic—Sample user dialogue 67</a></p>
+<p><a href="#_Ref390252918">Figure 50. Sample routine that determines the record number of the NEW PERSON file (#200) and Calls ^DDS 69</a></p>
+<p><a href="#_Ref390253520">Figure 51. Sample ScreenMan-type option setup 70</a></p>
+<p><a href="#_Ref390253989">Figure 52. Sample finished, detailed ScreenMan form 72</a></p>
+<p>Tables</p>
+<p><a href="#_Toc389742484">Table 1. Documentation revision history iv</a></p>
+<p><a href="#_Ref386466666">Table 2. Documentation symbol descriptions xvii</a></p>
+<p><a href="#_Toc395709633">Table 3. BRANCHING LOGIC property Variables 63</a></p>
+<p><a href="#_Toc395709634">Table 4. DDSBR Variable Format Pieces 63</a></p>
+<p><a href="#_Ref390252840">Table 5. ^DDS Entry Point—Input Variables 69</a></p>
+<p><a href="#_Ref390254704">Table 6. ScreenMan-defined M Code Variables 74</a></p>
+<p><a href="#_Ref390255301">Table 7. Form Levels Used M code in Property Fields 76</a></p>
+<p><a href="#_Toc395709638">Table 8. Page Navigation 77</a></p>
+<p><a href="#_Toc395709639">Table 9. Screen Element Navigation 77</a></p>
+<p><a href="#_Toc395709640">Table 10. Creating New Elements 78</a></p>
+<p><a href="#_Toc395709641">Table 11. Switching to Block Viewer Screen 78</a></p>
+<p><a href="#_Toc395709642">Table 12. Editing Screen Element Properties 79</a></p>
+<p><span id="_Toc395709451" class="anchor"></span>Orientation</p>
+<p>How to Use this Manual</p>
+<p>The <em>VA FileMan ScreenMan Tutorial for Developers</em> is intended to help VistA developers create ScreenMan forms using VA FileMan’s Form Editor. The Form Editor provides a major improvement in the speed and ease of creating ScreenMan forms. The tutorial emphasizes the use of the Form Editor in creating forms.</p>
+<p>HTML Manuals</p>
+<p>Why produce an HTML (Hypertext Markup Language) edition of the <em>VA FileMan ScreenMan Tutorial for Developers</em>?</p>
+<ul>
+<li><p>The HTML versions of the VA FileMan manuals are useful as online documentation support as you use VA FileMan. HTML manuals allow you to instantly jump (link) to specific sections or references online.</p></li>
+<li><p>The VA FileMan HTML manuals are “living” documents that are continuously updated with the most current VA FileMan information (unlike paper or printed documentation). They are updated based on new versions, patches, or enhancements to VA FileMan.</p></li>
+<li><p>Presenting manuals in an HTML format on a Web server also gives new opportunities, such as accessing embedded multimedia training material (e.g., movies) directly in the manuals themselves.</p></li>
+<li><p>Manuals are accessible over the VA Intranet network.</p></li>
+</ul>
+<p>Intended Audience</p>
+<p>The intended audience of this tutorial is all key stakeholders. The stakeholders include:</p>
+<ul>
+<li><p>Office of Information and Technology (OI&amp;T)—VistA legacy development teams.</p></li>
+<li><p>Information Resource Management (IRM)—System administrators at Department of Veterans Affairs (VA) sites who are responsible for computer management and system security on the VistA M Servers.</p></li>
+<li><p>Health Product Support (HPS).</p></li>
+</ul>
+<p>Legal Requirements</p>
+<p>There are no special legal requirements involved in the use of VA FileMan.</p>
+<p>Disclaimers</p>
+<p>This manual provides an overall explanation of VA FileMan ScreenMan functionality contained in VA FileMan 22.0; however, no attempt is made to explain how the overall VistA programming system is integrated and maintained. Such methods and procedures are documented elsewhere. We suggest you look at the various VA Internet and Intranet websites for a general orientation to VistA. For example, visit the Office of Information and Technology (OI&amp;T) VistA Development Intranet website.</p>
+<p><img src="./media/image3.png" alt="Caution" style="width:0.45139in;height:0.45139in" /> DISCLAIMER: The appearance of external hyperlink references in this manual does <em>not</em> constitute endorsement by the Department of Veterans Affairs (VA) of this Website or the information, products, or services contained therein. The VA does <em>not</em> exercise any editorial control over the information you can find at these locations. Such links are provided and are consistent with the stated purpose of the VA.</p>
+<p>Documentation Conventions</p>
+<p>This manual uses several methods to highlight different aspects of the material:</p>
+<ul>
+<li><p>Various symbols are used throughout the documentation to alert the reader to special information. <span class="underline">Table 2</span> gives a description of each of these symbols:</p></li>
+</ul>
+<p><span id="_Ref386466666" class="anchor"></span>Table . Documentation symbol descriptions</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Symbol</td>
+<td>Description</td>
+</tr>
+<tr class="even">
+<td><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /></td>
+<td><strong>NOTE/REF:</strong> Used to inform the reader of general information including references to additional reading material.</td>
+</tr>
+<tr class="odd">
+<td><img src="./media/image3.png" alt="Caution" style="width:0.45833in;height:0.45833in" /></td>
+<td><strong>CAUTION/RECOMMENDATION/DISCLAIMER:</strong> Used to caution the reader to take special notice of critical information.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><strong>TIP:</strong> Used to inform the reader of helpful tips or tricks they can use when working with VA FileMan.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Descriptive text is presented in a proportional font (as represented by this font).</p></li>
+<li><p>Conventions for displaying TEST data in this document are as follows:</p></li>
+</ul>
+<ul>
+<li><p>The first three digits (prefix) of any Social Security Numbers (SSN) begin with either “000” or “666”.</p></li>
+<li><p>Patient and user names are formatted as follows: [Application Name]PATIENT,[N] and [Application Name]USER,[N] respectively, where “Application Name” is defined in the Approved Application Abbreviations document and “N” represents the first name as a number spelled out and incremented with each new entry. For example, in VA FileMan (FM) test patient and user names would be documented as follows: FMPATIENT,ONE; FMPATIENT,TWO; FMPATIENT,THREE; etc.</p></li>
+</ul>
+<ul>
+<li><p>Sample HL7 messages, “snapshots” of computer online displays (i.e., roll-and-scroll screen or character-based screen captures/dialogues) and computer source code, if any, are shown in a <em>non</em>-proportional font and enclosed within a box.</p></li>
+<li><p>User’s responses to online prompts are <strong>bold</strong> typeface and highlighted in yellow (e.g., <strong>&lt;Enter&gt;</strong>).</p></li>
+<li><p>Emphasis within a dialogue box is <strong>bold</strong> typeface and highlighted in blue (e.g., STANDARD LISTENER: RUNNING).</p></li>
+<li><p>Some software code reserved/key words are <strong>bold</strong> typeface with alternate color font.</p></li>
+<li><p>References to “<strong>&lt;Enter&gt;</strong>“ within these snapshots indicate that the user should press the <strong>Enter</strong> key on the keyboard. Other special keys are represented within <strong>&lt; &gt;</strong> angle brackets. For example, pressing the <strong>PF1</strong> key can be represented as pressing <strong>&lt;PF1&gt;</strong>.</p></li>
+<li><p>Author’s comments are displayed in italics or as “callout” boxes.</p></li>
+</ul>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> Callout boxes refer to labels or descriptions usually enclosed within a box, which point to specific areas of a displayed image.</p>
+<ul>
+<li><p>All uppercase is reserved for the representation of M code, variable names, or the formal name of options, field/file names, and security keys (e.g., DIEXTRACT).</p></li>
+</ul>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> Other software code (e.g., Delphi/Pascal and Java) variable names and file/folder names can be written in lower or mixed case.</p>
+<p>Documentation Navigation</p>
+<p>This document uses Microsoft® Word’s built-in navigation for internal hyperlinks. To add <strong>Back</strong> and <strong>Forward</strong> navigation buttons to your toolbar, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Right-click anywhere on the customizable Toolbar in Word 2007 or higher (<em>not</em> the Ribbon section).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Select <strong>Customize Quick Access Toolbar</strong> from the secondary menu.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Click the drop-down arrow in the “Choose commands from:” box.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Select <strong>All Commands</strong> from the displayed list.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Scroll through the command list in the left column until you see the <strong>Back</strong> command (green circle with arrow pointing left).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Click/Highlight the <strong>Back</strong> command and click <strong>Add</strong> to add it to your customized toolbar.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Scroll through the command list in the left column until you see the <strong>Forward</strong> command (green circle with arrow pointing right).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Click/Highlight the Forward command and click <strong>Add</strong> to add it to your customized toolbar.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Click <strong>OK</strong>.</p>
+</blockquote></li>
+</ol>
+<p>You can now use these <strong>Back</strong> and <strong>Forward</strong> command buttons in your Toolbar to navigate back and forth in your Word document when clicking on hyperlinks within the document.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> This is a one-time setup and is automatically available in any other Word document once you install it on the Toolbar.</p>
+<p>How to Obtain Technical Information Online</p>
+<p>Exported VistA M Server-based software file, routine, and global documentation can be generated through the use of Kernel, MailMan, and VA FileMan utilities.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <em><strong>NOTE:</strong></em> Methods of obtaining specific technical information online is indicated where applicable under the appropriate section.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> For further information, see the <em>VA FileMan Technical Manual</em>.</p>
+<p>Help at Prompts</p>
+<p>VistA M Server-based software provides online help and commonly used system default prompts. Users are encouraged to enter question marks at any response prompt. At the end of the help display, you are immediately returned to the point from which you started. This is an easy way to learn about any aspect of the software.</p>
+<p>Obtaining Data Dictionary Listings</p>
+<p>Technical information about VistA M Server-based files and the fields in files is stored in data dictionaries (DD). You can use the List File Attributes option [DILIST] on the Data Dictionary Utilities menu [DI DDU] in VA FileMan to print formatted data dictionaries.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <em><strong>REF:</strong></em> For details about obtaining data dictionaries and about the formats available, see the “List File Attributes” section in the “File Management” section in the <em>VA FileMan Advanced User Manual</em>.</p>
+<p>Assumptions</p>
+<p>This manual is written with the assumption that the reader is familiar with the following:</p>
+<ul>
+<li><p><strong>VistA</strong> computing environment:</p></li>
+</ul>
+<ul>
+<li><p>Kernel—VistA M Server software</p></li>
+<li><p>VA FileMan data structures, terminology, and Application Programming Interfaces (APIs)—VistA M Server software</p></li>
+</ul>
+<ul>
+<li><p>Microsoft Windows environment</p></li>
+<li><p>M programming language</p></li>
+</ul>
+<p>It is also assumed that the user of the tutorial has full, unrestricted programmer access in an M test account.</p>
+<p>References</p>
+<p>Readers who wish to learn more about VA FileMan should consult the following documents:</p>
+<ul>
+<li><p><em>VA FileMan Release Notes</em> (PDF format)</p></li>
+<li><p><em>VA FileMan Installation Guide</em> (PDF format)</p></li>
+<li><p><em>VA FileMan Technical Manual</em> (PDF format)</p></li>
+<li><p><em>VA FileMan User Manual</em> (PDF and HTML format)</p></li>
+<li><p><em>VA FileMan Advanced User Manual</em> (PDF and HTML format)</p></li>
+<li><p><em>VA FileMan Developer’s Guide</em> (PDF and HTML format)</p></li>
+<li><p><em>VA FileMan ScreenMan Tutorial for Developers</em> (this manual; PDF and HTML format)</p></li>
+</ul>
+<blockquote>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> Zip files of the VA FileMan documentation in HTML format are located on the VA FileMan Intranet Product website and VDL at: REDACTED</p>
+</blockquote>
+<p>Using a Web browser, open the <strong>HTML</strong> documents “table of contents” page (i.e., index.shtml). The <em>VA FileMan User Manual</em>, <em>VA FileMan Advanced User Manual</em>, and <em>VA FileMan Developer’s Guide</em> are all linked together.</p>
+<p>VistA documentation is made available online in Microsoft Word format and in Adobe Acrobat Portable Document Format (PDF). The PDF documents <em>must</em> be read using the Adobe Acrobat Reader, which is freely distributed by Adobe<sup>®</sup> Systems Incorporated at: <a href="http://www.adobe.com/">http://www.adobe.com/</a></p>
+<p><strong>VistA software</strong> documentation can be downloaded from the <strong>VA Software Document Library</strong> (VDL) at: <a href="http://www.va.gov/vdl/">http://www.va.gov/vdl/</a></p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> VA FileMan manuals are located on the VDL at: <a href="http://www.va.gov/vdl/application.asp?appid=5">http://www.va.gov/vdl/application.asp?appid=5</a></p>
+<p>VistA documentation and software can also be downloaded from the Health <strong>Product</strong> Support (HPS) anonymous directories.</p>
+<p><span id="data_conventions" class="anchor"></span></p>
+<h1 id="introduction">Introduction</h1>
+<p>This tutorial is intended to help VistA developers create ScreenMan forms using VA FileMan’s Form Editor. The Form Editor provides a major improvement in the speed and ease of creating ScreenMan forms. The tutorial emphasizes the use of the Form Editor in creating forms.</p>
+<p>The tutorial can take 10 to 20 hours to complete, depending on your familiarity with VA FileMan.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> Some of the lessons in the HTML version of this tutorial come with companion movies in Lotus ScreenCam format. The intent of including these movies is to provide a visual demonstration of the techniques discussed in each lesson.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> There is Zip file of an HTML version of this tutorial available on the VA Software Document Library (VDL) at: <a href="http://www.va.gov/vdl/application.asp?appid=5">http://www.va.gov/vdl/application.asp?appid=5</a></p>
+<h2 id="objectives">Objectives</h2>
+<p>After completing this tutorial, you should have the skills to create a ScreenMan interface to VA FileMan files. You will be able to:</p>
+<ul>
+<li><p>Create a ScreenMan Form.</p></li>
+<li><p>Add read-only fields to the form.</p></li>
+<li><p>Add editable fields to the form.</p></li>
+<li><p>Use the form editor to visually position fields on blocks.</p></li>
+<li><p>Add additional pages to the form.</p></li>
+<li><p>Edit multiples on the form (two methods).</p></li>
+<li><p>Add ScreenMan computed fields and form-only fields to the form.</p></li>
+<li><p>Edit fields in another file’s related entries.</p></li>
+<li><p>Use branching logic to jump from one field to another.</p></li>
+<li><p>Turn the ScreenMan form into a Menu Manager option.</p></li>
+</ul>
+<h2 id="files-used">Files Used</h2>
+<p>This tutorial needs the following files to be present in your test account:</p>
+<ul>
+<li><p>NEW PERSON (#200)—Primary file; you add a ScreenMan form to it.</p></li>
+<li><p>OPTION (#19)—Form navigates to edit fields in this file.</p></li>
+<li><p>SERVICE/SECTION (#49)—Form navigates to edit fields in this file.</p></li>
+</ul>
+<h2 id="advance-preparation">Advance Preparation</h2>
+<p>This is a hands-on tutorial, requiring a safe (i.e., <em>non</em>-production) M account in which you can build a ScreenMan form.</p>
+<p>The following software <em>must</em> be installed in the test account you use for the tutorial:</p>
+<ul>
+<li><p>VA FileMan 22.0</p></li>
+<li><p>Kernel 8.0</p></li>
+</ul>
+<p>This tutorial needs the following files to be present in your test account:</p>
+<ul>
+<li><p>NEW PERSON (#200)—Primary file used by the tutorial; you add a ScreenMan form to it.</p></li>
+<li><p>OPTION (#19)—ScreenMan form navigates to edit fields in this file.</p></li>
+<li><p>SERVICE/SECTION (#49)—ScreenMan form navigates to edit fields in this file.</p></li>
+</ul>
+<p>Kernel provides access to the ScreenMan options, as well as providing the files for which you build a ScreenMan form during the tutorial.</p>
+<p>You need to be granted the following privileges in the M test account used for the tutorial:</p>
+<ul>
+<li><p>The XUSCREENMAN security key.</p></li>
+<li><p>A File Manager Access code of at-sign (“<strong>@</strong>”).</p></li>
+</ul>
+<p>It is further assumed that you have full, unrestricted programmer access in this test account, including the ability to run any option and to add options to your menu tree without supervision.</p>
+<p>Each tutorial user should choose a unique namespace beginning with <strong>Z</strong>, concatenated with two or three other letters (e.g., Z<em>YXU</em>). Use this namespace as the beginning of the names for all forms and blocks that you create during this tutorial. Using your namespace protects the system you are using from having existing forms and blocks overwritten. This namespace is referred to as Z<em>xxx</em> during the tutorial.</p>
+<h1 id="starting-out-with-forms">Starting Out with Forms</h1>
+<p>This section of the tutorial shows you how to start building a form. It demonstrates:</p>
+<ul>
+<li><p>Initial building of a form.</p></li>
+<li><p>How to add blocks to a form.</p></li>
+<li><p>How to add simple fields to a block.</p></li>
+</ul>
+<p>In this section of the tutorial, you will do the following:</p>
+<ul>
+<li><p><span class="underline">Create a Form</span>.</p></li>
+<li><p><span class="underline">Add a DISPLAY Block to the Form</span>.</p></li>
+<li><p><span class="underline">Add a Title (Caption-Only Field)</span>.</p></li>
+<li><p><span class="underline">Reposition Fields on a Block</span>.</p></li>
+<li><p><span class="underline">Add Data Dictionary Fields</span>.</p></li>
+<li><p><span class="underline">Run the Form</span>.</p></li>
+<li><p><span class="underline">Add an Edit Block to the Form</span>.</p></li>
+<li><p><span class="underline">Add Data Dictionary Fields to the EDIT Block</span>.</p></li>
+<li><p><span class="underline">Use PRINT^DDS to List Form Characteristics</span>.</p></li>
+</ul>
+<h2 id="create-a-form">Create a Form</h2>
+<h3 id="overview">Overview</h3>
+<p>ScreenMan is a tool for screen-oriented, form-oriented data entry into VA FileMan files. The Form Editor tool was introduced with VA FileMan 21.0. It assists developers in creating ScreenMan interfaces. This tutorial concentrates on creating forms with the Form Editor.</p>
+<p>In this tutorial, you will:</p>
+<ul>
+<li><p>Create a form to edit entries in the NEW PERSON file (#200).</p></li>
+</ul>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> You will <em>not</em> edit every field in the NEW PERSON file (#200), because that could be a big form!</p>
+<ul>
+<li><p>Add selected fields from the NEW PERSON file (#200) to the form, in such a way that you get experience using a variety of the features ScreenMan.</p></li>
+<li><p>At the end of the tutorial, you will have built a form that is very similar to Kernel’s Edit User Characteristics option (although your form edits a different set of fields).</p></li>
+</ul>
+<h4 id="screenman-forms">ScreenMan Forms</h4>
+<p>When you create a form, a first page is created for the form by default. You <em>cannot</em> place fields directly on either a form or page; you <em>must</em> create blocks first. This is because the only place fields can be placed on is a block. A block provides a place to logically group a set of fields; you might edit a Multiple’s fields in one block on one page, and the top-level fields for the file on a block on another page. You can also designate whether the fields on any given block are display-only or editable.</p>
+<p><span class="underline">Figure 1</span> shows the relationships with blocks, pages, and forms:</p>
+<p><span id="_Ref390176444" class="anchor"></span>Figure . Relationships with blocks, pages, and forms</p>
+<p>Thus, to create a form, the first step is to create the form itself. The first page of the form is created automatically when the form is created. However, before you can add fields to the form, you <em>must</em> add at least one block to the form. Adding a block to the form you create will be your second step.</p>
+<h4 id="form-editor">Form Editor</h4>
+<p>The most basic element in a ScreenMan form is the form itself. To create the form, you use a tool called the Form Editor. You can invoke the Form Editor from the following:</p>
+<ul>
+<li><p><span class="underline">Using the Edit/Create a Form Option</span> [DDS EDIT/CREATE A FORM]</p></li>
+<li><p><span class="underline">Using the Direct Mode Utility</span></p></li>
+</ul>
+<h5 id="using-the-editcreate-a-form-option">Using the Edit/Create a Form Option</h5>
+<p>From the <strong>VA FileMan</strong> main menu [DIUSER<strong>]</strong>, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>At the “Select VA FileMan Option:” prompt, select <strong>Other Options</strong> menu [DIOTHER].</p>
+</blockquote></li>
+<li><blockquote>
+<p>At the “Select Other Options Option:” prompt, select the <strong>ScreenMan</strong> main menu [DDS SCREEN MENU].</p>
+</blockquote></li>
+</ol>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> This option is locked with the XUSCREENMAN security key.</p>
+<ol start="3" type="1">
+<li><blockquote>
+<p>At the “Select ScreenMan Option:” prompt, select the <strong>Edit/Create a Form</strong> option [DDS EDIT/CREATE A FORM].</p>
+</blockquote></li>
+</ol>
+<p><span id="_Ref391365483" class="anchor"></span>Figure . Accessing ScreenMan options</p>
+<p>Select Systems Manager Menu Option: <strong>FM1 &lt;Enter&gt;</strong> VA FileMan</p>
+<p>VA FileMan Version 22.0</p>
+<p>Enter or Edit File Entries</p>
+<p>Print File Entries</p>
+<p>Search File Entries</p>
+<p>Modify File Attributes</p>
+<p>Inquire to File Entries</p>
+<p>Utility Functions ...</p>
+<p>Data Dictionary Utilities ...</p>
+<p>Transfer Entries</p>
+<p>Other Options ...</p>
+<p>Select VA FileMan Option: <strong>OTHER &lt;Enter&gt;</strong> Options</p>
+<p>ScreenMan ...</p>
+<p>Statistics</p>
+<p>VA FileMan Management ...</p>
+<p>Data Export to Foreign Format ...</p>
+<p>Import Data</p>
+<p>Browser</p>
+<p>Select Other Options Option: <strong>SCREEN &lt;Enter&gt;</strong> Man</p>
+<p>Edit/Create a Form</p>
+<p>Run a Form</p>
+<p>Delete a Form</p>
+<p>Purge Unused Blocks</p>
+<p>Select ScreenMan Option: <strong>EDIT &lt;Enter&gt;</strong> /Create a Form</p>
+<p>EDIT/CREATE FORM FOR WHAT FILE: NEW PERSON//</p>
+<h5 id="using-the-direct-mode-utility">Using the Direct Mode Utility</h5>
+<p>Alternatively, you can invoke the Form Editor from programmer mode using the following direct-mode utility:</p>
+<p><strong>D ^DDGF</strong></p>
+<h3 id="procedure">Procedure</h3>
+<p>To create the first form, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Invoke the Form Editor, using either the menu option (see <span class="underline">Figure 2</span>) or the direct-mode utility (see Section <span class="underline">2.1.1.2.2</span>).</p>
+</blockquote></li>
+<li><blockquote>
+<p>The first thing you are asked is for what file to create a form. Since you are creating a form to edit the NEW PERSON file (#200), enter <strong>NEW PERSON</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>You are now asked for a form name. Entering two question marks (“<strong>??</strong>”) lists current forms defined for the NEW PERSON file (#200). Enter a new unique form name using your student namespace concatenated with “ <strong>EDIT</strong>”. For example, if your namespace is Z<em>YXU</em>, add a form called Z<em>YXU</em> EDIT.</p>
+</blockquote></li>
+</ol>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> From hereon in, the namespace part of a name is referred to as “Z<em>xxx</em>” in the tutorial.</p>
+<blockquote>
+<p><span id="_Toc395709581" class="anchor"></span>Figure . Creating a form—Sample user dialogue</p>
+</blockquote>
+<p>Select ScreenMan &lt;TEST ACCOUNT&gt; Option: <strong>EDIT &lt;Enter&gt;</strong> /Create a Form</p>
+<p>EDIT/CREATE FORM FOR WHAT FILE: PERSON CLASS// <strong>NEW PERSON &lt;Enter&gt;</strong></p>
+<p>(392 entries)</p>
+<p>Select FORM: <strong>Z<em>xxx</em> EDIT</strong></p>
+<p>Are you adding ‘Z<em>xxx</em> EDIT’ as a new FORM? No// <strong>YES &lt;Enter&gt;</strong> (Yes)</p>
+<ol start="4" type="1">
+<li><blockquote>
+<p>Once you select a name for the form, you are placed in the ScreenMan’s Form Editor:</p>
+</blockquote></li>
+</ol>
+<p><span id="_Toc395709582" class="anchor"></span>Figure . Sample blank form</p>
+<p>_____________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R1,C1</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 1 (Page 1)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> In subsequent tutorial sections, you will build on this form using the Form Editor, gradually creating a robust interface to the NEW PERSON file (#200).</p>
+<ol start="5" type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new form and exit the Form Editor.</p>
+</blockquote></li>
+</ol>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> In Section <span class="underline">2.2</span> you will add a DISPLAY block to the new form.</p>
+<h3 id="summary">Summary</h3>
+<p>In this lesson you learned how to create a ScreenMan form using the Form Editor.</p>
+<p>The Form Editor can be invoked with the Edit/Create a Form option, and also with the direct-mode utility: <strong>D ^DDGF</strong>.</p>
+<h2 id="add-a-display-block-to-the-form">Add a DISPLAY Block to the Form</h2>
+<h3 id="overview-1">Overview</h3>
+<p>The form you created in Section <span class="underline">2.1</span> has a page (page 1 is created by default), but no blocks yet. In order to add any fields to the form, you need to place a block on the form. Thus, the first thing to do with your form is to add a block.</p>
+<p>There are two types of blocks:</p>
+<ul>
+<li><p><strong>EDIT—</strong>Allows fields to be changed by the user.</p></li>
+<li><p><strong>DISPLAY—</strong>Allows fields to be displayed but <em>not</em> changed by the user.</p></li>
+</ul>
+<p>The cursor position, at the time you add a block, defines the region of the block. The region of the page covered by the block starts at the cursor position, and moves down and to the right. Thus, if the block covers only the bottom half of the page, you are only able to place fields on the bottom-half of that page (for that block only).</p>
+<p>You can add more than one block on a page. The following are some reasons why you might use more than one block on a page:</p>
+<ul>
+<li><p><strong>Reusing Blocks—</strong>You have a multi-page form, for example, and want the same header information on each page of the form. You can create a block for the header information only, and reuse the same block on each page of the form. Each page would then need an additional block for the fields unique to each page.</p></li>
+<li><p><strong>Separate Blocks—</strong>If fields on the same page come from different data dictionary file numbers (either from a Multiple, or from another file), you need to use separate blocks. You can only place fields from a single data dictionary file number on any given block.</p></li>
+</ul>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> Both of these situations are covered in subsequent sections in this tutorial.</p>
+<ul>
+<li><p><strong>Display-only Blocks—</strong>You can make a field on an EDIT block “display-only” by individually setting that field’s DISABLE EDITING property. You can have a large number of display-only fields, as well as some fields to edit, however. In this case, it can be easier to place the display-only fields on their own DISPLAY block, rather than set each field’s DISABLE EDITING property.</p></li>
+</ul>
+<h3 id="procedure-1">Procedure</h3>
+<p>In this section, you will add a single block to the page, and make it a DISPLAY block.</p>
+<p>To add a DISPLAY block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>In the Form Editor, with your Z<em>xxx</em> EDIT form loaded, use the <strong>arrow keys</strong> to position the cursor at row 1, column 1 if it is <em>not</em> already at that position. This is the top-left corner on the form.</p>
+</blockquote></li>
+</ol>
+<p><strong>TIP:</strong> Cursor Position:<br />
+<br />
+The current cursor position is always displayed at the lower-right corner of the Form Editor screen.</p>
+<ol start="2" type="1">
+<li><blockquote>
+<p>At the current cursor position (row 1, column 1), press <strong>&lt;PF2&gt;B</strong> to add a block to the form at the cursor.</p>
+</blockquote></li>
+<li><blockquote>
+<p>When asked to select a new block name, enter your namespace concatenated with “<strong>MAIN 1</strong>” (e.g., ”<strong>Z<em>xxx</em> MAIN 1</strong>”):</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709583" class="anchor"></span>Figure . Adding a DISPLAY block—Sample user dialogue</p>
+</blockquote>
+<p></p>
+<p> </p>
+<p> Select NEW BLOCK NAME: <strong>Zxxx MAIN 1</strong> </p>
+<p> </p>
+<p></p>
+<p>______________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol start="4" type="1">
+<li><blockquote>
+<p>At the “Are you adding ‘Z<em>xxx</em> MAIN 1’ as a new BLOCK? No//” prompt, enter <strong>YES</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>At the “Are you adding Z<em>xxx</em> MAIN 1 as a new block on this page?” prompt, enter <strong>YES</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>You are now given a chance to enter the properties for the Z<em>xxx</em> MAIN 1 block.</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><p>Change <strong>TYPE OF BLOCK</strong> to <strong>DISPLAY</strong>.</p></li>
+<li><p>Verify <strong>BLOCK ORDER</strong> is <strong>1</strong>.</p></li>
+<li><p>Accept the other defaults.</p></li>
+</ol>
+<p>The block properties should match those shown in <span class="underline">Figure 6</span>:</p>
+<blockquote>
+<p><span id="_Ref390177169" class="anchor"></span>Figure . Sample DISPLAY Block properties</p>
+</blockquote>
+<p>------------------- Block Properties Stored in FORM File ------------------</p>
+<p>| |</p>
+<p>| BLOCK NAME: Z<em>xxx</em> MAIN 1 BLOCK ORDER: <strong>1</strong> |</p>
+<p>| TYPE OF BLOCK: <strong>EDIT</strong> OTHER PARAMETERS... |</p>
+<p>| |</p>
+<p>| POINTER LINK: |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>|----------------- Block Properties Stored in BLOCK File ------------------|</p>
+<p>| |</p>
+<p>| NAME: <strong>Z</strong><em>xxx</em> <strong>MAIN 1</strong> DESCRIPTION (WP): |</p>
+<p>| DD NUMBER: <strong>200</strong> DISABLE NAVIGATION: |</p>
+<p>| |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>---------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol start="7" type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new block.</p>
+</blockquote></li>
+</ol>
+<p>Any fields placed on this block are read-only, since this is a DISPLAY block; in the next section, you will add several fields to the block.</p>
+<p>TIP: Seeing Blocks, and Editing Block Properties:<br />
+<br />
+To see what blocks are on a page, press <strong>&lt;PF1&gt;V</strong> to switch to the Block Viewer screen. The name of each block is displayed as a caption on the page.<br />
+<br />
+To move the position of a block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p><em>Select the block.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Move the cursor to the label of the block.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Press <strong>Spacebar</strong> or <strong>Enter</strong>.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Move it with the <strong>arrow keys</strong>,</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Deselect it by pressing <strong>Spacebar</strong> or <strong>Enter</strong> again.</em></p>
+</blockquote></li>
+</ol>
+<p>To edit the properties of the block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p><em>Move the cursor to the block’s caption.</em></p>
+</blockquote></li>
+</ol>
+<ol start="10" type="1">
+<li><p><em>Select it by pressing <strong>Spacebar</strong> or <strong>Enter</strong>.</em></p></li>
+<li><p><em>Press <strong>PF4</strong> to edit the properties of the block.<br />
+<br />
+When you are done working with blocks and want to exit the Block Viewer screen, press <strong>&lt;PF1&gt;V</strong> again to switch back to the main Form Editor screen.</em></p></li>
+</ol>
+<h3 id="summary-1">Summary</h3>
+<p>To add an EDIT or DISPLAY block to a form:</p>
+<ol type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;B</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Select the block properties.</p>
+<p>The position your cursor is at when you press <strong>&lt;PF2&gt;B</strong> defines the regions of the block. You need to add at least one block to every page, because fields <em>must</em> be placed on blocks (<em>not</em> directly on the page).</p>
+<h2 id="add-a-title-caption-only-field">Add a Title (Caption-Only Field)</h2>
+<h3 id="overview-2">Overview</h3>
+<p>Once you have added a block to the form, you can start adding fields to the block. First, you add a caption to the block, displaying the title “NEW PERSON EDIT” at the top of the form.</p>
+<h3 id="procedure-2">Procedure</h3>
+<p>To add a caption-only field to the block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Using the <strong>arrow keys</strong>, position the cursor at row 1, column 1.</p>
+</blockquote></li>
+</ol>
+<p>At the current cursor position:</p>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;F</strong>. This brings up a dialogue similar to <span class="underline">Figure 7</span>:</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref390177138" class="anchor"></span>Figure . Adding a caption-only field—Sample user dialogue (1 of 3)</p>
+</blockquote>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: Z<em>xxx</em> MAIN 1 |</p>
+<p>| FIELD ORDER: <strong>1</strong> |</p>
+<p>| FIELD TYPE: <strong>DATA DICTIONARY FIELD</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol start="4" type="a">
+<li><p>Accept the defaults for <strong>BLOCK</strong> and <strong>FIELD ORDER</strong>.</p></li>
+<li><p>Change the <strong>FIELD TYPE</strong> to <strong>CAPTION ONLY</strong>.</p></li>
+<li><p>Press <strong>&lt;PF1&gt;E</strong> to save the settings and exit this dialogue.</p></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709586" class="anchor"></span>Figure . Adding a caption-only field—Sample user dialogue (2 of 3)</p>
+</blockquote>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: Z<em>xxx</em> MAIN 1 |</p>
+<p>| FIELD ORDER: <strong>1</strong> |</p>
+<p>| FIELD TYPE: <strong>CAPTION ONLY</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<p>Once you save the initial field settings, the Form Editor presents the Caption-Only Field Properties dialogue (<span class="underline">Figure 9</span>). Set the properties as follows:</p>
+<blockquote>
+<p><span id="_Ref390246801" class="anchor"></span>Figure . Adding a Caption-Only field—Sample user dialogue (3 of 3)</p>
+</blockquote>
+<p>---------------------- Caption-Only Field Properties -------------------</p>
+<p>| |</p>
+<p>| FIELD ORDER: <strong>1</strong> |</p>
+<p>| <span class="underline">CAPTION</span>: <strong>NEW PERSON EDIT</strong> |</p>
+<p>| UNIQUE NAME: |</p>
+<p>| |</p>
+<p>| EXECUTABLE CAPTION: |</p>
+<p>| <span class="underline">CAPTION COORDINATE</span>: <strong>1,1</strong> |</p>
+<p>------------------------------------------------------------------------</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the field properties and exit this dialogue.</p>
+<p>The form should now have the caption “NEW PERSON EDIT”, left-justified on the first line:</p>
+<p><span id="_Toc395709588" class="anchor"></span>Figure . Adding a Caption-Only field—Sample form</p>
+<p>NEW PERSON EDIT</p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R1,C1</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 1 (Page 1)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<p><strong>TIP: Re-Editing Field Properties:<br />
+</strong><br />
+To re-edit the properties of a field:</p>
+<ol type="1">
+<li><blockquote>
+<p><em>Move the cursor to the field’s caption.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Press <strong>Spacebar</strong> or <strong>Enter</strong> to select the field.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Press <strong>PF4</strong> to edit the properties.</em></p>
+</blockquote></li>
+</ol>
+<h3 id="summary-2">Summary</h3>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add fields to a block and fill in the properties.</p>
+<p>To add a caption to a block, choose a field type of <strong>CAPTION ONLY</strong>.</p>
+<h2 id="reposition-fields-on-a-block">Reposition Fields on a Block</h2>
+<h3 id="overview-3">Overview</h3>
+<p>In Section <span class="underline">2.3</span>, you added a caption field to the first block. Now, use the Form Editor’s visual editing capabilities to reposition the caption field on the block.</p>
+<p>To reposition the caption field on the block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Select the field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Move it.</p>
+</blockquote></li>
+<li><blockquote>
+<p>De-select the field.</p>
+</blockquote></li>
+</ol>
+<h3 id="procedure-3">Procedure</h3>
+<p>To reposition fields on a block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>In the Form Editor, use the <strong>arrow keys</strong> to position the cursor at the first letter in the <em>caption</em> <strong>N</strong>EW PERSON EDIT.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> with the cursor in the field caption to select the field; this highlights the entire field.</p>
+<p>Move the field:</p>
+<ol type="a">
+<li><blockquote>
+<p>With the field highlighted, move it by pressing the <strong>arrow keys</strong>.</p>
+</blockquote></li>
+</ol>
+<ol start="7" type="a">
+<li><p>Move the field to the center of row 1.<br />
+<br />
+The leftmost character of the field should be at row 1, column 32; you can tell by the R1,C32 indicator in the lower-right corner of the window: as shown in <span class="underline">Figure 11</span>:</p></li>
+</ol>
+<blockquote>
+<p><span id="_Ref390246542" class="anchor"></span>Figure . Sample repositioning fields on a block</p>
+</blockquote>
+<p>NEW PERSON EDIT</p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R1,C32</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 1 (Page 1)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<p>De-select the field. With the field highlighted (and in position), press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to deselect (and drop) the field into place.</p>
+<p><strong>TIP:</strong> Moving Screen Elements:<br />
+<br />
+There are other shortcut keystrokes that you can use when moving screen elements (e.g., fields). These keystrokes (move field to top of screen, move field to bottom of screen, etc.) are described in the “ScreenMan” section in the VA FileMan User Manual.</p>
+<h3 id="summary-3">Summary</h3>
+<p>The Form Editor provides visual field positioning capabilities. This lets you quickly position fields on blocks, which helps you build visually attractive forms very quickly.</p>
+<h2 id="add-data-dictionary-fields">Add Data Dictionary Fields</h2>
+<h3 id="overview-4">Overview</h3>
+<p>At this point, you have added one field, a caption-only field, to the first block. Now, you will add the following data dictionary fields to the DISPLAY-only block from the NEW PERSON file (#200):</p>
+<ul>
+<li><p>NAME</p></li>
+<li><p>SSN</p></li>
+</ul>
+<p>Because these fields are placed on a DISPLAY-only block, the values are displayed to the form user, but are <em>not</em> editable.</p>
+<h3 id="procedure-4">Procedure</h3>
+<h4 id="adding-name-field">Adding Name Field</h4>
+<p>To add the <strong>NAME</strong> field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor at the beginning of the third line on the screen, using the <strong>arrow keys</strong>:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add a field to the block.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Set the field up as shown in <span class="underline">Figure 12</span>:</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref390246059" class="anchor"></span>Figure . Adding a Name field—Sample user dialogue</p>
+</blockquote>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: Z<em>xxx</em> MAIN 1 |</p>
+<p>| FIELD ORDER: <strong>2</strong> |</p>
+<p>| FIELD TYPE: <strong>DATA DICTIONARY FIELD</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<ol start="8" type="a">
+<li><p>Press <strong>&lt;PF1&gt;E</strong> to save these field settings.</p></li>
+</ol>
+<ol start="2" type="1">
+<li><blockquote>
+<p>The Form Editor presents the “Data Dictionary Field Properties” dialogue. For FIELD, choose <strong>NAME</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the field properties.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Since there are two fields that begin with “NAME”, choose option 1, as shown in <span class="underline">Figure 13</span>:</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref391368153" class="anchor"></span>Figure . Adding a Name field—Confirming correct field</p>
+</blockquote>
+<p>-------------------- Data Dictionary Field Properties ---------------------</p>
+<p>| |</p>
+<p>| FIELD ORDER: <strong>2</strong> <span class="underline">FIELD</span>: <strong>NAME</strong> |</p>
+<p>| OTHER PARAMETERS... SUPPRESS COLON AFTER CAPTION? |</p>
+<p>| UNIQUE NAME: |</p>
+<p>| |</p>
+<p>| CAPTION: |</p>
+<p>| DEFAULT: |</p>
+<p>| EXECUTABLE CAPTION: |</p>
+<p>| EXECUTABLE DEFAULT: |</p>
+<p>| |</p>
+<p>| BRANCHING LOGIC: |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| POST ACTION ON CHANGE: |</p>
+<p>---------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>1 NAME</p>
+<p>2 NAME COMPONENTS</p>
+<p>Choose 1-2 or ‘^’ to quit: <strong>1</strong></p>
+<ol start="5" type="1">
+<li><blockquote>
+<p>The Form Editor returns you to the form screen, and you should see the NAME field on the screen (<span class="underline">Figure 14</span>):</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref390177084" class="anchor"></span>Figure . Adding a Name field—Sample form</p>
+</blockquote>
+<p>NEW PERSON EDIT</p>
+<p>NAME: ___________________________________</p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R3,C1</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 1 (Page 1)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<h4 id="adding-ssn-field">Adding SSN Field</h4>
+<p>To add the <strong>SSN</strong> field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor on the middle of the third line after the NAME field:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;</strong> <strong>F</strong> to add the SSN field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Set it up as shown in <span class="underline">Figure 15</span>:</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref390246145" class="anchor"></span>Figure . Adding a SSN field—Sample user dialogue</p>
+</blockquote>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: Z<em>xxx</em> MAIN 1 |</p>
+<p>| FIELD ORDER: <strong>3</strong> |</p>
+<p>| FIELD TYPE: <strong>DATA DICTIONARY FIELD</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<ol start="9" type="a">
+<li><p>Press <strong>&lt;PF1&gt;E</strong> to save these field settings.</p></li>
+</ol>
+<p>The Form Editor presents the “Data Dictionary Field Properties” dialogue. For FIELD, choose <strong>SSN</strong>.</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the field properties.</p>
+<p>The Form Editor returns you to the form screen. You should see the SSN field on the block:</p>
+<blockquote>
+<p><span id="_Toc395709594" class="anchor"></span>Figure . Adding a SSN field—Sample form</p>
+</blockquote>
+<p>NEW PERSON EDIT</p>
+<p>NAME: ___________________________________ SSN: _________</p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R3,C43</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 1 (Page 1)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<p>If you need to, you can re-position the fields in the same way that you re-positioned the “NEW PERSON EDIT” caption in Section <span class="underline">2.4.2</span>.</p>
+<h4 id="reposition-fields">Reposition Fields</h4>
+<p>To reposition fields, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Select a field:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Move the cursor to the field <strong>caption</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Use the <strong>arrow keys</strong> to move the field.</p>
+<p>Press <strong>Enter</strong> to drop the field in its new location.</p>
+<p><strong>TIP: Positioning Data Dictionary Fields: Caption Portion and Data Field Portion:</strong><br />
+<br />
+Data dictionary fields have two parts, caption and data field, which can be positioned independently. If you position the cursor under the caption of a data dictionary field and press <strong>Spacebar</strong> or <strong>Enter</strong>, you select the caption and data field parts together. However, if you position the cursor under the data field (the underlined portion) and then select, you select the data field only, and can position it independently of the field caption. In this tutorial, you should always move the caption and data field together.</p>
+<h4 id="deleting-fields">Deleting Fields</h4>
+<p>To delete a field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Select a field:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Move the cursor to the field <strong>caption</strong>.</p>
+</blockquote></li>
+</ol>
+<ol start="3" type="a">
+<li><blockquote>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>PF4</strong> to edit the properties of the element.</p>
+<p>At the “Field Order:” prompt, enter an at-sign (“<strong>@</strong>”).</p>
+<p>At the “Are you sure you want to delete this entire Subrecord (Y/N)?” prompt, enter <strong>YES</strong>.</p>
+<p><img src="./media/image3.png" alt="Caution" style="width:0.45139in;height:0.45139in" /> CAUTION: Deletions are done <em>immediately</em>! Exiting <em>without</em> saving will <em>not</em> restore deleted records.</p>
+<h3 id="summary-4">Summary</h3>
+<p>Adding data dictionary fields is similar to adding caption-only fields; you simply need to choose what field you want to add.</p>
+<h2 id="run-the-form">Run the Form</h2>
+<h3 id="overview-5">Overview</h3>
+<p>At this point, you have added one block and three fields to the form. To see what the form looks like so far from a user’s point of view, use the VA FileMan Run a Form option (on the same menu as the Edit/Create a Form option).</p>
+<h3 id="procedure-5">Procedure</h3>
+<p>To see what the form looks like, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>In the Form Editor screen, press <strong>&lt;PF1&gt;E</strong> to save the form you have been working on and exit.</p>
+</blockquote></li>
+</ol>
+<p>Choose the <strong>Run a Form</strong> option:</p>
+<ol type="a">
+<li><blockquote>
+<p>Run a form from the NEW PERSON file (#200).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Choose the form you have been building.</p>
+</blockquote></li>
+</ol>
+<p><span id="_Toc395709595" class="anchor"></span>Figure . Selecting a form—Sample user dialogue</p>
+<p>Edit/Create a Form</p>
+<p>Run a Form</p>
+<p>Delete a Form</p>
+<p>Purge Unused Blocks</p>
+<p>Select ScreenMan &lt;TEST ACCOUNT&gt; Option: <strong>RUN &lt;Enter&gt;</strong> a Form</p>
+<p>RUN FORM FROM WHAT FILE: NEW PERSON// <strong>&lt;Enter&gt;</strong></p>
+<p>Select FORM: <strong>Z<em>xxx</em> EDIT &lt;Enter&gt;</strong> Z<em>xxx</em> EDIT</p>
+<p>(Jun 24, 2014@09:34)User #8 File #200</p>
+<p>Select NEW PERSON NAME: <strong>FMUSER,ONE &lt;Enter&gt;</strong> OF TECHNICAL WRITER</p>
+<p>NEW PERSON EDIT</p>
+<p>Your form should look something like <span class="underline">Figure 18</span>.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> You <em>cannot</em> edit the NAME or SSN fields, which reside on a DISPLAY block.</p>
+<p><span id="_Ref390245828" class="anchor"></span>Figure . Sample completed form with added fields</p>
+<p>NEW PERSON EDIT</p>
+<p>NAME: FMUSER,ONE SSN: <strong>000323232</strong></p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<h3 id="summary-5">Summary</h3>
+<p>Use the Run a Form option to run and test your forms.</p>
+<h2 id="add-an-edit-block-to-the-form">Add an Edit Block to the Form</h2>
+<h3 id="overview-6">Overview</h3>
+<p>In previous sections, you added fields to a DISPLAY-type block. Because of the block they were added to, these fields are read-only. In this section, you will add an EDIT-type block to the form; this lets you add fields to the form that the user can actually edit.</p>
+<h3 id="procedure-6">Procedure</h3>
+<p>To add the EDIT block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Invoke the Form Editor again, and load the Z<em>xxx</em> EDIT form.</p>
+</blockquote></li>
+</ol>
+<p>In the Form Editor, use the <strong>arrow keys</strong> to position the cursor at row 5, column 1 on the form.</p>
+<p>Press <strong>&lt;PF2&gt;B</strong> to add a block to the form at the cursor position (row 5, column 1).</p>
+<p>When asked to select a new block name, enter your namespace concatenated with “<strong>MAIN 2</strong>” (e.g., ”<strong>Z<em>xxx</em> MAIN 2</strong>”).</p>
+<p>At the “Are you adding ‘Z<em>xxx</em> MAIN 2’ as a new block? No//” prompt, enter <strong>YES</strong>.</p>
+<p>At the “Are you adding Z<em>xxx</em> MAIN 2 as a new block on this page?” prompt, enter <strong>YES</strong>. You are now given a chance to enter the properties for the Z<em>xxx</em> MAIN 2 block.</p>
+<p>In the “Block Properties Stored I n a FORM File” dialogue (see <span class="underline">Figure 19</span>), verify the following data:</p>
+<ol type="a">
+<li><blockquote>
+<p><strong>BLOCK ORDER</strong> should be <strong>2</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>TYPE OF BLOCK</strong> should be <strong>EDIT</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Accept the other defaults.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new block and exit.</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref391369712" class="anchor"></span>Figure . Sample EDIT Block properties</p>
+</blockquote>
+<p>---------------- Block Properties Stored in FORM File --------------------</p>
+<p>| |</p>
+<p>| BLOCK NAME: <strong>Z<em>xxx</em> MAIN 2</strong> <span class="underline">BLOCK ORDER</span>: 2 |</p>
+<p>| <span class="underline">TYPE OF BLOCK</span>: <strong>EDIT</strong> OTHER PARAMETERS... |</p>
+<p>| |</p>
+<p>| POINTER LINK: |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>|----------------- Block Properties Stored in BLOCK File ------------------|</p>
+<p>| |</p>
+<p>| NAME: <strong>Z<em>xxx</em> MAIN 2</strong> DESCRIPTION (WP): |</p>
+<p>| DD NUMBER: <strong>200</strong> DISABLE NAVIGATION: |</p>
+<p>| |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>--------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<p><strong>TIP: Editing Block Properties at a Later Time.</strong><br />
+<br />
+To edit a block’s properties at a later time:</p>
+<ol type="1">
+<li><blockquote>
+<p><em>Press <strong>&lt;PF1&gt;V</strong> to go to the Block Viewer screen.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Select the block whose properties you want to edit by positioning the cursor over it and pressing <strong>Spacebar</strong> or <strong>Enter</strong>.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Press <strong>PF4</strong> to edit the block’s properties in the Block Properties dialogue.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Once you are done editing properties, save the changes and exit by pressing <strong>&lt;PF1&gt;E</strong>, or quit without saving by pressing <strong>&lt;PF1&gt;Q</strong>.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Once you are back in the Block Viewer screen, press <strong>&lt;PF1&gt;V</strong> to return to the normal Form Editor screen.</em></p>
+</blockquote></li>
+</ol>
+<p><em>To delete a block:</em></p>
+<ol type="1">
+<li><blockquote>
+<p><em>Edit the block’s properties.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Delete the block by entering an at-sign (“<strong>@</strong>”) in the BLOCK NAME field.</em></p>
+</blockquote></li>
+</ol>
+<h3 id="summary-6">Summary</h3>
+<p>Adding an EDIT block to a form enables the editing of any data dictionary fields placed on the EDIT-type block.</p>
+<h2 id="add-data-dictionary-fields-to-the-edit-block">Add Data Dictionary Fields to the EDIT Block</h2>
+<h3 id="overview-7">Overview</h3>
+<p>In Section <span class="underline">2.7</span>, you added an EDIT-type block to the form. Now, you can add some data dictionary fields to the EDIT block. This means that the user is actually able to edit data in the NEW PERSON file (#200) when they use the form.</p>
+<p>In this section, you will add the following fields to the edit block (Z<em>xxx</em> MAIN 2), in the order listed below:</p>
+<ol type="1">
+<li><blockquote>
+<p>PHONE (HOME)</p>
+</blockquote></li>
+</ol>
+<p>PHONE #3</p>
+<p>PHONE #4</p>
+<p>OFFICE PHONE</p>
+<p>AUTO MENU</p>
+<p>INITIAL</p>
+<p>NICK NAME</p>
+<p>PREFERRED EDITOR</p>
+<p>TYPE-AHEAD</p>
+<h3 id="procedure-7">Procedure</h3>
+<h4 id="add-fields">Add Fields</h4>
+<p>To add each field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor somewhere on the Z<em>xxx</em> MAIN 2 block, which is anywhere from row 5 to the bottom of the form; roughly where you would like to place the field.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add the individual field.</p>
+<p>When the Form Editor asks for block, make sure you choose <strong>Z<em>xxx</em> MAIN 2</strong>:</p>
+<ol type="a">
+<li><blockquote>
+<p>Accept the default FIELD ORDER.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Make sure the <strong>FIELD TYPE</strong> is <strong>DATA DICTIONARY FIELD</strong>, as shown in <span class="underline">Figure 20</span>.</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref390245001" class="anchor"></span>Figure . Adding fields—Sample user dialogue</p>
+</blockquote>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: Z<em>xxx</em> MAIN 2 |</p>
+<p>| FIELD ORDER: <strong>1</strong> |</p>
+<p>| FIELD TYPE: <strong>DATA DICTIONARY FIELD</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save and exit this dialogue.</p>
+<p>When you reach the “Data Dictionary Field Properties” dialogue:</p>
+<ol type="a">
+<li><blockquote>
+<p>Choose the appropriate field by entering the field name in the FIELD property. Enter one of the following fields (in the order listed):</p>
+</blockquote></li>
+</ol>
+<ul>
+<li><p>PHONE (HOME)</p></li>
+<li><p>PHONE #3</p></li>
+<li><p>PHONE #4</p></li>
+<li><p>OFFICE PHONE</p></li>
+<li><p>AUTO MENU</p></li>
+<li><p>INITIAL</p></li>
+<li><p>NICK NAME</p></li>
+<li><p>PREFERRED EDITOR</p></li>
+<li><p>TYPE-AHEAD</p></li>
+</ul>
+<ol start="2" type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Repeat Steps 1 through 5b for each of the fields listed in Step 5a.</p>
+</blockquote></li>
+</ol>
+<p>After you have added each of the fields to the block, arrange the fields so that their captions are all right-aligned (i.e., colons terminating each caption should be in a vertical line). Use the Form Editor’s visual capabilities to do this:</p>
+<ol type="a">
+<li><blockquote>
+<p>As you did before with the NEW PERSON EDIT caption, select each field:</p>
+</blockquote></li>
+</ol>
+<ol type="i">
+<li><p>Place the cursor over the first letter of the field caption.</p></li>
+<li><p>Press <strong>Spacebar</strong> or <strong>Enter</strong>. This selects (highlights) the field.</p></li>
+</ol>
+<ol start="2" type="a">
+<li><blockquote>
+<p>Use the <strong>arrow keys</strong> to move the field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> again to drop the field into place and deselect the field.</p>
+</blockquote></li>
+</ol>
+<p>By default, the “edit order” of the fields on the form is the same order in which you add fields to the form. You can change the field order on the block at a later time, however.</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to exit the Form Editor.</p>
+<p>Choose the Run a Form option to run and test the form. The form should now look like <span class="underline">Figure 21</span> (with sample data):</p>
+<blockquote>
+<p><span id="_Ref390245203" class="anchor"></span>Figure . Sample form with added fields</p>
+</blockquote>
+<p>NEW PERSON EDIT</p>
+<p><span class="underline">NAME</span>: FMUSER,ONE SSN: <strong>000323232</strong></p>
+<p>PHONE (HOME): <strong>555-555-5555</strong></p>
+<p>PHONE #3:</p>
+<p>PHONE #4:</p>
+<p>OFFICE PHONE: <strong>555-555-5555</strong></p>
+<p>AUTO MENU: <strong>YES, MENUS GENERATED</strong></p>
+<p>INITIAL: <strong>OF</strong></p>
+<p>NICK NAME: <strong>ONE</strong></p>
+<p>PREFERRED EDITOR: <strong>SCREEN EDITOR - VA FILEMAN</strong></p>
+<p>TYPE-AHEAD: <strong>ALLOWED</strong></p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol type="a">
+<li><blockquote>
+<p>Test the field order. Starting at the initial field that ScreenMan places you in, press <strong>Enter</strong> at each field; you should move to the next field down on the form, until you traverse all fields and are placed at the COMMAND prompt.</p>
+</blockquote></li>
+<li><blockquote>
+<p>If the field order is <em>not</em> correct, however, you can return to the Form Editor and change the field order for any field.</p>
+</blockquote></li>
+</ol>
+<h4 id="change-field-order">Change Field Order</h4>
+<p>To change the field order for any field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Select the field whose order you want to change:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Move the cursor to the field <strong>caption</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to select the field.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>PF4</strong> to edit the field properties.</p>
+<p>Change the field order to a different number (decimal fractions are allowed).</p>
+<h4 id="reset-field-order">Reset Field Order</h4>
+<p>Alternatively, you can reset the field order of <em>all</em> fields to be left-to-right, top-to-bottom.</p>
+<p>To reset the field order of all fields to left-to-right, top-to-bottom, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>From the Form Editor, go to the Block Viewer screen by pressing <strong>&lt;PF1&gt;V</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Select the block in question:</p>
+<ol type="a">
+<li><blockquote>
+<p>Move cursor to it.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to select the block.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF1&gt;O</strong> to reorder the field sequence.</p>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> again to de-select the block.</p>
+<p>Press <strong>&lt;PF1&gt;V</strong> to return to the normal Form Editor screen.</p>
+<p><strong>TIP: Display Width vs. Actual Width for Fields:<br />
+</strong><br />
+Some fields are longer than a form is wide; fields can be up to 245 characters in length. How can you edit a field like this in a ScreenMan form, which is only 80 characters wide? The answer is that when you place a field like this on a form, you can set the field’s display width by setting its DATA LENGTH property. You could set its DATA LENGTH to be 75, for example. Then, when the user runs the form, the field is displayed in a 75-character-wide window. To see and edit the entire field, the user can press <strong>&lt;PF1&gt;Z</strong>; this opens a large edit area at the bottom of the screen.<br />
+<br />
+You can use this technique even with fields that fit within the width of your form. For example, you might have a field that is 60 characters in length, but set it so that it only takes up 30 characters when displayed on your form (by setting its DATA LENGTH to 30).</p>
+<p><img src="./media/image3.png" alt="Caution" style="width:0.45833in;height:0.45833in" /> CONGRATULATIONS: Making an interface to edit fields in the NEW PERSON file (#200) was as easy as that!</p>
+<h3 id="summary-7">Summary</h3>
+<p>To let users edit data in a VA FileMan file, you can add data dictionary fields to an Edit-type block on the form. The field order (when the user traverses fields by pressing <strong>Enter</strong>) is, by default, the order you add fields to the form. You can change the field order at a later time, if necessary.</p>
+<h2 id="use-printdds-to-list-form-characteristics">Use PRINT^DDS to List Form Characteristics</h2>
+<h3 id="overview-8">Overview</h3>
+<p>At this point, you have added several blocks and a number of fields to the form.</p>
+<p>When you are working with forms, you can generate a report on your form so that you can review your form’s characteristics. ScreenMan provides a way to do this using the following direct-mode utility:</p>
+<p><strong>D PRINT^DDS</strong></p>
+<p>This lists all characteristics of a form. It lists the properties of the form itself and all properties of the blocks and fields used on the form.</p>
+<h3 id="procedure-8">Procedure</h3>
+<p>To generate a report on your form so that you can review your form’s characteristics, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>From the M programmer prompt, run <strong>PRINT^DDS</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Compare the output for your form to the output listed below. The printout for your form thus far should correspond to the printout listed in <span class="underline">Figure 22</span>:</p>
+<blockquote>
+<p><span id="_Ref390243698" class="anchor"></span>Figure . Using PRINT^DDS direct-mode utility—Sample user dialogue</p>
+</blockquote>
+<p><em>TEST ACCOUNT</em>&gt;<strong>D PRINT^DDS</strong></p>
+<p>Select FORM: <strong>ZXXX EDIT &lt;Enter&gt;</strong> (Jun 24, 2014@09:34)User #8 File #200</p>
+<p>Start each page of the form on a new page? Yes// <strong>NO</strong></p>
+<p>DEVICE: HOME// <strong>&lt;Enter&gt;</strong> Network</p>
+<p><span id="_Toc395709601" class="anchor"></span>Figure . Using PRINT^DDS direct-mode utility—Sample form report generated</p>
+<p>FORM LISTING - Z<em>xxx</em> EDIT (#78)</p>
+<p>FILE: NEW PERSON (#200) JUN 24, 2014 11:37 PAGE 1</p>
+<p>------------------------------------------------------------------------------</p>
+<p>PRIMARY FILE: 200 READ ACCESS: @</p>
+<p>DATE CREATED: JUN 24, 2014@09:34 WRITE ACCESS: @</p>
+<p>DATE LAST USED: JUN 24, 2014@11:15 CREATOR: 8</p>
+<p>Page Page</p>
+<p>Number Properties</p>
+<p>------ ----------</p>
+<p>1 Page 1</p>
+<p>PAGE COORDINATE: 1,1</p>
+<p>Block Block</p>
+<p>Order Properties (Form File)</p>
+<p>----- ----------------------</p>
+<p>1 Z<em>xxx</em> MAIN 1 (#327)</p>
+<p>TYPE OF BLOCK: EDIT</p>
+<p>BLOCK COORDINATE: 1,1</p>
+<p>Block Properties (Block File)</p>
+<p>-----------------------------</p>
+<p>DATA DICTIONARY NUMBER: 200</p>
+<p>Field Field</p>
+<p>Order Properties</p>
+<p>----- ----------</p>
+<p>1 FIELD TYPE: CAPTION ONLY</p>
+<p>CAPTION: NEW PERSON EDIT</p>
+<p>CAPTION COORDINATE: 1,32</p>
+<p>2 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: NAME</p>
+<p>FIELD: .01</p>
+<p>CAPTION COORDINATE: 3,1</p>
+<p>DATA COORDINATE: 3,7</p>
+<p>DATA LENGTH: 35</p>
+<p>3 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: SSN</p>
+<p>FIELD: 9</p>
+<p>CAPTION COORDINATE: 3,43</p>
+<p>DATA COORDINATE: 3,48</p>
+<p>DATA LENGTH: 9</p>
+<p>2 Z<em>xxx</em> MAIN 2 (#328)</p>
+<p>TYPE OF BLOCK: EDIT</p>
+<p>BLOCK COORDINATE: 5,1</p>
+<p>Block Properties (Block File)</p>
+<p>-----------------------------</p>
+<p>DATA DICTIONARY NUMBER: 200</p>
+<p>Field Field</p>
+<p>Order Properties</p>
+<p>----- ----------</p>
+<p>1 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: PHONE (HOME)</p>
+<p>FIELD: .131</p>
+<p>CAPTION COORDINATE: 1,6</p>
+<p>DATA COORDINATE: 1,20</p>
+<p>DATA LENGTH: 20</p>
+<p>2 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: PHONE #3</p>
+<p>FIELD: .133</p>
+<p>CAPTION COORDINATE: 2,10</p>
+<p>DATA COORDINATE: 2,20</p>
+<p>DATA LENGTH: 20</p>
+<p>3 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: PHONE #4</p>
+<p>FIELD: .134</p>
+<p>CAPTION COORDINATE: 3,10</p>
+<p>DATA COORDINATE: 3,20</p>
+<p>DATA LENGTH: 20</p>
+<p>4 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: OFFICE PHONE</p>
+<p>FIELD: .132</p>
+<p>CAPTION COORDINATE: 4,6</p>
+<p>DATA COORDINATE: 4,20</p>
+<p>DATA LENGTH: 20</p>
+<p>5 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: AUTO MENU</p>
+<p>FIELD: 200.06</p>
+<p>CAPTION COORDINATE: 5,9</p>
+<p>DATA COORDINATE: 5,20</p>
+<p>DATA LENGTH: 20</p>
+<p>6 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: INITIAL</p>
+<p>FIELD: 1</p>
+<p>CAPTION COORDINATE: 6,11</p>
+<p>DATA COORDINATE: 6,20</p>
+<p>DATA LENGTH: 5</p>
+<p>7 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: NICK NAME</p>
+<p>FIELD: 13</p>
+<p>CAPTION COORDINATE: 7,9</p>
+<p>DATA COORDINATE: 7,20</p>
+<p>DATA LENGTH: 10</p>
+<p>8 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: PREFERRED EDITOR</p>
+<p>FIELD: 31.3</p>
+<p>CAPTION COORDINATE: 8,2</p>
+<p>DATA COORDINATE: 8,20</p>
+<p>DATA LENGTH: 30</p>
+<p>9 FIELD TYPE: DATA DICTIONARY FIELD</p>
+<p>CAPTION: TYPE-AHEAD</p>
+<p>FIELD: 200.09</p>
+<p>CAPTION COORDINATE: 9,8</p>
+<p>DATA COORDINATE: 9,20</p>
+<p>DATA LENGTH: 11</p>
+<p><em>TEST ACCOUNT</em>&gt;</p>
+<h3 id="summary-8">Summary</h3>
+<p>Use the PRINT^DDS direct mode utility to list the characteristics of a form.</p>
+<p><img src="./media/image3.png" alt="Caution" style="width:0.45833in;height:0.45833in" /> CONGRATULATIONS: This is the end of the first section of the hands-on tutorial! You have:</p>
+<ul>
+<li><p>Created a ScreenMan form.</p></li>
+<li><p>Linked it to a file.</p></li>
+<li><p>Added both display-only and editable fields to the form.</p></li>
+</ul>
+<p>If you want to try out some of the more advanced features of ScreenMan, continue on to the next section of this tutorial!</p>
+<h1 id="pages-multiples-and-computed-fields">Pages, Multiples, and Computed Fields</h1>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> This section continues to build on the form you designed in Section <span class="underline">2</span>.</p>
+<p>This section demonstrates some of the more typical things a developer might want to do with a form, beyond the adding of simple fields to a single page. It shows how to add pages to a form, and shows two ways of editing Multiple fields on a form. Also, it shows how to enhance the presentation of information with ScreenMan computed fields. You will do the following:</p>
+<ul>
+<li><p>Add a second page to your form.</p></li>
+<li><p>Edit a Multiple field using a repeating block.</p></li>
+<li><p>Edit a Multiple field using a popup page.</p></li>
+<li><p>Resize and reposition the popup page.</p></li>
+<li><p>Add a ScreenMan computed field, enhancing the presentation of the Multiple in the repeating block.</p></li>
+</ul>
+<h2 id="add-a-page-to-a-form">Add a Page to a Form</h2>
+<h3 id="overview-9">Overview</h3>
+<p>Forms can have more than one page. They can have many pages, each page with its own blocks. Some reasons to use more than one page in a form are:</p>
+<ul>
+<li><p>There are too many fields to fit on one page.</p></li>
+<li><p>You want to edit fields in a different file or in a Multiple.</p></li>
+<li><p>You want to display information in a “popup” page.</p></li>
+</ul>
+<h3 id="procedures">Procedures</h3>
+<h4 id="add-a-page-to-a-form-1">Add a Page to a Form</h4>
+<p>To add a page to a form, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Invoke the Form Editor, using either the menu option (see <span class="underline">Figure 2</span>) or the direct-mode utility (see Section <span class="underline">2.1.1.2.2</span>).</p>
+</blockquote></li>
+</ol>
+<p>The first thing you are asked is for what file to create a form. Since we are creating a form to edit the NEW PERSON file (#200), enter <strong>NEW PERSON</strong>.</p>
+<p>You are now asked for a form name. Entering two question marks lists current forms defined for the NEW PERSON file (#200). For this section, continue editing the form you created in Section <span class="underline">2</span>.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> From hereon in, the namespace part of a name is referred to as “Z<em>xxx</em>” in the tutorial.</p>
+<p>Once you select a name for the form, you are placed in the ScreenMan’s Form Editor.</p>
+<p>Press <strong>&lt;PF2&gt;P</strong> to add a page.</p>
+<p>Choose a unique page number for the page.</p>
+<p>In the new page’s properties, fill in a page number for both the <strong>NEXT PAGE</strong> and <strong>PREVIOUS PAGE</strong> properties. This tells ScreenMan what pages to go to when the user moves backwards or forwards from the page.</p>
+<p>Adjust the <strong>PREVIOUS PAGE</strong> and <strong>NEXT PAGE</strong> properties of other pages to make sure that the total sequence of pages is adjusted to include the new page.</p>
+<p>Add a block to the new page. Every page should have at least one block.</p>
+<h4 id="add-a-second-page-to-a-form">Add a Second Page to a Form</h4>
+<p>To add a second page to a form, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>In the Form Editor, load the Z<em>xxx</em> EDIT USER form.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;P</strong> to add a page.</p>
+</blockquote></li>
+<li><blockquote>
+<p>In a popup window, you are asked for the <strong>NEW PAGE NUMBER</strong>. In general, you should number the pages in your form sequentially, so it is easy to keep track of them. Since this is the second page in the form, enter <strong>2</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>At the “Are you adding Page 2 as a new page on this form?” prompt, enter <strong>YES</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>The Form Editor presents a “Page Properties” dialogue letting you edit the characteristics of the new page.</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Enter <strong>1</strong> for the <strong>NEXT PAGE</strong> and <strong>PREVIOUS PAGE</strong> properties.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Accept the defaults for all other properties.</p>
+</blockquote></li>
+</ol>
+<p>The page properties should match those in <span class="underline">Figure 24</span>:</p>
+<blockquote>
+<p><span id="_Ref390243512" class="anchor"></span>Figure . Sample “Page Properties” dialogue</p>
+</blockquote>
+<p>------------------------ Page Properties --------------------------------</p>
+<p>| |</p>
+<p>NA| PAGE NUMBER: <strong>2</strong> |</p>
+<p>| <span class="underline">PAGE NAME</span>: <strong>Page 2</strong> |</p>
+<p>| HEADER BLOCK: |</p>
+<p>| |</p>
+<p>| <span class="underline">PAGE COORDINATE</span>: <strong>1,1</strong> IS THIS A POP UP PAGE? |</p>
+<p>| LOWER RIGHT COORDINATE: |</p>
+<p>| NEXT PAGE: <strong>1</strong> |</p>
+<p>| PREVIOUS PAGE: <strong>1</strong> |</p>
+<p>| PARENT FIELD: |</p>
+<p>P| |</p>
+<p>| DESCRIPTION (WP): |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>-------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol start="6" type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new page.</p>
+</blockquote></li>
+<li><blockquote>
+<p>The Form Editor now displays the blank second page of the form.</p>
+</blockquote></li>
+</ol>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> Next, you will need to add a block to the page.</p>
+<h4 id="add-an-edit-block">Add an Edit Block</h4>
+<p>The new page needs at least one block.</p>
+<p>To add an edit-type block to the page, do the following<strong>:</strong></p>
+<ol type="1">
+<li><blockquote>
+<p>In the Form Editor, on Page 2, position the cursor at row 1, column 1 (top-left corner).</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF2&gt;B</strong> to add a block to the form at the cursor position (row 1, column 1).</p>
+<p>When asked to select a new block name, enter your namespace concatenated with “ <strong>MAIN 3</strong>” (e.g., ”<strong>Z<em>xxx</em> MAIN 3</strong>”).</p>
+<p>At the “Are you adding ‘Z<em>xxx</em> MAIN 3’ as a new BLOCK? No//” prompt, enter <strong>YES</strong>.</p>
+<p>At the “Are you adding ‘Z<em>xxx</em> MAIN 3’ as a new block on this page?” prompt, enter <strong>YES</strong>.</p>
+<p>You are now given a chance to enter the properties for the Z<em>xxx</em> MAIN 3 block.</p>
+<p>Verify the following entries:</p>
+<ul>
+<li><p><strong>BLOCK ORDER</strong> should be <strong>1</strong>.</p></li>
+<li><p><strong>TYPE OF BLOCK</strong> should be <strong>EDIT</strong>.</p></li>
+<li><p>Accept the other defaults.</p></li>
+</ul>
+<p>The block properties should match those shown in <span class="underline">Figure 25</span>:</p>
+<blockquote>
+<p><span id="_Ref390243361" class="anchor"></span>Figure . Sample form with added EDIT block</p>
+</blockquote>
+<p>----------------- Block Properties Stored in FORM File -------------------</p>
+<p>| |</p>
+<p>| BLOCK NAME: <strong>Z<em>xxx</em> MAIN 3</strong> <span class="underline">BLOCK ORDER</span>: <strong>1</strong> |</p>
+<p>| <span class="underline">TYPE OF BLOCK</span>: <strong>EDIT</strong> OTHER PARAMETERS... |</p>
+<p>| |</p>
+<p>| POINTER LINK: |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>|----------------- Block Properties Stored in BLOCK File ------------------|</p>
+<p>| |</p>
+<p>| NAME: <strong>Z<em>xxx</em> MAIN 3</strong> DESCRIPTION (WP): |</p>
+<p>| DD NUMBER: <strong>200</strong> DISABLE NAVIGATION: |</p>
+<p>| |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>--------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new block.</p>
+<p>Shortcuts to Move to Another Page:<br />
+<br />
+For other shortcuts besides <strong>&lt;PF1&gt;P</strong> for navigating from one page to another, see the “ScreenMan” section in the VA FileMan User Manual.</p>
+<h4 id="link-pages">Link Pages</h4>
+<p>Link the first page to the second by moving back to the first page and setting the first page’s <strong>NEXT PAGE</strong> property to <strong>2</strong>.</p>
+<p>To link the first page to the second, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;P</strong> to change pages, and enter <strong>1</strong> as the “change to” page.</p>
+</blockquote></li>
+</ol>
+<p>Once Page 1 is the current page, enter <strong>&lt;PF4&gt;P</strong> to edit the Page 1 properties.</p>
+<p>For the <strong>NEXT PAGE</strong> and <strong>PREVIOUS PAGE</strong> properties, enter <strong>2</strong> (see <span class="underline">Figure 26</span>).</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the properties for Page 1.</p>
+<p>Once you are back in the Form Editor, press <strong>&lt;PF1&gt;E</strong> to save the form and exit.</p>
+<p>Run and test the form using the Run a Form option:</p>
+<ol type="a">
+<li><blockquote>
+<p>You should have a new choice, <strong>Next Page</strong>, from Page 1 at the COMMAND prompt.</p>
+</blockquote></li>
+</ol>
+<ol start="10" type="a">
+<li><p>Choosing <strong>Next Page</strong> at the COMMAND prompt should move you to the (currently blank) second page of the form.</p></li>
+<li><p>Pressing <strong>&lt;PF1&gt;&lt;ARROWDOWN&gt;</strong> should move you to the next page.</p></li>
+<li><p>Pressing <strong>&lt;PF1&gt;&lt;ARROWUP&gt;</strong> should move you to the previous page.</p></li>
+</ol>
+<p>As a final touch, you can add two CAPTION fields at the top-right corners of the two pages:</p>
+<ul>
+<li><p>“Page 1 of 2” on the first page.</p></li>
+<li><p>“Page 2 of 2” on the second page.</p></li>
+</ul>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> For instructions on entering a caption-only field, see Section <span class="underline">2.3</span>.</p>
+<p><span id="_Ref391375884" class="anchor"></span>Figure . Sample “Page Properties” dialogue—Link pages</p>
+<p>------------------------- Page Properties -------------------------------</p>
+<p>| |</p>
+<p>NA| PAGE NUMBER: <strong>1</strong> |</p>
+<p>| <span class="underline">PAGE NAME</span>: <strong>Page 1</strong> |</p>
+<p>| HEADER BLOCK: |</p>
+<p>| |</p>
+<p>| <span class="underline">PAGE COORDINATE</span>: <strong>1,1</strong> IS THIS A POP UP PAGE? |</p>
+<p>| LOWER RIGHT COORDINATE: |</p>
+<p>| NEXT PAGE: <strong>2</strong> |</p>
+<p>| PREVIOUS PAGE: <strong>2</strong> |</p>
+<p>| PARENT FIELD: |</p>
+<p>P| |</p>
+<p>| DESCRIPTION (WP): |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>-------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<h2 id="summary-9">Summary</h2>
+<p>Forms can have multiple pages. When you add pages, your main task is to make sure that your pages all have appropriate <strong>PREVIOUS PAGE</strong> and <strong>NEXT PAGE</strong> links, so that a correct sequence of pages is available to users of your form.</p>
+<h2 id="add-a-multiple-field-in-a-repeating-block">Add a Multiple Field (in a Repeating Block)</h2>
+<h3 id="overview-10">Overview</h3>
+<p>You can provide users with the ability to edit data that is in a Multiple. The two common ways to edit Multiples on forms are:</p>
+<ul>
+<li><p>Add a repeating block that is dedicated to the Multiple.</p></li>
+<li><p>Add a popup page that is dedicated to the Multiple.</p></li>
+</ul>
+<p>In this section, you will let the user edit data in a Multiple using a repeating block. You will add the ability on the form to edit the SECONDARY MENU OPTIONS Multiple in the NEW PERSON file (#200).</p>
+<p>A repeating block presents multiple entries in a scrolling list, making it possible to display more than one entry from the Multiple to the user at the same time. The main limitation to using a repeating block is that <em>all</em> fields to be edited <em>must</em> fit on one line on the screen.</p>
+<p>The general process to set up a Multiple in a repeating block is:</p>
+<ol type="1">
+<li><blockquote>
+<p>Add a new block (of type EDIT) to a page.</p>
+</blockquote></li>
+</ol>
+<p>In the new block’s <strong>OTHER PARAMETERS</strong> section, set the <strong>REPLICATION</strong> property to the length of the list to in which to display Multiple entries.</p>
+<p>Set the <strong>DD NUMBER</strong> property of the new block to the DD number of the Multiple.</p>
+<p>Add the fields to edit in the Multiple (all in one line) to the repeating block (remove all captions).</p>
+<p>If you want to add column “heading” captions above the row of fields, you can do so, but add the captions to a different block (<em>not</em> the repeating block). The only fields that should be on the repeating block should be one line of data fields.</p>
+<p>In this section, you will add a repeating block to Page 2 of the form to edit the SECONDARY MENU OPTIONS Multiple in the NEW PERSON file (#200).</p>
+<h3 id="procedures-1">Procedures</h3>
+<h4 id="add-repeating-block">Add Repeating Block</h4>
+<p>To add a repeating block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor on the Page 2 of the form, at row 5, column 7.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF2&gt;B</strong> to add a new block to the current page.</p>
+<p>For block name, enter <strong>Z<em>xxx</em> REPEATING 1</strong>.</p>
+<p>At the “Are you adding ‘Z<em>xxx</em> REPEATING 1’ as a new BLOCK? No//” prompt, enter <strong>YES</strong>.</p>
+<p>At the “Are you adding Z<em>xxx</em> REPEATING 1 as a new block on this page?” prompt, enter <strong>YES</strong>.</p>
+<p>Enter the following data:</p>
+<ol type="a">
+<li><blockquote>
+<p><strong>BLOCK ORDER</strong> should be <strong>2</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>TYPE OF BLOCK</strong> should be <strong>EDIT</strong>.</p>
+</blockquote></li>
+</ol>
+<p>At the “OTHER PARAMETERS…” prompt, press <strong>Enter</strong>.</p>
+<p>In the “Other Block Parameter” dialogue, do the following:</p>
+<ol type="a">
+<li><blockquote>
+<p>Set <strong>REPLICATION</strong> to be <strong>4</strong>. This makes the block a repeating block and sets the number of entries to display on screen to 4.</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709605" class="anchor"></span>Figure . Adding a Repeating Block—Sample user dialogue</p>
+</blockquote>
+<p>------------ Block Properties Stored in FORM File ------------- 2</p>
+<p>| |</p>
+<p>| |</p>
+<p>| BLOCK NAME: <strong>Z<em>xxx</em> REPEATING 1</strong> <span class="underline">BLOCK ORDER</span>: <strong>2</strong> |</p>
+<p>| <span class="underline">TYPE OF</span> --------- Other Block Parameters ---------- ... |</p>
+<p>| | | |</p>
+<p>| POINTE| <span class="underline">BLOCK COORDINATE</span>: <strong>5,7</strong> | |</p>
+<p>| PRE | | |</p>
+<p>| POST | Parameters for Repeating Blocks | |</p>
+<p>| | | |</p>
+<p>|--------| REPLICATION: <strong>4</strong> |-----------|</p>
+<p>| | INDEX: | |</p>
+<p>| | INITIAL POSITION: |P): |</p>
+<p>| DD NU| DISALLOW LAYGO: |ON: |</p>
+<p>| | FIELD FOR SELECTION: | |</p>
+<p>| PRE AC| ASK ‘OK’: | |</p>
+<p>| POST AC ------------------------------------------- |</p>
+<p>----------------------------------------------------------------</p>
+<p>___________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol start="2" type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;C</strong> to close the “Other Block Parameter” dialogue.</p>
+</blockquote></li>
+</ol>
+<p>Set the <strong>DD NUMBER</strong> block property to be <strong>200.03</strong> (i.e., data dictionary number of the SECONDARY MENU OPTIONS Multiple).</p>
+<blockquote>
+<p><span id="_Toc395709606" class="anchor"></span>Figure . Sample Repeating Block properties</p>
+</blockquote>
+<p>----------------- Block Properties Stored in FORM File ------------------- 2</p>
+<p>| |</p>
+<p>| BLOCK NAME: <strong>Z<em>xxx</em> REPEATING 1</strong> <span class="underline">BLOCK ORDER</span>: <strong>2</strong> |</p>
+<p>| <span class="underline">TYPE OF BLOCK</span>: <strong>EDIT</strong> OTHER PARAMETERS... |</p>
+<p>| |</p>
+<p>| POINTER LINK: |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>|----------------- Block Properties Stored in BLOCK File ------------------|</p>
+<p>| |</p>
+<p>| NAME: <strong>Z<em>xxx</em> REPEATING 1</strong> DESCRIPTION (WP): |</p>
+<p>| DD NUMBER: <strong>200.03</strong> DISABLE NAVIGATION: |</p>
+<p>| |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>--------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> on the “Block Properties” dialogue to save the new block.</p>
+<h4 id="add-the-secondary-menu-options-.01-field">Add the SECONDARY MENU OPTIONS .01 Field</h4>
+<p>Add the fields to the repeating block that you want users to be able to edit. Remember, you can only add fields that fit on one line to a repeating block. You will add two fields on one line:</p>
+<ul>
+<li><p>.01 field</p></li>
+<li><p>SYNONYM field</p></li>
+</ul>
+<p>To add the SECONDARY MENU OPTIONS .01 field to the repeating block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor on Page 2 of the form, at row 5, column 7.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add a field at the cursor position.</p>
+<p>Add the field to the Z<em>xxx</em> REPEATING 1 block, with a field type of <strong>DATA DICTIONARY FIELD</strong>.</p>
+<blockquote>
+<p><span id="_Toc395709607" class="anchor"></span>Figure . Adding secondary menu options—Sample user dialogue</p>
+</blockquote>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: <strong>Z<em>xxx</em> REPEATING 1</strong> |</p>
+<p>| FIELD ORDER: <strong>1</strong> |</p>
+<p>| FIELD TYPE: <strong>DATA DICTIONARY FIELD</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the changes.</p>
+<p>On the “Data Dictionary Field Properties” dialogue for the new field, set the <strong>FIELD</strong> to <strong>SECONDARY MENU OPTIONS</strong> (# .01). You see that the only fields selectable are those in the SECONDARY MENU OPTIONS Multiple, because you set the block to DD NUMBER 200.03.</p>
+<p>Delete the text in the <strong>CAPTION</strong> property.</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the field properties.</p>
+<p>You should see an underlined field on the Form Editor screen, with no caption:</p>
+<blockquote>
+<p><span id="_Toc395709608" class="anchor"></span>Figure . Adding secondary menu options—Sample form</p>
+</blockquote>
+<p>Page 2 of 2</p>
+<p>______________________________</p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R5,C7</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 2 (Page 2)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<h4 id="add-the-secondary-menu-options-synonym-field">Add the SECONDARY MENU OPTIONS (SYNONYM) Field</h4>
+<p>To add the SECONDARY MENU OPTIONS (SYNONYM) field to the repeating block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor on Page 2 of the form, at row 5, column 40.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add a field at the cursor position.</p>
+<p>Add the field to the Z<em>xxx</em> REPEATING 1 block, with a field type of <strong>DATA DICTIONARY FIELD</strong>.</p>
+<p><span id="_Toc395709609" class="anchor"></span>Figure . Adding a DATA DICTIONARY field—Sample user dialogue</p>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: Z<em>xxx</em> REPEATING 1 |</p>
+<p>| FIELD ORDER: <strong>2</strong> |</p>
+<p>| FIELD TYPE: <strong>DATA DICTIONARY FIELD</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the changes.</p>
+<p>In the “Data Dictionary Field Properties” dialogue for the new field, set the <strong>FIELD</strong> to <strong>SYNONYM</strong> (#2).</p>
+<p>Delete the text in the <strong>CAPTION</strong> property.</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the field properties.</p>
+<p>You should see a second underlined field on the Form Editor screen, with no caption:</p>
+<p><span id="_Toc395709610" class="anchor"></span>Figure . Adding a DATA DICTIONARY field—Sample form</p>
+<p>Page 2 of 2</p>
+<p>______________________________ ____</p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R5,C40</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 2 (Page 2)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<h4 id="add-caption-only-field-columnar-headings-to-the-repeating-block">Add Caption-only Field Columnar Headings to the Repeating Block</h4>
+<p>Finally, add four caption-only fields just above the repeating block to provide neat columnar headings for the repeating block fields below.</p>
+<p>To add caption-only field columnar headings to the repeating block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>On Page 2, position the cursor at row 3, column 7:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Add a caption-only field to the Z<em>xxx</em> MAIN 3 block (<strong><em>not</em> the repeating block!</strong>); see Section <span class="underline">2.3</span> for instructions.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Make sure you set the <strong>FIELD TYPE</strong> to <strong>CAPTION ONLY</strong>:</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709611" class="anchor"></span>Figure . Adding a CAPTION ONLY field—Sample user dialogue</p>
+</blockquote>
+<p>----------------------------------------------</p>
+<p>| |</p>
+<p>| Select BLOCK: <strong>Z<em>xxx</em> MAIN 3</strong> |</p>
+<p>| FIELD ORDER: <strong>2</strong> |</p>
+<p>| FIELD TYPE: <strong>CAPTION ONLY</strong> |</p>
+<p>| |</p>
+<p>----------------------------------------------</p>
+<ol start="13" type="a">
+<li><p>Press <strong>&lt;PF1&gt;E</strong> to save the changes.</p></li>
+</ol>
+<p>In the “Caption-Only Field Properties” dialogue:</p>
+<ol type="a">
+<li><blockquote>
+<p>Set the CAPTION to “<strong>Secondary Menu Option</strong>”.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the changes.</p>
+</blockquote></li>
+</ol>
+<p>Position the cursor at row 3, column 40:</p>
+<ol type="a">
+<li><blockquote>
+<p>Add a caption-only field to the Z<em>xxx</em> MAIN 3 block.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Set the <strong>CAPTION</strong> to “<strong>Synonym</strong>”.</p>
+</blockquote></li>
+</ol>
+<p>Position the cursor at row 4, column 7:</p>
+<ol type="a">
+<li><blockquote>
+<p>Add a caption-only field to the Z<em>xxx</em> MAIN 3 block.</p>
+</blockquote></li>
+<li><blockquote>
+<p>At the <strong>CAPTION</strong> property, enter:</p>
+</blockquote></li>
+</ol>
+<p><strong>!DUP(“-”,30)</strong></p>
+<p>This is a shortcut way of making a caption of 30 hyphens.</p>
+<p>Position the cursor at row 4, column 40:</p>
+<ol type="a">
+<li><blockquote>
+<p>Add a caption-only field to the Z<em>xxx</em> MAIN 3 block.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Set the <strong>CAPTION</strong> to “<strong>-------</strong>”.</p>
+</blockquote></li>
+</ol>
+<p>If you do <em>not</em> get the captions to line up exactly:</p>
+<ol type="a">
+<li><blockquote>
+<p>Select the caption-only field in question.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Move cursor to the field and press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to select the field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Use the <strong>arrow keys</strong> to position the caption.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> again to de-select the field.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF1&gt;E</strong> to exit the Form Editor.</p>
+<p>Run and test the form:</p>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;&lt;ARROW DOWN&gt;</strong>, <strong>&lt;NEXT SCREEN&gt;</strong>, or <strong>&lt;PAGE DOWN&gt;</strong> to go to Page 2.</p>
+</blockquote></li>
+</ol>
+<ol start="14" type="a">
+<li><p>There are four display lines for the SECONDARY MENU OPTIONS Multiple. Below the last item in the list, try entering some options. For example:</p></li>
+</ol>
+<ul>
+<li><p>XU FINDUSER</p></li>
+<li><p>XU EPCS UTILITY FUNCTIONS</p></li>
+</ul>
+<ol start="15" type="a">
+<li><p>You can scroll up and down the list. Enter more than four options in the Multiple, so that you can see how the scrolling works.</p></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709612" class="anchor"></span>Figure . Adding a field and displaying Multiple field values—Sample form</p>
+</blockquote>
+<p>Page 2 of 2</p>
+<p>Secondary Menu Option Synonym</p>
+<p>------------------------------ -------</p>
+<p><strong>XQSMD USER MENU </strong></p>
+<p><strong>XUAR AUTOMATED ACCESS REQ MAIN AAR </strong></p>
+<p><strong>XUTM SYSTEM MONITOR </strong></p>
+<p><strong>+XU EPCS UTILITY FUNCTIONS ePCS</strong></p>
+<p>______________________________________________________________________________</p>
+<p>Exit Save Next Page Refresh</p>
+<p>Enter a command or ‘^’ followed by a caption to jump to a specific field.</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<p><strong>TIP:</strong> Caption Prompt Shortcuts:<br />
+<br />
+Other shortcuts at the caption prompt are listed in the “ScreenMan” section in the VA FileMan User Manual.</p>
+<h3 id="summary-10">Summary</h3>
+<p>You can use a repeating block to edit Multiples:</p>
+<ul>
+<li><p>Advantage—You can present a list of entries from a Multiple on your form.</p></li>
+<li><p>Disadvantage—All the fields from the Multiple that you want to display or edit <em>must</em> fit on a single line.</p></li>
+</ul>
+<h2 id="add-a-multiple-field-in-a-popup-page">Add a Multiple Field (in a Popup Page)</h2>
+<h4 id="overview-11">Overview</h4>
+<p>In Section <span class="underline">3.3</span>, you used a repeating block to let the user edit <em>one</em> line’s worth of fields from a Multiple. If you want the user to be able to edit <em>many</em> fields from a given a Multiple, you can create a popup page and set up the Multiple to be edited there.</p>
+<p>The general process to set up a Multiple to be edited in a popup page is:</p>
+<ol type="1">
+<li><blockquote>
+<p>Add the parent field of the Multiple in question (at the DD level of the form’s primary file) to your form.</p>
+</blockquote></li>
+</ol>
+<p>Add a popup page, dedicated to the DD number of the Multiple.</p>
+<p>Link the popup page back to the Multiple’s parent field through the page’s <strong>PARENT FIELD</strong> property.</p>
+<p>Add a block to the popup page.</p>
+<p>Add the desired fields from the Multiple to the popup page’s block.</p>
+<h3 id="procedures-2">Procedures</h3>
+<p>In this section, you will edit the DIVISION Multiple in a popup page:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong><span class="underline">Add the DIVISION Multiple Field</span>—</strong>Add the DIVISION field to the appropriate block on an existing page.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong><span class="underline">Add a Popup Page for the DIVISION Multiple</span>—</strong>Link that field to a popup page you will build, where you will place that Multiple’s fields.</p>
+</blockquote></li>
+</ol>
+<h4 id="add-the-division-multiple-field">Add the DIVISION Multiple Field</h4>
+<p>To add the DIVISION Multiple field to the <strong>Z<em>xxx</em> MAIN 3</strong> block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>In the Form Editor, go to Page 2 of your form:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;P</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Enter <strong>2</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Position the cursor at row 10, column 7, and press <strong>&lt;PF2&gt;F</strong> to add a field.</p>
+<p>Add the field to the block <strong>Z<em>xxx</em> MAIN 3</strong>:</p>
+<ol type="a">
+<li><blockquote>
+<p>Accept the default field order.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Make sure the field type is <strong>DATA DICTIONARY FIELD</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the changes.</p>
+</blockquote></li>
+</ol>
+<p>In the “Data Dictionary Field Properties” dialogue, do the following:</p>
+<ol type="a">
+<li><blockquote>
+<p>Set <strong>FIELD</strong> to <strong>DIVISION</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the field properties.</p>
+</blockquote></li>
+</ol>
+<p>You should now see a field for DIVISION on the Form Editor screen.</p>
+<h4 id="add-a-popup-page-for-the-division-multiple">Add a Popup Page for the DIVISION Multiple</h4>
+<p>To add a popup page for the DIVISION Multiple, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;P</strong> to add a new page.</p>
+</blockquote></li>
+<li><blockquote>
+<p>One scheme for numbering popup pages is to number them as some fraction added to the page number from which they pop up.</p>
+</blockquote></li>
+</ol>
+<p>Set the <strong>PAGE NUMBER</strong> field to <strong>2.5</strong>, since this popup page “pops up” from Page 2.</p>
+<p>Set the <strong>PAGE COORDINATE</strong> field to <strong>5,5</strong>.</p>
+<p>In the “Page Properties” dialogue, set the <strong>IS THIS A POP UP PAGE?</strong> field to <strong>YES</strong>.</p>
+<p>Set the <strong>LOWER RIGHT COORDINATE</strong> field to <strong>15,75</strong>.</p>
+<p>Fill in <strong>PARENT FIELD</strong>. The format for PARENT FIELD is:</p>
+<p>field id,block name,page name</p>
+<p>Set <strong>PARENT FIELD</strong> to “<strong>DIVISION,Z<em>xxx</em> MAIN 3,2</strong>”. This links the popup page to the DIVISION field on block Z<em>xxx</em> MAIN 3, on Page 2.</p>
+<blockquote>
+<p><span id="_Toc395709613" class="anchor"></span>Figure . Adding a popup page for the DIVISION Multiple—Sample “Page Properties” dialogue</p>
+</blockquote>
+<p>----------------------- Page Properties -------------------------------- 2</p>
+<p>| |</p>
+<p>| PAGE NUMBER: <strong>2.5</strong> |</p>
+<p>| <span class="underline">PAGE NAME</span>: <strong>Page 2.5</strong> |</p>
+<p>| HEADER BLOCK: |</p>
+<p>| |</p>
+<p>| <span class="underline">PAGE COORDINATE</span>: <strong>5,5</strong> IS THIS A POP UP PAGE? <strong>YES</strong> |</p>
+<p>| LOWER RIGHT COORDINATE: <strong>15,75</strong> |</p>
+<p>| NEXT PAGE: |</p>
+<p>| PREVIOUS PAGE: |</p>
+<p>| PARENT FIELD: <strong>DIVISION,Z<em>xxx</em> MAIN 3,2</strong> |</p>
+<p>| |</p>
+<p>| DESCRIPTION (WP): |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>-------------------------------------------------------------------------</p>
+<p>The popup page is linked to the DIVISION field entirely through the PARENT FIELD property. That is all it takes to invoke the popup page!</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new page.</p>
+<p>The Form Editor should now display a rectangular box on the screen, from row 5, column 5 to row 15, column 75.</p>
+<blockquote>
+<p><span id="_Toc395709614" class="anchor"></span>Figure . Adding a popup page for the DIVISION Multiple—Sample form</p>
+</blockquote>
+<p>---------------------------------------------------------------------</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>---------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R5,C5</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 2.5 (Page 2.5)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<h4 id="add-a-block-to-the-popup-page">Add a Block to the Popup Page</h4>
+<p>To add a block to the popup page, since every page needs a block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor at row 6, column 6 on the screen (just inside the top-left corner of the box).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;B</strong> to add a new block.</p>
+</blockquote></li>
+</ol>
+<p>For block name, enter <strong>Z<em>xxx</em> POPUP 1</strong>.</p>
+<p>At the “Are you adding ‘Z<em>xxx</em> POPUP 1’ as a new BLOCK? No//” prompt, enter <strong>YES</strong>.</p>
+<p>At the “Are you adding Z<em>xxx</em> POPUP 1 as a new block on this page?” prompt, enter <strong>YES</strong>.</p>
+<blockquote>
+<p><span id="_Toc395709615" class="anchor"></span>Figure . Adding a Block to the popup page—Sample Block properties</p>
+</blockquote>
+<p>----------------- Block Properties Stored in FORM File -------------------</p>
+<p>| |</p>
+<p>| BLOCK NAME: Z<em>xxx</em> POPUP 1 <span class="underline">BLOCK ORDER</span>: <strong>1</strong> |</p>
+<p>| <span class="underline">TYPE OF BLOCK</span>: <strong>EDIT</strong> OTHER PARAMETERS... |</p>
+<p>| |</p>
+<p>| POINTER LINK: |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>|----------------- Block Properties Stored in BLOCK File ------------------|</p>
+<p>| |</p>
+<p>| NAME: <strong>Z<em>xxx</em> POPUP 1</strong> DESCRIPTION (WP): |</p>
+<p>| DD NUMBER: <strong>200.02</strong> DISABLE NAVIGATION: |</p>
+<p>| |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>--------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<p>In the “Block Properties Stored in FORM File” dialogue:</p>
+<ol type="a">
+<li><blockquote>
+<p><strong>TYPE OF BLOCK</strong> should be <strong>EDIT</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Set the <strong>DD NUMBER</strong> to <strong>200.02</strong> (tying all fields on the block to the DIVISION Multiple).</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new block.</p>
+<h4 id="add-the-fields-for-the-division-multiple">Add the Fields for the DIVISION Multiple</h4>
+<p>Once you have created a popup page and a block on the popup page, you can add the fields for the DIVISION Multiple to the new Z<em>xxx</em> POPUP 1 block.</p>
+<ol type="1">
+<li><blockquote>
+<p>Add the following fields, in the usual manner, to the new block:</p>
+</blockquote></li>
+</ol>
+<ul>
+<li><p>“Division Information” (Caption field)</p></li>
+<li><p>DIVISION</p></li>
+<li><p>DEFAULT</p></li>
+</ul>
+<p>When you are done adding fields, the popup page should look like <span class="underline">Figure 38</span>:</p>
+<blockquote>
+<p><span id="_Ref390250285" class="anchor"></span>Figure . Adding the fields for the DIVISION Multiple—Sample form (1 of 2)</p>
+</blockquote>
+<p>---------------------------------------------------------------------</p>
+<p>| Division Information |</p>
+<p>| |</p>
+<p>| DIVISION: ______________________________ |</p>
+<p>| DEFAULT: ___ |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>---------------------------------------------------------------------</p>
+<p>Run and test the form. On Page 2, when you select a DIVISION entry and press <strong>Enter</strong>, you should be able to access the DIVISION Multiple through a popup page!</p>
+<blockquote>
+<p><span id="_Toc395709617" class="anchor"></span>Figure . Adding the fields for the DIVISION Multiple—Sample form (2 of 2)</p>
+</blockquote>
+<p>Page 2 of 2</p>
+<p>Secondary Menu Option Synonym</p>
+<p>------------------------------ -------</p>
+<p>---------------------------------------------------------------------</p>
+<p>| Division Information |</p>
+<p>| |</p>
+<p>| DIVISION: PALO ALTO |</p>
+<p>| DEFAULT: |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>| |</p>
+<p>---------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<h3 id="summary-11">Summary</h3>
+<p>To edit a Multiple when the needed fields do <em>not</em> fit on one screen line, use a popup page instead:</p>
+<ol type="1">
+<li><blockquote>
+<p>Place the top-level of the Multiple as a single field on a block.</p>
+</blockquote></li>
+</ol>
+<p>Create a popup page for the Multiple fields.</p>
+<p>Link the popup page back to the single field using the page’s <strong>PARENT FIELD</strong> property.</p>
+<h2 id="reposition-and-resize-the-popup-page">Reposition and Resize the Popup Page</h2>
+<h3 id="overview-12">Overview</h3>
+<p>The Form Editor provides ways to visually resize and reposition popup pages. In this section, you will reposition and resize the popup page you created in Section <span class="underline">3.4</span> for the DIVISION Multiple.</p>
+<h3 id="procedures-3">Procedures</h3>
+<h4 id="reposition-popup-page">Reposition Popup Page</h4>
+<p>To reposition the popup page, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Move to Page 2 of the form:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Press<strong>&lt;PF1&gt;P</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Choose Page <strong>2</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Move to Page <strong>2.5</strong> of the form:</p>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;P</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Choose Page <strong>2.5</strong>.</p>
+</blockquote></li>
+</ol>
+<p>The popup page should now be displayed, superimposed over Page 2.</p>
+<p>You can use the &lt;<strong>TAB&gt;</strong> key to move the cursor to each screen element on Page 2.5. Press <strong>TAB</strong> repeatedly until the cursor is positioned on the top-left corner of the popup page.</p>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to select the popup page.</p>
+</blockquote></li>
+</ol>
+<ol start="16" type="a">
+<li><p>The four corners of the popup page should be highlighted:</p></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709618" class="anchor"></span>Figure . Repositioning the popup page—Selecting the popup window</p>
+</blockquote>
+<p>Page 2 of 2</p>
+<p>Secondary Menu Option Synonym</p>
+<p>------------------------------ -------</p>
+<p><strong></strong><strong></strong></p>
+<p> Division Information </p>
+<p> </p>
+<p> DIVISION: ______________________________ </p>
+<p> DEFAULT: ___ </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong></strong><strong></strong></p>
+<p>__________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R5,C5</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 2.5 (Page 2.5)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<p>Experiment with moving the cursor up, down, left, and right. The corners will position accordingly, this time representing the new position of the popup window.</p>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> again to de-select the popup page, at which time it is repositioned to fit where you moved the page corners.</p>
+<h4 id="resize-the-popup-page">Resize the Popup Page</h4>
+<p>To resize the popup page, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>With the popup page still displayed, press the <strong>&lt;TAB&gt;</strong> key until the cursor is positioned at the lower-right corner of the popup page. Selecting a popup page when the cursor is at the lower-right corner lets you resize the page.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to select the popup page.</p>
+<p>The four corners of the page should be highlighted.</p>
+<p>Experiment with moving the cursor up, down, left, and right. The corners will position accordingly, representing the new size of the window.</p>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to de-select the popup page, at which time it is resized to fit where you moved the page corners.</p>
+<blockquote>
+<p><span id="_Toc395709619" class="anchor"></span>Figure . Sample resize of the popup page</p>
+</blockquote>
+<p>Page 2 of 2</p>
+<p>Secondary Menu Option Synonym</p>
+<p>------------------------------ -------</p>
+<p><strong></strong><strong></strong></p>
+<p> Division Information </p>
+<p> </p>
+<p> DIVISION: ______________________________ </p>
+<p> DEFAULT: ___ </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong></strong> <strong></strong></p>
+<p>______________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) R15,C77</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 2.5 (Page 2.5)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<h3 id="summary-12">Summary</h3>
+<p>You can visually resize and reposition popup pages by selecting them, and pressing the <strong>arrow keys</strong> to resize and reposition the page.</p>
+<h2 id="add-a-screenman-computed-field">Add a ScreenMan Computed Field</h2>
+<h3 id="overview-13">Overview</h3>
+<p>A ScreenMan computed field exists only on a form; it is <em>not</em> a data dictionary field. A computed field can be useful to display information that is computed “on-the-fly”.</p>
+<p>The value of a ScreenMan computed field is determined by an M expression that sets the variable Y. In the M code (in the field’s COMPUTED EXPRESSION property), you can:</p>
+<ul>
+<li><p>Refer to values of other fields on the current block, by using the other field name in braces. For example:</p></li>
+</ul>
+<p>{SECONDARY MENU OPTIONS}.</p>
+<ul>
+<li><p>Use navigational syntax when referring to fields as well. For example:</p></li>
+</ul>
+<p>{SECONDARY MENU OPTIONS:MENU TEXT}.</p>
+<h3 id="procedure-9">Procedure</h3>
+<p>In this section, you will add a computed field to the form to provide a user-friendly description for the list of secondary menu options you added in a previous lesson. The computed field uses navigational syntax to retrieve and display the MENU TEXT field value (from the OPTION file [#19]) based on the value of the SECONDARY MENU OPTIONS field.</p>
+<p>To add the computed field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Return to Page 2 of the form:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;P</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Choose Page <strong>2</strong>.</p>
+</blockquote></li>
+</ol>
+<p>On Page 2 of the form, position the cursor at row 5, column 50.</p>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add a field at the cursor position.</p>
+<p>Place the new field on block Z<em>xxx</em> REPEATING 1:</p>
+<ul>
+<li><p><strong>FIELD ORDER</strong> should be <strong>3.</strong></p></li>
+<li><p><strong>FIELD TYPE</strong> should be <strong>COMPUTED</strong>.</p></li>
+</ul>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the changes.</p>
+<p>In the “Computed Field Properties” dialogue, set the COMPUTED EXPRESSION to be:</p>
+<p><strong>S Y={SECONDARY MENU OPTIONS:MENU TEXT}</strong></p>
+<p>This expression uses the SECONDARY MENU OPTIONS field, which is on the same block as the computed field. It also uses navigational syntax to retrieve the value of the MENU TEXT field, which is in the OPTION file (#19) and is linked via the SECONDARY MENU OPTIONS pointer field.</p>
+<blockquote>
+<p><span id="_Toc395709620" class="anchor"></span>Figure . Adding a ScreenMan Computed field—Sample “Computed Field Properties” dialogue</p>
+</blockquote>
+<p>----------------------- Computed Field Properties ----------------------- 2</p>
+<p>| |</p>
+<p>| FIELD ORDER: 3 |</p>
+<p>| OTHER PARAMETERS... SUPPRESS COLON AFTER CAPTION? |</p>
+<p>| UNIQUE NAME: |</p>
+<p>| |</p>
+<p>| CAPTION: |</p>
+<p>| EXECUTABLE CAPTION: |</p>
+<p>| |</p>
+<p>| <span class="underline">COMPUTED EXPRESSION</span>: <strong>S Y={SECONDARY MENU OPTIONS:MENU TEXT}</strong> |</p>
+<p>| |</p>
+<p>-------------------------------------------------------------------------</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> in the “Computed Field Properties” dialogue to save the new field.</p>
+<p>You should see a third underlined field on the Form Editor screen on row 5, with a length of 1.</p>
+<p>Resize the field. To set the size of the new field, do the following:</p>
+<ol type="a">
+<li><blockquote>
+<p>With the cursor positioned at the new field (its length is only 1), press <strong>PF3</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>The field should now be highlighted. Also, the R,C row/column indicator in the lower-right corner of the screen changes to L=1 (now indicating length of the field is 1).</p>
+</blockquote></li>
+<li><blockquote>
+<p>With the field highlighted, use the <strong>right-arrow</strong> key to expand the size of the field until its length is <strong>25</strong> (L=25 in indicator).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>PF3</strong> again to “un-highlight” the field.</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709621" class="anchor"></span>Figure . Adding a ScreenMan Computed field—Sample form</p>
+</blockquote>
+<p>Page 2 of 2</p>
+<p>Secondary Menu Option Synonym</p>
+<p>------------------------------ -------</p>
+<p>______________________________ ____ <strong>_________________________</strong></p>
+<p>Select DIVISION: ______________________________</p>
+<p>___________________________________________________________________________</p>
+<p>File: NEW PERSON (#200) L=25</p>
+<p>Form: Z<em>xxx</em> EDIT</p>
+<p>Page: 2 (Page 2)</p>
+<p><strong>&lt;PF1&gt;Q=Quit &lt;PF1&gt;E=Exit &lt;PF1&gt;S=Save &lt;PF1&gt;V=Block Viewer &lt;PF1&gt;H=Help</strong></p>
+<p>Add caption-only fields. To add two more caption-only fields above the repeating block to add headers for the new MENU TEXT field, do the following:</p>
+<ol type="a">
+<li><blockquote>
+<p>Position the cursor on row 3, column 50.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add a caption-only field to block <strong>Z<em>xxx</em> MAIN 3</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Make the caption “<strong>Menu Text</strong>”.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Position the cursor on row 4, column 50.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Add another caption-only field with the caption set to:</p>
+</blockquote></li>
+</ol>
+<p><strong>!DUP(“-”,25)</strong></p>
+<p>Run and test the form. Notice that the menu text for each secondary option, retrieved by the computed field from the OPTION file (#19), is displayed.</p>
+<blockquote>
+<p><span id="_Toc395709622" class="anchor"></span>Figure . Adding a ScreenMan Computed field—Sample form</p>
+</blockquote>
+<p>Page 2 of 2</p>
+<p>Secondary Menu Option Synonym Menu Text</p>
+<p>------------------------------ ------- -------------------------</p>
+<p><strong>XQSMD USER MENU</strong> <strong>Delegate's Menu Managemen</strong></p>
+<p><strong>XU FINDUSER</strong> <strong>XUF</strong> <strong>Find a user </strong></p>
+<p><strong>XUAR AUTOMATED ACCESS REQ MAIN</strong> <strong>AAR</strong> <strong>Automated Access Request </strong></p>
+<p>+<strong>XUTM SYSTEM MONITOR</strong> <strong>KERNEL System Monitor RPC</strong></p>
+<p>Select DIVISION: PALO ALTO</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<h3 id="summary-13">Summary</h3>
+<p>Computed fields provide a way to display “on-the-fly” computed information to the user. Computed fields can be totally standalone, or can be based on the values of other fields on the same block.</p>
+<p><img src="./media/image3.png" alt="Caution" style="width:0.45833in;height:0.45833in" /> CONGRATULATIONS: This is the end of the second section of the hands-on tutorial! You have explored some of the advanced capabilities of ScreenMan forms, including:</p>
+<ul>
+<li><p>Adding pages to a form.</p></li>
+<li><p>Editing Multiples.</p></li>
+<li><p>Working with computed fields.</p></li>
+</ul>
+<p>If you want to try out some more of the advanced features of ScreenMan, continue on to the next (and last) section of this tutorial!</p>
+<h1 id="advanced-features-for-forms">Advanced Features for Forms</h1>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> This section continues to build on the form you designed in Section <span class="underline">3</span>.</p>
+<p>This section demonstrates some of finishing touches you can use to fine-tune your forms. It shows how to edit fields in another file, how to use branching logic, and how to use form-only fields to read user input. It also shows how to make a Kernel option out of your form. You will do the following:</p>
+<ul>
+<li><p>Edit fields in another file, using pointer navigation to reach the other file.</p></li>
+<li><p>Add branching logic for fields.</p></li>
+<li><p>Use ScreenMan Form-only fields for user input.</p></li>
+<li><p>Create a Kernel option to make the form accessible to users.</p></li>
+</ul>
+<h2 id="edit-fields-in-other-files">Edit Fields in Other Files</h2>
+<h3 id="overview-14">Overview</h3>
+<p>When you create a form, you tie the form to a particular file. For example, the form you have been building is tied to the NEW PERSON file (#200).</p>
+<p>You can edit fields in another file on your form, however. The easiest way is if there is a pointer field from the form’s primary file to the file you want to edit fields in. In this case:</p>
+<ol type="1">
+<li><blockquote>
+<p>Your form’s primary file already has a forward pointer field to the other file.</p>
+</blockquote></li>
+<li><blockquote>
+<p>You need to add a new block (a block can only hold fields from one DD level).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Tie the new block, through its <strong>POINTER LINK</strong> property, to the field that is the forward pointer in the primary file. The pointer link is the expression that describes the relational jump.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Tie the new block, through its <strong>DD NUMBER</strong> property, to the data dictionary number of the other file.</p>
+</blockquote></li>
+<li><blockquote>
+<p>To edit fields in the other file, add them to the block that is tied to the DD number of the other file.</p>
+</blockquote></li>
+</ol>
+<p>There are other types of relational navigation that can establish the link between files also:</p>
+<ul>
+<li><p>Backward pointers</p></li>
+<li><p>Lookups</p></li>
+</ul>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> For more information on using other types of relational navigation in ScreenMan forms, see the “Relational Navigation” section in the <em>VA FileMan Advanced User Manual</em>.</p>
+<h3 id="procedures-4">Procedures</h3>
+<p>In this section you will:</p>
+<ol type="1">
+<li><blockquote>
+<p>Add the SERVICE/SECTION pointer field to the form; it points from the NEW PERSON file (#200) to the SERVICE/SECTION file (#49).</p>
+</blockquote></li>
+</ol>
+<p>Use that forward pointer field to navigate to the SERVICE/SECTION file (#49). This lets the form users edit the entry in the SERVICE/SECTION file (#49) being pointed to by the entry they are editing in the NEW PERSON file (#200).</p>
+<h4 id="add-the-servicesection-field">Add the SERVICE/SECTION Field</h4>
+<p>To add the SERVICE/SECTION field to Page 2 of the form, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Invoke the Form Editor, using either the menu option (see <span class="underline">Figure 2</span>) or the direct-mode utility (see Section <span class="underline">2.1.1.2.2</span>).</p>
+</blockquote></li>
+</ol>
+<p>The first thing you are asked is for what file to create a form. Since we are creating a form to edit the NEW PERSON file (#200), enter <strong>NEW PERSON</strong>.</p>
+<p>You are now asked for a form name. Entering two question marks lists current forms defined for the NEW PERSON file (#200). For this section, continue editing the form you created in Section <span class="underline">3</span>.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> From hereon in, the namespace part of a name is referred to as “Z<em>xxx</em>” in the tutorial.</p>
+<p>Once you select a name for the form, you are placed in the ScreenMan’s Form Editor.</p>
+<p>On Page 2 of the form:</p>
+<ol type="a">
+<li><blockquote>
+<p>Position the cursor at row 14, column 18.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add a new field at the cursor position.</p>
+</blockquote></li>
+</ol>
+<p>When the Form Editor asks for block, make sure you choose <strong>Z<em>xxx</em> MAIN 3</strong>:</p>
+<ol type="a">
+<li><blockquote>
+<p>Accept the default <strong>FIELD ORDER</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Make sure the <strong>FIELD TYPE</strong> is <strong>DATA DICTIONARY FIELD</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save and exit this dialogue.</p>
+<p>When you reach the “Data Dictionary Field Properties“ dialogue, set <strong>FIELD</strong> to <strong>SERVICE/SECTION</strong>.</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new field.</p>
+<h4 id="add-a-block-to-edit-fields">Add a Block to Edit Fields</h4>
+<p>You can add a block to the form to edit fields in the SERVICE/SECTION file (#49). This allows users to edit several fields in the SERVICE/SECTION file (#49) for whichever entry they have selected as their current SERVICE/SECTION.</p>
+<p>To add a block to edit fields in the SERVICE/SECTION file (#49), do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>On Page 2 of the form:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Position the cursor at row 12, column 7.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;B</strong> to add a new block at the cursor position.</p>
+</blockquote></li>
+</ol>
+<ol start="2" type="1">
+<li><blockquote>
+<p>Enter <strong>Z<em>xxx</em> POINTER 1</strong> as the new block name.</p>
+</blockquote></li>
+<li><blockquote>
+<p>At the “Are you adding 'Z<em>xxx</em> POINTER 1' as a new BLOCK? No//” prompt, enter <strong>YES</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>At the “Are you adding Z<em>xxx</em> POINTER 1 as a new block on this page?” prompt, enter <strong>YES</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>In the “Block Properties Stored in FORM File” dialogue, the <strong>TYPE OF BLOCK</strong> should be <strong>EDIT</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>In the <strong>POINTER LINK</strong> field, enter <strong>SERVICE/SECTION</strong>. This is the navigational syntax needed to read fields in the SERVICE/SECTION file (#49) from the NEW PERSON file (#200).</p>
+</blockquote></li>
+<li><blockquote>
+<p>In the <strong>DD NUMBER</strong> field, enter <strong>49</strong>. This is the DD number of the SERVICE/SECTION file (#49). This means that only SERVICE/SECTION file (#49) fields can be added as data dictionary fields to this block.</p>
+</blockquote></li>
+<li><blockquote>
+<p>The block properties should look like <span class="underline">Figure 45</span>:</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Ref390251073" class="anchor"></span>Figure . Adding a Block to Edit Fields—Sample Block properties</p>
+</blockquote>
+<p>----------------- Block Properties Stored in FORM File ------------------- 2</p>
+<p>| |</p>
+<p>| BLOCK NAME: <strong>Z<em>xxx</em> POINTER 1</strong> <span class="underline">BLOCK ORDER</span>: <strong>3</strong> |</p>
+<p>| <span class="underline">TYPE OF BLOCK</span>: <strong>EDIT</strong> OTHER PARAMETERS... |</p>
+<p>| |</p>
+<p>| POINTER LINK: <strong>SERVICE/SECTION</strong> |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| |</p>
+<p>|----------------- Block Properties Stored in BLOCK File ------------------|</p>
+<p>| |</p>
+<p>| NAME: <strong>Z<em>xxx</em> POINTER 1</strong> DESCRIPTION (WP): |</p>
+<p>| DD NUMBER: <strong>49</strong> DISABLE NAVIGATION: |</p>
+<p>| |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>--------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol start="9" type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new block.</p>
+</blockquote></li>
+</ol>
+<h4 id="add-data-dictionary-fields-1">Add Data Dictionary Fields</h4>
+<p>Once you have created the new block, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Add fields to the block (<strong>Z<em>xxx</em> POINTER 1</strong>) in the usual manner.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Position them below the SERVICE/SECTION field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Add the following three Data Dictionary fields from the SERVICE/SECTION file (#49) to the new block (<strong>Z<em>xxx</em> POINTER 1</strong>):</p>
+</blockquote></li>
+</ol>
+<ul>
+<li><p>MAIL SYMBOL (use a caption of “SERVICE MAIL SYMBOL”).</p></li>
+<li><p>CHIEF (use a caption of “SERVICE CHIEF”).</p></li>
+<li><p>ASST CHIEF (use a caption of “SERVICE ASST CHIEF”).</p></li>
+</ul>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> To prevent the user from deleting or changing the name of the SERVICE/SECTION entry being edited, you are <em>not</em> letting users edit the .01 field.</p>
+<p>Add caption fields above the four SERVICE/SECTION fields, with the heading “Service Information”.</p>
+<p>Run and test the form. You should now be able to edit fields in the SERVICE/SECTION; this is accomplished by navigating from the NEW PERSON file (#200) via the SERVICE/SECTION field!</p>
+<p><span id="_Toc395709624" class="anchor"></span>Figure . Adding Data Dictionary fields—Sample form</p>
+<p>Page 2 of 2</p>
+<p>Secondary Menu Option Synonym Menu Text</p>
+<p>------------------------------ ------- -------------------------</p>
+<p><strong>XQSMD USER MENU</strong> <strong>Delegate's Menu Managemen</strong></p>
+<p><strong>XU FINDUSER</strong> <strong>XUF</strong> <strong>Find a user </strong></p>
+<p><strong>XUAR AUTOMATED ACCESS REQ MAIN</strong> <strong>AAR</strong> <strong>Automated Access Request </strong></p>
+<p>+<strong>XUTM SYSTEM MONITOR</strong> <strong>KERNEL System Monitor RPC</strong></p>
+<p>Select DIVISION: <strong>PALO ALTO </strong></p>
+<p>Service Information</p>
+<p>-------------------</p>
+<p>SERVICE/SECTION: <strong>VHIT Field Office </strong></p>
+<p>SERVICE MAIL SYMBOL: <strong>IRM </strong></p>
+<p>SERVICE CHIEF: <strong>FMUSER,ONE </strong></p>
+<p>SERVICE ASST CHIEF: <strong>FMUSER,TWO </strong></p>
+<p>_______________________________________________________________________________</p>
+<p>Exit Save Next Page Refresh</p>
+<p>Enter a command or '^' followed by a caption to jump to a specific field.</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<h3 id="summary-14">Summary</h3>
+<p>You can use ScreenMan to edit the fields in any associated entry from another file. Fields from another file <em>must</em> be placed on their own block, and the navigational link to the block is described through the block’s <strong>POINTER LINK</strong> property.</p>
+<h2 id="add-branching-logic-for-fields">Add Branching Logic for Fields</h2>
+<h3 id="overview-15">Overview</h3>
+<p>You can automatically branch the user from one field on the form to another by setting the DDSBR variable in the <strong>BRANCHING LOGIC</strong> field property. The BRANCHING LOGIC is executed when the user presses <strong>Enter</strong> at the field.</p>
+<p>The following variables are defined for any code executed from a field’s <strong>BRANCHING LOGIC</strong> property (and other properties that accept M code):</p>
+<p><span id="_Toc395709633" class="anchor"></span>Table . BRANCHING LOGIC property Variables</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X</td>
+<td>Current internal value of the field.</td>
+</tr>
+<tr class="even">
+<td>DDSEXT</td>
+<td>Current external value of the field.</td>
+</tr>
+<tr class="odd">
+<td>DDSOLD</td>
+<td>Previous internal value of the field.</td>
+</tr>
+</tbody>
+</table>
+<p>To jump to another field on the form, you can set the DDSBR variable in the original field’s BRANCHING LOGIC field. You should set the DDSBR variable in the following format:</p>
+<p>Field ID^Block ID^Page ID</p>
+<p>Where:</p>
+<p><span id="_Toc395709634" class="anchor"></span>Table . DDSBR Variable Format Pieces</p>
+<table>
+<thead>
+<tr class="header">
+<th>Piece</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Field ID</td>
+<td>Caption of field, Unique Name of field, or Field Order number of field to jump to.</td>
+</tr>
+<tr class="even">
+<td>Block ID</td>
+<td>Block Order number or Block Name to jump to.</td>
+</tr>
+<tr class="odd">
+<td>Page ID</td>
+<td>Page Number or Page Name to jump to.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="procedure-10">Procedure</h3>
+<p>In this example, you will add branching logic to the OFFICE PHONE field, which is on page 1 of the form. You set up the branching logic so that if there is a defined value for OFFICE PHONE, the user goes directly to the SERVICE/SECTION fields on Page 2 of the form. If there is <em>not</em> a defined value, the user stays on Page 1.</p>
+<h4 id="add-branching-logic">Add Branching Logic</h4>
+<p>To add branching logic to the OFFICE PHONE field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Go to Page 1 of the form:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;P</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Choose Page <strong>1</strong>.</p>
+</blockquote></li>
+</ol>
+<ol start="2" type="1">
+<li><blockquote>
+<p>Move the cursor to the OFFICE PHONE field caption, and select it.</p>
+</blockquote></li>
+<li><blockquote>
+<p>With the OFFICE PHONE selected, press <strong>PF4</strong> to edit its field properties. In the <strong>BRANCHING LOGIC</strong> field property, enter:</p>
+</blockquote></li>
+</ol>
+<p>S:$L(X) DDSBR=“SERVICE/SECTION^Z<em>xxx</em> MAIN 3^PAGE 2”</p>
+<p>This code conditionally branches to the field with the “SERVICE/SECTION” caption, on block <strong>Z<em>xxx</em> MAIN 3</strong>, on Page 2 of the form, provided that there is a defined value for the OFFICE PHONE field.</p>
+<p><span id="_Toc395709625" class="anchor"></span>Figure . Adding branching logic—Sample user dialogue</p>
+<p>-------------------- Data Dictionary Field Properties --------------------- 2</p>
+<p>| |</p>
+<p>| FIELD ORDER: <strong>4</strong> <span class="underline">FIELD</span>: <strong>.132</strong> |</p>
+<p>| OTHER PARAMETERS... SUPPRESS COLON AFTER CAPTION? <strong>NO</strong> |</p>
+<p>| UNIQUE NAME: |</p>
+<p>| |</p>
+<p>| CAPTION: <strong>OFFICE PHONE</strong> |</p>
+<p>| DEFAULT: |</p>
+<p>| EXECUTABLE CAPTION: |</p>
+<p>| EXECUTABLE DEFAULT: |</p>
+<p>| |</p>
+<p>| BRANCHING LOGIC: <strong>S:$L(X) DDSBR="SERVICE/SECTION^Zxxx MAIN 3^PAGE 2"</strong> |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| POST ACTION ON CHANGE: |</p>
+<p>---------------------------------------------------------------------------</p>
+<p>______________________________________________________________________________</p>
+<p>COMMAND: Press &lt;PF1&gt;H for help Insert</p>
+<ol start="4" type="1">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the changed field properties.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the form and exit.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Run and test the form:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Enter a value for OFFICE PHONE. You should branch immediately to the SERVICE/SECTION fields on Page 2 of the form.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Go back and delete the value for OFFICE PHONE. In this case, the branching logic should leave you where you are, on Page 1 of the form.</p>
+</blockquote></li>
+</ol>
+<p><strong>TIP: Other Properties Where You Can Set DDSBR:</strong><br />
+<br />
+You can also set the DDSBR variable at the field level properties PRE ACTION, POST ACTION, and POST ACTION ON CHANGE, as well as at the form level property DATA VALIDATION. You can set the DDSSTACK variable only at the field level <strong>BRANCHING LOGIC</strong> property, however.</p>
+<p><strong>TIP: Using DDSSTACK to “Stack” Another Form Location:</strong><br />
+<br />
+Rather than simply “going” to another location on the form using the DDSBR variable, you can “stack” another location of the form using the DDSSTACK variable. The difference with the DDSSTACK variable is that when a user jumps to another location, does their work, and closes the jumped to page, they are returned to the original page. DDSBR, on the other hand, acts similarly to the M <strong>GOTO</strong> command; the user is not returned to their original location after a jump.</p>
+<h3 id="summary-15">Summary</h3>
+<p>You can use branching logic to conditionally branch from one location on a form to another location on the form; even if the locations are on different pages.</p>
+<h2 id="use-form-only-fields-for-user-input">Use Form-Only Fields for User Input</h2>
+<h3 id="overview-16">Overview</h3>
+<p>ScreenMan provides Form-Only fields as a way to read user input without tying that input to a dictionary field. They act similarly to the VA FileMan ^DIR reader call, allowing you to read data as a VA FileMan data type (e.g., Free Text, Yes/No, Numeric, etc.)</p>
+<p>To use form only fields, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Create a field and set the field type to <strong>FORM ONLY</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>In the field’s properties, under FORM ONLY FIELD PARAMETERS, set the field’s <strong>READ TYPE</strong> property to reflect the type of read you want to do.</p>
+</blockquote></li>
+<li><blockquote>
+<p>To retrieve the value of the field in M code, you can refer to the regular variables for a field:</p>
+</blockquote></li>
+</ol>
+<ul>
+<li><p>X (current internal value)</p></li>
+<li><p>DDSEXT (current external value)</p></li>
+<li><p>DDSOLD (previous internal value)</p></li>
+</ul>
+<h3 id="procedure-11">Procedure</h3>
+<p>Add a form-only field to Page 1 of the form, asking the user whether they want to jump to page 2 of the form or <em>not</em>. If they answer <strong>YES</strong>, you use the DDSBR variable to branch them to Page 2 of the form.</p>
+<p>To add a form-only field, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Go to Page 1 of the form:</p>
+</blockquote></li>
+</ol>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;P</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Choose Page <strong>1</strong>.</p>
+</blockquote></li>
+</ol>
+<p>Move the cursor to row 16, column 8:</p>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>&lt;PF2&gt;F</strong> to add a field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Add the field to the <strong>Z<em>xxx</em> MAIN 2</strong> block.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Choose <strong>FORM ONLY</strong> as the <strong>FIELD TYPE</strong>.</p>
+</blockquote></li>
+</ol>
+<p>In the “Form Only Field Properties” dialogue:</p>
+<ol type="a">
+<li><blockquote>
+<p>Press <strong>Enter</strong> at the <strong>FORM ONLY FIELD PARAMETERS…</strong> field.</p>
+</blockquote></li>
+<li><blockquote>
+<p>In the “Other Form Only Field Properties” dialogue, set the <strong>READ TYPE</strong> field to “<strong>YES OR NO</strong>”. This makes the field read a <strong>YES</strong> or <strong>NO</strong> response from the user.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new field parameters.</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p><span id="_Toc395709626" class="anchor"></span>Figure . Adding form only parameters READ TYPE—Sample user dialogue</p>
+</blockquote>
+<p>--------------------- Form Only Field Properties ---------------------- 2</p>
+<p>| |</p>
+<p>| ------------------ Other Form Only Field Parameters --------------- |</p>
+<p>| | | |</p>
+<p>| | <span class="underline">READ TYPE</span>: <strong>YES OR NO</strong> | |</p>
+<p>| | PARAMETERS: | |</p>
+<p>| | QUALIFIERS: | |</p>
+<p>| | | |</p>
+<p>| | HELP (WP): | |</p>
+<p>| | | |</p>
+<p>| | INPUT TRANSFORM: | |</p>
+<p>| | SCREEN: | |</p>
+<p>| | SAVE CODE: | |</p>
+<p>| | | |</p>
+<p>| ------------------------------------------------------------------- |</p>
+<p>-----------------------------------------------------------------------</p>
+<p>Back on the “Form Only Field Properties” dialogue, set the <strong>CAPTION</strong> property to “<strong>Go to Page 2</strong>”.</p>
+<p>Add branching logic in the <strong>BRANCHING LOGIC</strong> property as follows:</p>
+<p><strong>S:+X DDSBR=“^^Page 2”</strong></p>
+<p>This branches to Page 2, if X (the value of the form-only field in internal format) is positive (if the user answered <strong>YES</strong> at the field).</p>
+<blockquote>
+<p><span id="_Toc395709627" class="anchor"></span>Figure . Adding caption and branching logic—Sample user dialogue</p>
+</blockquote>
+<p>----------------------- Form Only Field Properties ------------------------ 2</p>
+<p>| |</p>
+<p>| FIELD ORDER: <strong>10</strong> FORM ONLY FIELD PARAMETERS... |</p>
+<p>| OTHER PARAMETERS... SUPPRESS COLON AFTER CAPTION? |</p>
+<p>| UNIQUE NAME: |</p>
+<p>| |</p>
+<p>| CAPTION: <strong>Go to Page 2</strong> |</p>
+<p>| DEFAULT: |</p>
+<p>| EXECUTABLE CAPTION: |</p>
+<p>| EXECUTABLE DEFAULT: |</p>
+<p>| |</p>
+<p>| BRANCHING LOGIC: <strong>S:+X DDSBR="^^Page 2"</strong> |</p>
+<p>| PRE ACTION: |</p>
+<p>| POST ACTION: |</p>
+<p>| POST ACTION ON CHANGE: |</p>
+<p>---------------------------------------------------------------------------</p>
+<p>Press <strong>&lt;PF1&gt;E</strong> to save the new field properties.</p>
+<p>Exit the Form Editor.</p>
+<p>Run and test the form:</p>
+<ol type="a">
+<li><blockquote>
+<p>If you answer <strong>YES</strong> in the new form-only field, you should jump to Page 2 of the form.</p>
+</blockquote></li>
+<li><blockquote>
+<p>If you answer <strong>NO</strong>, you should stay on the current page.</p>
+</blockquote></li>
+</ol>
+<h3 id="summary-16">Summary</h3>
+<p>You can use form-only fields to read a variety of input from the user, <em>without</em> that input having to be tied to a data dictionary field.</p>
+<h2 id="turn-your-screenman-form-into-an-option">Turn Your ScreenMan Form into an Option</h2>
+<h3 id="overview-17">Overview</h3>
+<p>Until now, you have been running your form using ScreenMan’s Run a Form option. However, end-users would need your form set up as an option. This section shows you how to turn the form into an option in the menu system.</p>
+<p>The two most typical ways to set up an option for a ScreenMan form are:</p>
+<ul>
+<li><p>Create a Run Routine-type option, and a routine to run.</p></li>
+<li><p>Create a ScreenMan-type option.</p></li>
+</ul>
+<p>In either case (Run Routine or ScreenMan-type option), your option needs to:</p>
+<ol type="1">
+<li><blockquote>
+<p>Determine the record number of the NEW PERSON file (#200) entry to edit.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Call ScreenMan and load the form once the record number is known (^DDS entry point).</p>
+</blockquote></li>
+</ol>
+<h3 id="procedures-5">Procedures</h3>
+<h4 id="create-a-run-routine-type-option">Create a Run-Routine-Type Option</h4>
+<p>To create a Run Routine-type option, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Create a routine that determines the record number to edit (use the ^DIC entry point).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Invoke ScreenMan (^DDS entry point) to edit the record.</p>
+</blockquote></li>
+</ol>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> For more information on these entry points, see the <em>VA FileMan Developer’s Guide</em>.</p>
+<p><span class="underline">Table 5</span> lists the input variables you need for the ^DDS entry point:</p>
+<blockquote>
+<p><span id="_Ref390252840" class="anchor"></span>Table . ^DDS Entry Point—Input Variables</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th>Input Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>DDSFILE</strong></td>
+<td>The number or global root of the primary file of the form.</td>
+</tr>
+<tr class="even">
+<td><strong>DR</strong></td>
+<td>The name of the form, enclosed in square brackets (<strong>[ ]</strong>).</td>
+</tr>
+<tr class="odd">
+<td><strong>DA</strong></td>
+<td>The record number of the file entry to display or edit.</td>
+</tr>
+<tr class="even">
+<td><strong>DDSPAGE</strong></td>
+<td>(Optional) The page number of the first page to display to the user. If DDSPAGE is <em>not</em> defined, there <em>must</em> be a page number = 1 in the form.</td>
+</tr>
+<tr class="odd">
+<td><strong>DDSPARM</strong></td>
+<td>(Optional) Flags controlling return values from ScreenMan.</td>
+</tr>
+</tbody>
+</table>
+<p>Clone the routine in <span class="underline">Figure 50</span> in your namespace. This routine does the following:</p>
+<ul>
+<li><p>Determines the record number of the NEW PERSON file (#200) entry to edit.</p></li>
+<li><p>Calls ^DDS.</p></li>
+</ul>
+<blockquote>
+<p><span id="_Ref390252918" class="anchor"></span>Figure . Sample routine that determines the record number of the NEW PERSON file (#200) and Calls ^DDS</p>
+</blockquote>
+<p>ZYXWED1 ;isc-sf/fm routine for ScreenMan Tutorial ;5-June-96</p>
+<p>;;1.0;;</p>
+<p>EN ;</p>
+<p>N DIC</p>
+<p>S DIC=“^VA(200,”,DIC(0)=“AEMQ” D ^DIC</p>
+<p>D:Y&gt;0</p>
+<p>.N DIC,DIE,DR,DA,DDSPARM,DDSFILE,DDSPAGE</p>
+<p>.S DA=+Y,DDSFILE=200,DR=“[ZYXW EDIT]”,DDSPAGE=1</p>
+<p>.D ^DDS</p>
+<p>Create a “Run Routine”-type option that calls EN^Z<em>xxx</em>ED1 as the routine to run.</p>
+<p>Run the option.</p>
+<p>You should now have a Menu Manager option that runs your form!</p>
+<h4 id="create-a-screenman-type-option">Create a ScreenMan-Type Option</h4>
+<p>You can quickly set up a ScreenMan-type option to run your form. This option does exactly what the run routine-type option shown above does:</p>
+<ol type="1">
+<li><blockquote>
+<p>Uses ^DIC to determine a record to edit [controlled by the <strong>DIC {DIC}</strong> and <strong>DIC(0)</strong> fields].</p>
+</blockquote></li>
+</ol>
+<p>Uses ^DDS to load your ScreenMan form [controlled by the <strong>DR{DDS}</strong>, <strong>DDSFILE</strong>, and <strong>DDSPAGE</strong> fields].</p>
+<p>To create a ScreenMan-type option, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Set up the option as shown in <span class="underline">Figure 51</span> (substitute your namespace for Z<em>xxx</em>). Setting up the option this way is quicker than writing a routine!</p>
+</blockquote></li>
+</ol>
+<p><span id="_Ref390253520" class="anchor"></span>Figure . Sample ScreenMan-type option setup</p>
+<p>NAME: Z<em>xxx</em> NEW PERSON EDIT MENU TEXT: Z<em>xxx</em> NEW PERSON EDIT</p>
+<p>TYPE: ScreenMan</p>
+<p>DIC {DIC}: VA(200, DIC(0): AEMQ</p>
+<p>DR{DDS}: [Z<em>xxx</em> EDIT] DDSFILE: 200</p>
+<p>DDSPAGE: 1</p>
+<p>UPPERCASE MENU TEXT: Z<em>xxx</em> NEW PERSON EDIT</p>
+<ol start="2" type="1">
+<li><blockquote>
+<p>Run and test the option.</p>
+</blockquote></li>
+</ol>
+<p><strong>TIP: Record Selection within ScreenMan:</strong><br />
+<br />
+The options in this lesson determine what record to edit before invoking ScreenMan. To edit a subsequent record, the user must exit ScreenMan, choose another record, and then enter ScreenMan again. You can, however, set up a Record Selection Page to allow record selection to happen within ScreenMan. To do this:</p>
+<ol type="1">
+<li><blockquote>
+<p><em>Add a popup page to your form.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Add an edit block to the page.</em></p>
+</blockquote></li>
+</ol>
+<ol start="12" type="1">
+<li><p><em>Add one field to this page: a pointer-type form-only field.</em></p></li>
+<li><p><em>In the <strong>Qualifiers</strong> property of the form-only field, specify the number of the file that is your ScreenMan form’s primary file.</em></p></li>
+<li><p><em>Set the field’s caption to something like “Choose a record to edit”, and set its data length property to an appropriate size for entering the name of a record in your file.</em></p></li>
+<li><p><em>Set the <strong>form-level</strong> property <strong>Record Selection Page</strong> to the page number of this page.</em></p></li>
+</ol>
+<p>Once you have done this, you can invoke ^DDS without specifying the DA of the record to edit; with no DA, ScreenMan uses the record selection page to prompt the user to choose a record. Once they are editing a record, the user can press <strong>&lt;PF1&gt;L</strong> to choose another record to edit, without leaving ScreenMan.</p>
+<h3 id="summary-17">Summary</h3>
+<p>To run your form from an option, you can make either a run routine or ScreenMan-type option. In either case, the option <em>must</em>:</p>
+<ol type="1">
+<li><blockquote>
+<p>Determines the record number to edit from your form’s primary file.</p>
+</blockquote></li>
+</ol>
+<p>Calls ^DDS to invoke ScreenMan.</p>
+<h2 id="where-to-go-from-here">Where to Go From Here</h2>
+<p><img src="./media/image3.png" alt="Caution" style="width:0.45833in;height:0.45833in" /> CONGRATULATIONS: This is the end of the hands-on tutorial!</p>
+<p>At this point, you have done the following:</p>
+<ul>
+<li><p>Built a ScreenMan form from scratch.</p></li>
+<li><p>Enhanced the form with a number of advanced ScreenMan features.</p></li>
+<li><p>Made a Kernel option out of the form.</p></li>
+</ul>
+<p>You can try creating ScreenMan forms for your own projects now. Feel free to turn back to this tutorial as you do so.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> For a full reference for the ScreenMan Form Editor and other ScreenMan features, see the “ScreenMan” section in the <em>VA FileMan User Manual.</em><br />
+<br />
+For a full reference on the ScreenMan API, see the <em>VA FileMan Developer’s Guide</em>.</p>
+<p>Challenge yourself; the sky is the limit!</p>
+<p><span class="underline">Figure 52</span> is just one example of the kind of visually appealing, usable forms that you can create with ScreenMan:</p>
+<p><span id="_Ref390253989" class="anchor"></span>Figure . Sample finished, detailed ScreenMan form</p>
+<p><img src="./media/image6.jpeg" alt="Sample finished, detailed ScreenMan form" style="width:6.5in;height:3.70833in" /></p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> Some additional features of ScreenMan and the Form Editor are <em>not</em> covered by this tutorial. For example, there are additional properties for fields, blocks, pages, and forms that are <em>not</em> described in this tutorial.</p>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>REF:</strong> For more information on these additional properties and other ScreenMan and Form Editor features, see the “ScreenMan” section in the <em>VA FileMan User Manual</em>.</p>
+<h2 id="delete-a-form">Delete a Form</h2>
+<p>As a final step in the tutorial, you can delete your test form.</p>
+<p>To delete a form, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Use the Delete a Form option, which is on the same menu (ScreenMan) as the Edit/Create a Form and Run a Form options.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Select the form to be deleted. When you choose a form to delete with the Delete a Form option, it lists all blocks on the form, noting whether or <em>not</em> the blocks are used on any other form.</p>
+</blockquote></li>
+</ol>
+<p><img src="./media/image2.png" alt="Note" style="width:0.3125in;height:0.3125in" /> <strong>NOTE:</strong> None of the blocks you have used in this tutorial should be part of any other form.</p>
+<ol start="3" type="1">
+<li><blockquote>
+<p>The option asks whether to delete all “deletable” blocks on your form. For the form you have built for this tutorial, you should answer <strong>YES</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>The option then deletes your form and all “deletable” blocks on your form.</p>
+</blockquote></li>
+</ol>
+<h1 id="appendix-am-code-and-variables-in-screenman-forms">Appendix A—M Code and Variables in ScreenMan Forms</h1>
+<h2 id="m-code-in-field-properties">M code in Field Properties</h2>
+<p>You can enter M code for the following field properties:</p>
+<ul>
+<li><p>Branching Logic</p></li>
+<li><p>Pre Action</p></li>
+<li><p>Post Action</p></li>
+<li><p>Post Action on Change</p></li>
+<li><p>Data Validation</p></li>
+</ul>
+<p>The M code for these properties can rely on the variables listed in <span class="underline">Table 6</span>, which are being defined by ScreenMan:</p>
+<p><span id="_Ref390254704" class="anchor"></span>Table . ScreenMan-defined M Code Variables</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>X</td>
+<td>The current internal value of the field.</td>
+</tr>
+<tr class="even">
+<td>DDSEXT</td>
+<td>The current external value of the field.</td>
+</tr>
+<tr class="odd">
+<td>DDSOLD</td>
+<td>The previous internal value of the field.</td>
+</tr>
+</tbody>
+</table>
+<p>You can also enter M code in a field’s Executable Caption and Executable Default properties, but you <em>cannot</em> depend on the X, DDSEXT, or DDSOLD variables.</p>
+<h2 id="variables">Variables</h2>
+<h3 id="ddsbr-variable">DDSBR Variable</h3>
+<p>ScreenMan allows you to conditionally branch the user to a field. This can be done with M code in the:</p>
+<ul>
+<li><p>Branching Logic</p></li>
+<li><p>Pre Action</p></li>
+<li><p>Post Action</p></li>
+<li><p>Post Action on Change properties at the field-level</p></li>
+<li><p>Data Validation property at the form-level</p></li>
+</ul>
+<p>The M code should set the DDSBR variable to the location of the field to which you wish to take the user. The DDSBR variable should be set in the following format:</p>
+<p>Field ID^Block ID^Page ID”</p>
+<p>Where:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Piece</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Field ID</td>
+<td>Caption of field, Unique Name of field, or Field Order number.</td>
+</tr>
+<tr class="even">
+<td>Block ID</td>
+<td>Block Order number or Block Name.</td>
+</tr>
+<tr class="odd">
+<td>Page ID</td>
+<td>Page Number or Page Name.</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<p>S:X=“Y” DDSBR=“FIELD 1^BLOCK 1^PAGE 2”</p>
+<p>This takes the user to the field with unique name or caption “FIELD 1” on the block named “BLOCK 1” on the page named “PAGE 2”, if the internal value of the field = Y.</p>
+<h3 id="ddsstack-variable">DDSSTACK Variable</h3>
+<p>The DDSSTACK variable can be set only in the Branching Logic property of a field. It can be used to branch users to another page when they press <strong>Enter</strong> at the field. After the user closes the page defined in DDSSTACK, ScreenMan takes the user back to the parent page, to the field <em>immediately</em> following the field from which the branch occurred.</p>
+<p>For example, set DDSSTACK equal to the Page Number or Page Name:</p>
+<p>S:X=“Y” DDSSTACK=“Page 1.1”</p>
+<p>This takes the user to Page 1.1 if the internal value of the field is “Y” and the user presses <strong>Enter</strong> at the field. When Page 1.1 is closed, the user returns to the parent page, to the field <em>immediately</em> following the field from which the branch occurred.</p>
+<p>ScreenMan provides another way to achieve this kind of “branch and return” behavior. You can link a field to a subpage by defining a Subpage Link for the field or by defining a Parent Field for the subpage. The Subpage Link and Parent Field methods, however, do <em>not</em> allow branching conditionally.</p>
+<h2 id="other-places-for-m-code-in-forms">Other Places for M Code in Forms</h2>
+<p>Besides the field-level, you can use M code at the following levels:</p>
+<ul>
+<li><p>Form</p></li>
+<li><p>Page</p></li>
+<li><p>Block</p></li>
+</ul>
+<p><span class="underline">Table 7</span> lists the levels in a form that you can use M code in property fields:</p>
+<p><span id="_Ref390255301" class="anchor"></span>Table . Form Levels Used M code in Property Fields</p>
+<table>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Property Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Form</td>
+<td>Pre Action, Post Action, Data Validation, or Post Save.</td>
+</tr>
+<tr class="even">
+<td>Page</td>
+<td>Pre Action or Post Action.</td>
+</tr>
+<tr class="odd">
+<td>Block</td>
+<td><p>Pre Action or Post Action (stored in the FORM file [#.403] only).</p>
+<p>Pre Action or Post Action (stored in the BLOCK file [#.404]).</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="validating-data">Validating Data</h2>
+<p>ScreenMan uses the definition of a field to automatically validate values inputted by the user. You can use the <strong>Data Validation</strong> property of a field to validate the value even further.</p>
+<p>Data Validation is M code that is executed <em>after</em> a user enters a new value for a field and <em>after</em> the automatic validation that ScreenMan normally performs. If the M code sets the DDSERROR variable, ScreenMan rejects the value. You might also want to ring the bell and make a call to HLP^DDSUTL to display a message to the user that indicates the reason the value was rejected.</p>
+<h1 id="appendix-btutorial-keystroke-summary">Appendix B—Tutorial Keystroke Summary</h1>
+<h2 id="form-editorinvoking">Form Editor—Invoking</h2>
+<p>To invoke the Form Editor, do either of the following:</p>
+<ul>
+<li><p>D ^DDGF</p></li>
+<li><p>Use VA FileMan option Edit/Create a Form</p></li>
+</ul>
+<h2 id="page-navigation">Page Navigation</h2>
+<p><span id="_Toc395709638" class="anchor"></span>Table . Page Navigation</p>
+<table>
+<thead>
+<tr class="header">
+<th>Key Sequence</th>
+<th>Navigation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>&lt;PF1&gt;P</strong></td>
+<td>Go to Page (Ask which page).</td>
+</tr>
+<tr class="even">
+<td><strong>&lt;PF1&gt;&lt;PF1&gt;&lt;ARROWUP&gt;</strong></td>
+<td>Go to Next Page.</td>
+</tr>
+<tr class="odd">
+<td><strong>&lt;PF1&gt;&lt;PF1&gt;&lt;ARROWDOWN&gt;</strong></td>
+<td>Go to Previous Page.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="screen-element-navigation">Screen Element Navigation</h2>
+<p><span id="_Toc395709639" class="anchor"></span>Table . Screen Element Navigation</p>
+<table>
+<thead>
+<tr class="header">
+<th>Key Sequence</th>
+<th>Navigation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>&lt;TAB&gt;</strong></td>
+<td>Move to next screen element.</td>
+</tr>
+<tr class="even">
+<td><strong>Q</strong></td>
+<td>Move to previous screen element.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="creating-new-elements">Creating New Elements</h2>
+<p><span id="_Toc395709640" class="anchor"></span>Table . Creating New Elements</p>
+<table>
+<thead>
+<tr class="header">
+<th>Key Sequence</th>
+<th>Navigation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>&lt;PF2&gt;P</strong></td>
+<td>Add a New Page.</td>
+</tr>
+<tr class="even">
+<td><strong>&lt;PF2&gt;B</strong></td>
+<td>Add a New Block.</td>
+</tr>
+<tr class="odd">
+<td><strong>&lt;PF2&gt;F</strong></td>
+<td>Add a New Field.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="selecting-a-screen-element">Selecting a Screen Element</h2>
+<p>To select a screen element, do the following:</p>
+<ol type="1">
+<li><blockquote>
+<p>Position the cursor within the element (field caption, field data, or block).</p>
+</blockquote></li>
+</ol>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to select the element.</p>
+<p>Press <strong>Spacebar</strong> <em>or</em> <strong>Enter</strong> to de-select the element.</p>
+<h2 id="switching-to-block-viewer-screen">Switching to Block Viewer Screen</h2>
+<p><span id="_Toc395709641" class="anchor"></span>Table . Switching to Block Viewer Screen</p>
+<table>
+<thead>
+<tr class="header">
+<th>Key Sequence</th>
+<th>Navigation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>&lt;PF1&gt;V</strong></td>
+<td>Toggles between Block Viewer screen and normal screen.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="editing-screen-element-properties">Editing Screen Element Properties</h2>
+<p><span id="_Toc395709642" class="anchor"></span>Table . Editing Screen Element Properties</p>
+<table>
+<thead>
+<tr class="header">
+<th>Screen Element Property</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Field</td>
+<td>Select the field and press <strong>PF4</strong>.</td>
+</tr>
+<tr class="even">
+<td>Field Caption</td>
+<td>Position cursor at field and press <strong>PF3</strong>.</td>
+</tr>
+<tr class="odd">
+<td>Field Data Length</td>
+<td>Position cursor at field and press <strong>PF3</strong>; use arrow keys to adjust length.</td>
+</tr>
+<tr class="even">
+<td>Block</td>
+<td>Switch to Block Viewer Screen (<strong>&lt;PF1&gt;V</strong>), select block, and press <strong>PF4</strong>.</td>
+</tr>
+<tr class="odd">
+<td>Current Page</td>
+<td>Press <strong>&lt;PF4&gt;P</strong>.</td>
+</tr>
+<tr class="even">
+<td>Current Form</td>
+<td>Press <strong>&lt;PF4&gt;M</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deleting-a-page-block-or-field">Deleting a Page, Block, or Field</h2>
+<p>Edit the item’s properties, and enter an at-sign (“<strong>@</strong>”) in the first field.</p>
+<p><span id="_Toc339773635" class="anchor"></span>Index</p>
+<h1 id="section" class="IndexHeading"></h1>
+<h1 id="section-1" class="IndexHeading"></h1>
+<h1 id="section-2" class="IndexHeading"></h1>
+<h1 id="section-3" class="IndexHeading"></h1>
+<h1 id="section-4" class="IndexHeading"></h1>
+<h1 id="section-5" class="IndexHeading"></h1>
+<h1 id="section-6" class="IndexHeading"></h1>
+<h1 id="section-7" class="IndexHeading"></h1>
+<h1 id="section-8" class="IndexHeading"></h1>
+<h1 id="section-9" class="IndexHeading"></h1>
+<h1 id="section-10" class="IndexHeading"></h1>
+<h1 id="section-11" class="IndexHeading"></h1>
+<h1 id="section-12" class="IndexHeading"></h1>
+<h1 id="section-13" class="IndexHeading"></h1>
+<h1 id="section-14" class="IndexHeading"></h1>
+<h1 id="section-15" class="IndexHeading"></h1>
+<h1 id="section-16" class="IndexHeading"></h1>
+<h1 id="section-17" class="IndexHeading"></h1>
+<h1 id="section-18" class="IndexHeading"></h1>
+<h1 id="section-19" class="IndexHeading"></h1>
+<h1 id="section-20" class="IndexHeading"></h1>
+<h1 id="section-21" class="IndexHeading"></h1>
+<h1 id="section-22" class="IndexHeading"></h1>
+<p>^^DDGFInvoke Form Editor, 7Invoke Form Editor), 81^DDGF Direct Mode Utility, 7AAddBlock to Edit Fields, 62Block to the Popup Page, 51Branching Logic, 66Branching Logic for Fields, 65Caption-only Field Columnar Headings to the Repeating Block, 45Data Dictionary Fields, 63DIVISION Multiple Field, 48Edit Block, 36EDIT Block to the Form, 22Fields, 26Fields for the DIVISION Multiple, 52Multiple FieldPopup Page, 48Multiple Field (in a Repeating Block), 40Page to a Form, 34Popup Page for the DIVISION Multiple, 49Repeating Block, 41ScreenMan Computed Field, 56Second Page to a Form, 35SECONDARY MENU OPTIONS (SYNONYM) Field, 44SECONDARY MENU OPTIONS .01 Field, 43SERVICE/SECTION Field, 61Add Data Dictionary Fields to the EDIT Block, 25Adding Blocks, 9Adding Name Field, 17Adding Pages, 34–39Adding SSN Field, 19Advance Preparation, 2Advanced Features for Forms, 60Appendix A—M Code and Variables in ScreenMan Forms, 76Appendix B—Tutorial Keystroke Summary, 81Assumptions, xixBBlock Viewer screen, 82Block-level, 78BlocksAdding, 9Block Viewer screen, 82Deleting, 83DISPLAY, 9, 10, 11Display Blocks, 17–20EDIT, 9EDIT Block, 22Edit blocks, 25Properties, 11, 74, 78Repeating Blocks, 40–47Branching Logic, 65–67, 76, 77, 78CCallout Boxes, xviiCaption-only Fields, 13–15ChangeField Order, 28Computed fields, 56–58Computed Fields, 34ConventionsDocumentation, xviCreateForms, 4New Elements, 82Run-Routine-Type Option, 70ScreenMan-Type Option, 72CursorPositioning Shortcuts, 81DDataValidation, 79Data DictionaryData Dictionary Utilities Menu, xixListings, xixData Dictionary Fields, 17–20Data Validation, 76Property at the Form-level, 77DDS EDIT/CREATE A FORM Option, 5, 6DDS SCREEN MENU, 6DDSBR variable, 65DDSBR Variable, 77DDSEXT Variable, 65, 76DDSOLD Variable, 65, 76DDSSTACK Variable, 78DeleteForm, 75Delete a Form Option, 75DeletingBlocks, 83Fields, 83Forms, 73–75Pages, 83DI DDU Menu, xixDILIST Option, xixDIOTHER Menu, 6Direct Mode Utilities^DDGF, 7PRINT^DDS, 29, 32Disclaimers, xviDisplay Block, 17–20DISPLAY Block, 9, 10, 11DIUSER Menu, 6DocumentationConventions, xviSymbols, xviDocumentation Navigation, xviiiEEditFields in Other Files, 60EDIT Block, 9, 22Edit blocks, 25EDIT Blocks, 22Edit User Characteristics Option, 4Edit/Create a Form Option, 5, 6, 9, 21, 75, 81Editing Screen Element Properties, 83ElementsCreate New, 82Selecting, 82FFieldsAdd, 26Adding Name Field, 17Adding SSN Field, 19Branching Logic, 65–67Caption-only, 13–15Change Order, 28Computed, 34, 56–58Data Dictionary, 17–20Deleting, 83Display-only, 17Form-only, 68–70In Other files (Navigating to), 60–64Pointer, 60–64Properties, 74, 78M Code, 76Reposition, 20Repositioning, 15Reset Order, 28SECONDARY MENU OPTIONS Multiple, 40Selecting, 15File Manager Access Code, 2FilesNEW PERSON (#200), 2, 4, 7, 8, 17, 21, 25, 34, 35, 40, 60, 61, 62, 63, 70, 71OPTION (#19), 2, 56, 57, 58SERVICE/SECTION (#49), 2, 61, 62, 63Used, 2Files (Navigating to), 60–64Form Editor, 5Invoking, 7, 81Form-level, 78Form-only Fields, 68–70FormsAdvanced Features, 60Create, 4Deleting, 73–75Properties, 74, 78RunningRun a Form Option, 21ScreenMan, 4Starting Out, 3HHelpAt Prompts, xixOnline, xixQuestion Marks, xixHome PagesAdobe Website, xxVA Software Document Library (VDL) Website, xxHow toObtain Technical Information Online, xviiiUse this Manual, xvHPS Anonymous Directories, xxHTML Manuals, xvIIntended Audience, xvIntroduction, 1KKeystroke Summary, 81LLegal Requirements, xvLevelsBlock, 78Form, 78Page, 78Link Pages, 38List File Attributes Option, xixList Form CharacteristicsPRINT^DDS, 29MM Code in Field Properties, 76ManualsIn HTML, xvMenusData Dictionary Utilities, xixDDS SCREEN MENU, 6DI DDU, xixDIOTHER, 6DIUSER, 6Other Options, 6ScreenMan, 6VA FileMan, 6Multiples, 34In a Popup Page, 48–53In a Repeating Block, 40–47NNavigating to Other Files, 60–64NavigationPage, 81Screen Element, 81NEW PERSON File (#200), 2, 4, 7, 8, 17, 21, 25, 34, 35, 40, 60, 61, 62, 63, 70, 71OObjectives, 1OnlineDocumentation, xixTechnical Information, How to Obtain, xviiiOPTION File (#19), 2, 56, 57, 58OptionsCreate Run-Routine-Type Option, 70Create ScreenMan-Type Option, 72Data Dictionary Utilities, xixDDS EDIT/CREATE A FORM, 5, 6DDS SCREEN MENU, 6Delete a Form, 75DI DDU, xixDILIST, xixDIOTHER, 6DIUSER, 6Edit User Characteristics, 4Edit/Create a Form, 5, 6, 9, 21, 75, 81List File Attributes, xixOther Options, 6Run a Form, 21, 22, 27, 38, 70, 75ScreenMan, 6Turn Your ScreenMan Form into an Option, 70VA FileMan, 6Orientation, xvOther Options Menu, 6Other Places for M Code in Forms, 78PPage Navigation, 81Page-level, 78Pages, 34Adding, 34–39Deleting, 83Link, 38Linking, 38Moving to another Page, 81Popup, 48–53Properties, 36, 74, 78Resizing/repositioning Popup Pages, 53Pointer fields, 60–64Popup Pages, 48–53Resizing/Repositioning, 53PopupsReposition, 53Resize, 54Post Action, 76, 77Change Properties at the Field-level, 77On Change, 76Pre Action, 76, 77PRINT^DDSDirect Mode Utility, 29, 32List Form Characteristics, 29PropertiesBlock properties, 11, 74Block Properties, 78Editing (Keystrokes), 83Field properties, 74Field Properties, 76, 78Form properties, 74Form Properties, 78Page properties, 36, 74Page Properties, 78QQuestion Mark Help, xixRReferences, xxRepeating Blocks, 40–47RepositionPopup Page, 53Reposition Fields, 20Repositioning Fields, 15RequirementsLegal, xvReset Field Order, 28Resize the Popup Page, 54Resize/RepositionPopup Pages, 53Revision History, iiiRun a Form Option, 21, 22, 27, 38, 70, 75Running a Form, 21SScreen Element Navigation, 81Screen ElementsSelecting, 82ScreenMan Forms, 4ScreenMan Menu, 6SECONDARY MENU OPTIONS Field Multiple, 40Security KeysXUSCREENMAN, 2, 6SelectingFields, 15Selecting a Screen Element, 82SERVICE/SECTION File (#49), 2, 61, 62, 63Starting Out with Forms, 3Switching to Block Viewer Screen, 82SymbolsFound in the Documentation, xviTTurn Your ScreenMan Form into an Option, 70Tutorial Keystroke Summary, 81UURLsAdobe Website, xxVA Software Document Library (VDL) Website, xxUse Form-Only Fields for User Input, 68Use PRINT^DDS to List Form Characteristics, 29VVA FileMan Menu, 6VA Software Document Library (VDL)Website, xxValidatingData, 79VariablesDDSBR, 77DDSEXT, 65, 76DDSOLD, 65, 76DDSSTACK, 78X, 65X, 76WWebsitesAdobe Website, xxVHA Software Document Library (VDL), xxWhere to Go From Here, 73XX Variable, 65, 76XUSCREENMAN Security Key, 2, 6</p>
+</body>
+</html>
