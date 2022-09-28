@@ -26,11 +26,11 @@ Then to run scrape.py:
     
     cd /home/tmp
     
-    python3 scrape.py
+    scrapy runspider scrape.py
     
 To run scrape1.py:
 
-    python3 scrape1.py
+    scrapy runspider scrape1.py
 
 # References
 
