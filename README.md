@@ -10,6 +10,10 @@ These links are then used to download the docx files then using them to create m
 
 A complete site crawling example is not shown here, just a proof of concept (PoC) The PoC is split into 2 parts, **scrape.py** scapes https://www.va.gov/vdl/application.asp?appid=5 and extracts all docx files on the page, converting them to md files accordingly (as contained in this repo)
 
+Conversions were also made from docx format to html the links to the resulting html files as below:
+
+https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/fm22_2dg.html
+
 **scrape1.py** scrapes https://www.va.gov/vdl/section.asp?secid=2, following links and extracting all links with docx download links. These links are added to a links.txt file
 
 # Running the demo
