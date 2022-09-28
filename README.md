@@ -13,14 +13,23 @@ A complete site crawling example is not shown here, just a proof of concept (PoC
 Conversions were also made from docx format to html the links to the resulting html files as below:
 
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_2dg.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_2ig.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_2p8_dac_ug.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_2rn.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_2tm.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_2um1.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_2um2.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_krn8_file_security.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/fm22_tutorial.html
+
 https://htmlpreview.github.io/?https://github.com/RamSailopal/VA-Markup/blob/main/scrn_tut.html
 
 **scrape1.py** scrapes https://www.va.gov/vdl/section.asp?secid=2, following links and extracting all links with docx download links. These links are added to a links.txt file
