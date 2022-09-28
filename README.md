@@ -1,6 +1,6 @@
 # VA-Markup
 
-Creating Mark up files of VistA docx files.
+Creating Mark up and HTML files of VistA docx files.
 
 # Process
 
