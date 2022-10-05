@@ -53,6 +53,14 @@ Then to run scrape.py:
 To run scrape1.py:
 
     scrapy runspider scrape1.py
+    
+# Creating a HTML table with download link
+
+Run the following:
+
+    scrapy3.sh <base URL>
+    
+Where **base URL** is the base URL to crawl from i.e. https://www.va.gov/vdl/application.asp?appid=6
 
 # References
 
