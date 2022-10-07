@@ -6,7 +6,7 @@ title: |
 ---
 
 ![Department of Veterans Affairs official
-seal](images/media/image1.jpg){width="2.375in" height="2.375in"}
+seal](media/image1.jpg){width="2.375in" height="2.375in"}
 
 August 2016
 
